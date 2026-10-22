@@ -1,0 +1,66 @@
+captured,game_date,player_id,player,team,opp,stat,line,p_over,flux
+2026-10-22,2026-10-22,4431678,Tyrese Maxey,PHI,CLE,pts,23.5,0.5794,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,4431678,Tyrese Maxey,PHI,CLE,reb,4.5,0.374,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,4431678,Tyrese Maxey,PHI,CLE,ast,5.5,0.5476,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,4431678,Tyrese Maxey,PHI,CLE,3pm,2.5,0.4288,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,5124612,VJ Edgecombe,PHI,CLE,pts,12.5,0.5384,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,5124612,VJ Edgecombe,PHI,CLE,reb,5.5,0.571,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,5124612,VJ Edgecombe,PHI,CLE,ast,3.5,0.5171,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,5124612,VJ Edgecombe,PHI,CLE,3pm,1.5,0.5008,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,3059318,Joel Embiid,PHI,CLE,pts,23.5,0.6377,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,3059318,Joel Embiid,PHI,CLE,reb,8.5,0.4762,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,3059318,Joel Embiid,PHI,CLE,ast,5.5,0.4099,"Jaylen Brown,Kentavious Caldwell-Pope,LeBron James,Caleb Love,Rayan Rupert,Anfernee Simons"
+2026-10-22,2026-10-22,3992,James Harden,CLE,PHI,pts,17.5,0.6564,Peyton Watson
+2026-10-22,2026-10-22,3992,James Harden,CLE,PHI,reb,5.5,0.4055,Peyton Watson
+2026-10-22,2026-10-22,3992,James Harden,CLE,PHI,ast,5.5,0.5508,Peyton Watson
+2026-10-22,2026-10-22,3992,James Harden,CLE,PHI,3pm,1.5,0.6847,Peyton Watson
+2026-10-22,2026-10-22,3908809,Donovan Mitchell,CLE,PHI,pts,27.5,0.4681,Peyton Watson
+2026-10-22,2026-10-22,3908809,Donovan Mitchell,CLE,PHI,reb,4.5,0.5624,Peyton Watson
+2026-10-22,2026-10-22,3908809,Donovan Mitchell,CLE,PHI,ast,2.5,0.6966,Peyton Watson
+2026-10-22,2026-10-22,3908809,Donovan Mitchell,CLE,PHI,3pm,2.5,0.5616,Peyton Watson
+2026-10-22,2026-10-22,4432158,Evan Mobley,CLE,PHI,pts,16.5,0.5365,Peyton Watson
+2026-10-22,2026-10-22,4432158,Evan Mobley,CLE,PHI,reb,9.5,0.407,Peyton Watson
+2026-10-22,2026-10-22,4432158,Evan Mobley,CLE,PHI,ast,3.5,0.5353,Peyton Watson
+2026-10-22,2026-10-22,4432158,Evan Mobley,CLE,PHI,3pm,1.5,0.3934,Peyton Watson
+2026-10-22,2026-10-22,4066328,Jarrett Allen,CLE,PHI,pts,12.5,0.4929,Peyton Watson
+2026-10-22,2026-10-22,4066328,Jarrett Allen,CLE,PHI,reb,7.5,0.4893,Peyton Watson
+2026-10-22,2026-10-22,4278073,Shai Gilgeous-Alexander,OKC,DEN,pts,27.5,0.5297,
+2026-10-22,2026-10-22,4278073,Shai Gilgeous-Alexander,OKC,DEN,reb,3.5,0.4844,
+2026-10-22,2026-10-22,4278073,Shai Gilgeous-Alexander,OKC,DEN,ast,8.5,0.3813,
+2026-10-22,2026-10-22,4278073,Shai Gilgeous-Alexander,OKC,DEN,3pm,1.5,0.5177,
+2026-10-22,2026-10-22,4433255,Chet Holmgren,OKC,DEN,pts,12.5,0.6513,
+2026-10-22,2026-10-22,4433255,Chet Holmgren,OKC,DEN,reb,7.5,0.5749,
+2026-10-22,2026-10-22,4900671,Ajay Mitchell,OKC,DEN,pts,14.5,0.4077,
+2026-10-22,2026-10-22,4900671,Ajay Mitchell,OKC,DEN,reb,3.5,0.4818,
+2026-10-22,2026-10-22,4900671,Ajay Mitchell,OKC,DEN,ast,4.5,0.4267,
+2026-10-22,2026-10-22,4683692,Cason Wallace,OKC,DEN,pts,9.5,0.3741,
+2026-10-22,2026-10-22,4683692,Cason Wallace,OKC,DEN,reb,3.5,0.5347,
+2026-10-22,2026-10-22,4683692,Cason Wallace,OKC,DEN,ast,2.5,0.4234,
+2026-10-22,2026-10-22,4683692,Cason Wallace,OKC,DEN,3pm,2.5,0.3184,
+2026-10-22,2026-10-22,2991350,Alex Caruso,OKC,DEN,pts,12.5,0.3316,
+2026-10-22,2026-10-22,2991350,Alex Caruso,OKC,DEN,ast,2.5,0.3326,
+2026-10-22,2026-10-22,2991350,Alex Caruso,OKC,DEN,3pm,2.5,0.3517,
+2026-10-22,2026-10-22,4593803,Jalen Williams,OKC,DEN,pts,14.5,0.5917,
+2026-10-22,2026-10-22,4593803,Jalen Williams,OKC,DEN,reb,4.5,0.4662,
+2026-10-22,2026-10-22,4593803,Jalen Williams,OKC,DEN,ast,3.5,0.608,
+2026-10-22,2026-10-22,4683778,Jared McCain,OKC,DEN,pts,12.5,0.3687,
+2026-10-22,2026-10-22,4683778,Jared McCain,OKC,DEN,3pm,2.5,0.4194,
+2026-10-22,2026-10-22,3936299,Jamal Murray,DEN,OKC,pts,24.5,0.4762,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3936299,Jamal Murray,DEN,OKC,reb,4.5,0.543,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3936299,Jamal Murray,DEN,OKC,ast,6.5,0.4975,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3936299,Jamal Murray,DEN,OKC,3pm,3.5,0.418,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3112335,Nikola Jokic,DEN,OKC,pts,25.5,0.4264,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3112335,Nikola Jokic,DEN,OKC,reb,13.5,0.572,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3112335,Nikola Jokic,DEN,OKC,ast,9.5,0.5685,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,4431767,Christian Braun,DEN,OKC,pts,12.5,0.3442,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,4431767,Christian Braun,DEN,OKC,reb,4.5,0.4901,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,4431767,Christian Braun,DEN,OKC,ast,2.5,0.4304,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,4431767,Christian Braun,DEN,OKC,3pm,1.5,0.3072,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3138196,Cameron Johnson,DEN,OKC,pts,13.5,0.4222,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3138196,Cameron Johnson,DEN,OKC,reb,3.5,0.4789,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3138196,Cameron Johnson,DEN,OKC,ast,2.5,0.4751,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3138196,Cameron Johnson,DEN,OKC,3pm,1.5,0.6382,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3064290,Aaron Gordon,DEN,OKC,pts,12.5,0.586,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3064290,Aaron Gordon,DEN,OKC,reb,5.5,0.5378,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3064290,Aaron Gordon,DEN,OKC,ast,3.5,0.3252,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"
+2026-10-22,2026-10-22,3064290,Aaron Gordon,DEN,OKC,3pm,1.5,0.4429,"Marvin Bagley III,DeMar DeRozan,Ryan Nembhard"

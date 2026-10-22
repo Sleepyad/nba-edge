@@ -9,6 +9,7 @@ Working style: casual, concise, direct, no em dashes, match his language (Englis
 - Claude Project: Gamble 101 (holds a copy of these notes as claude/nba-edge-handoff.md)
 
 ## What is built
+(See also the Paper log section below.)
 - `nba_edge.py`: one file, standard library only, Python 3.9+. SQLite at ~/nba_edge.db on AD's PC (his bets live only there).
   - `sync` (ESPN public JSON, every player's box score for every final game, plus final score and closing spread/total per game; first run backfills last season; saves pregame line snapshots only when a line moves), `status`, `player`
   - `price NAME STAT LINE [--odds --opp --min --spread --total --out NAME --auto]`; `--auto` pulls tonight's opponent, spread, total and injuries from ESPN
@@ -30,6 +31,16 @@ Python (`predict`) and JavaScript (`predict` in docs/index.html) must stay ident
 - GitHub's scheduler can run late. Live scores in the browser come straight from ESPN and do not wait for the Action.
 - Same-game legs are correlated; the slip's joint chance assumes independence.
 - Untested so far: the Action committing newly finished games on its own (first real test is the night of Oct 22), and anything against real prop lines.
+
+## Paper log (Claude's own bets, imaginary money), added Oct 22 evening
+- `paper.py` + `data/paper_bets.csv` + `data/fair_lines.csv`. Public, separate from AD's private bets. Commands: `snapshot`, `auto`, `bet`, `settle`, `report`, `moves`.
+- Sources: `rule` (picked automatically each day by a fixed rule, the honest baseline), `claude` (judgment picks with a written reason), `book` (a real line AD supplies, priced by the model). Flat -110 and 1 unit per bet; tickets of up to 3 legs.
+- Until real prop lines exist, rule bets use a PROXY LINE: last-10 average rounded to the nearest x.5. That tests the model's extras (40-game weighting, opponent, teammates out, spread, total) against plain recent form, NOT against a sportsbook. Auto only bets at 57 to 68% confidence and skips lines too small to be real markets.
+- Teams with rotation newcomers (traded in, fewer than 15 games with the new team) are flagged "flux" and skipped by `auto`. Tonight: PHI (LeBron James, Jaylen Brown, others) and CLE (Peyton Watson) are in flux. Maxey and Embiid numbers are probably overstated because LeBron and Brown share the ball now.
+- GitHub Action runs `paper.py settle` then `paper.py auto` on every sync (idempotent, never breaks the data sync). Auto only logs games that have not started.
+- `fair_lines.csv` stores each day's proxy line and model P(over) per player, so day-to-day line moves can be compared with `paper.py moves`. Real book-line moves need AD to log lines with `paper.py bet ... --source book`.
+- Qualitative idea (podcasts, previews, news): use only for hard facts (minutes limits, injuries, roles) and write them in the `reason` of `claude` bets, so we can measure later whether judgment beats the `rule` baseline. Transcripts are noisy and cannot be backtested, so they do not go into the model.
+- Read groups only with 30+ settled bets. Tonight's first logged slate: 6 rule bets and 3 claude bets, all DEN@OKC.
 
 ## Open items and ideas
 1. Check tonight (Oct 22) that a "data: sync" commit appeared after Cavs-76ers and Nuggets-Thunder finished; if not, read the failed run in the Actions tab.

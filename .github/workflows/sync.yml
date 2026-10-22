@@ -9,7 +9,7 @@ on:
     - cron: "*/30 0-6,17-23 * * *"
   push:
     branches: [main]
-    paths: ["docs/**", "nba_edge.py", ".github/workflows/sync.yml"]
+    paths: ["docs/**", "nba_edge.py", "paper.py", ".github/workflows/sync.yml"]
   workflow_dispatch:
     inputs:
       since:
@@ -45,6 +45,10 @@ jobs:
             python nba_edge.py --db nba.db sync
           fi
           python nba_edge.py --db nba.db dump data
+          # Claude's paper log: grade finished games, then log today's rule picks before tip-off.
+          # Never let this step break the data sync.
+          python paper.py --db nba.db settle || echo "paper settle failed"
+          python paper.py --db nba.db auto || echo "paper auto failed"
           python nba_edge.py --db nba.db export docs/data
       - name: Commit data if it changed
         id: commit

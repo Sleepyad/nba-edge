@@ -2,6 +2,8 @@
 
 > New session or new chat? Read [NOTES.md](NOTES.md) first. It has the current state, the model settings, test results and open items.
 
+Claude's own paper-bet log lives in `paper.py` (imaginary money, public record).
+
 Every NBA player's game log in one database, a prop pricer, a bet log that keeps a record of every miss,
 and a live dashboard. Stats refresh on their own through GitHub Actions.
 
