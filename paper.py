@@ -30,7 +30,7 @@ DATA = os.environ.get("PAPER_DIR", os.path.join(HERE, "data"))
 BETS = os.path.join(DATA, "paper_bets.csv")
 FAIR = os.path.join(DATA, "fair_lines.csv")
 BET_COLS = ["id", "placed", "game_date", "ticket", "source", "player_id", "player", "team", "opp", "stat",
-            "side", "line", "odds", "model_p", "reason", "status", "actual"]
+            "side", "line", "odds", "model_p", "reason", "status", "actual", "ticket_odds"]
 FAIR_COLS = ["captured", "game_date", "player_id", "player", "team", "opp", "stat", "line", "p_over", "flux"]
 STATS = ("pts", "reb", "ast", "3pm")
 THRESH = 0.57       # model confidence needed for an automatic pick
@@ -230,7 +230,8 @@ def cmd_bet(args):
     bets.append(dict(id=next_id(bets), placed=date.today().isoformat(), game_date=args.date or lc["date"] or N.et_today().isoformat(),
                      ticket=args.ticket or "", source=args.source, player_id=pid, player=p["player"], team=lc["team"],
                      opp=lc["opp"] or "", stat=stat, side=side, line=args.line, odds=args.odds,
-                     model_p=round(res["p_win"], 4), reason=args.reason or "", status="pending", actual=""))
+                     model_p=round(res["p_win"], 4), reason=args.reason or "", status="pending", actual="",
+                     ticket_odds=args.ticket_odds or ""))
     write_csv(BETS, BET_COLS, bets)
     print("logged #%s: %s %s %s %s  model %.1f%%  (%s)" % (bets[-1]["id"], p["player"], stat, side, args.line, res["p_win"] * 100, args.source))
 
@@ -271,6 +272,8 @@ def ticket_result(legs):
     ws = [l for l in legs if l["status"] == "win"]
     if not ws:
         return 0.0
+    if any(l.get("ticket_odds") for l in legs) and len(ws) == len(legs):  # real book price for the whole ticket
+        return STAKE * (dec(next(l["ticket_odds"] for l in legs if l.get("ticket_odds"))) - 1)
     return STAKE * (math.prod(dec(l["odds"]) for l in ws) - 1)
 
 
@@ -352,6 +355,7 @@ def main():
     s.add_argument("--odds", type=int, default=ODDS)
     s.add_argument("--reason", default="")
     s.add_argument("--ticket", default="")
+    s.add_argument("--ticket-odds", type=int, help="the real book price of the whole ticket, e.g. 6380")
     s.add_argument("--source", default="claude", choices=["claude", "book", "rule"])
     s.add_argument("--date")
     sub.add_parser("settle")
