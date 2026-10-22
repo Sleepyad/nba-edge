@@ -33,6 +33,7 @@ and get resolved by hand:  python nba_edge.py bet resolve LEG_ID win|loss|push|v
 """
 import argparse
 import concurrent.futures as cf
+import bisect
 import csv
 import json
 import math
@@ -60,10 +61,19 @@ ALIASES = {
 }
 BLOWOUT = 15  # |team margin| at or above this counts as a blowout
 SHRINK = 0.92  # pull probabilities toward 50% (real stats are fatter-tailed than a bell curve)
-HALFLIFE = 8.0  # games; recent games count double every 8 games back
-PRIOR = 4.0  # pseudo-games of normal-curve belief blended with the raw hit rate
+HALFLIFE = 12.0  # games; recent games count double every 12 games back (tested out of sample)
+PRIOR = 20.0  # pseudo-games of bell-curve belief blended with the raw hit rate (tested out of sample)
 OPP_SHRINK = 150.0  # opponent adjustment is pulled hard toward 1.0
+USAGE_STRENGTH = 0.5  # share of the measured with/without effect that is applied (0.5 tested best out of sample)
+BOOST_SHRINK = 20.0  # games-out pseudo-count: teammate splits are noisy, so pull them toward 1.0
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
+GAME_FIELDS = ["game_id", "game_date", "season", "season_type", "home", "away", "home_score", "away_score",
+               "spread", "total", "open_spread", "open_total"]
+LINE_FIELDS = ["game_id", "game_date", "home", "away", "captured", "spread", "total"]
+SPREAD_EDGES = [3, 6, 9, 12, 15]  # |spread| buckets for the minutes effect
+CTX_STATS = ["pts", "reb", "ast", "3pm", "stl", "blk", "tov", "pra", "pr", "pa", "ra"]
+BOOST_STATS = ["pts", "reb", "ast", "3pm"]
+COMBO = {"pra": ["pts", "reb", "ast"], "pr": ["pts", "reb"], "pa": ["pts", "ast"], "ra": ["reb", "ast"]}
 GAME_COLS = ["player_id", "player", "pnorm", "team", "game_id", "game_date", "season", "season_type",
              "matchup", "home", "opp", "wl", "mins", "pts", "reb", "ast", "fg3m", "fg3a", "fgm", "fga",
              "ftm", "fta", "stl", "blk", "tov", "pf", "plus_minus", "starter"]
@@ -78,6 +88,12 @@ CREATE TABLE IF NOT EXISTS game_log(
 CREATE INDEX IF NOT EXISTS ix_gl_player ON game_log(player_id, game_date);
 CREATE INDEX IF NOT EXISTS ix_gl_pnorm ON game_log(pnorm);
 CREATE INDEX IF NOT EXISTS ix_gl_game ON game_log(game_id);
+CREATE TABLE IF NOT EXISTS games(
+  game_id TEXT PRIMARY KEY, game_date TEXT, season TEXT, season_type TEXT, home TEXT, away TEXT,
+  home_score REAL, away_score REAL, spread REAL, total REAL, open_spread REAL, open_total REAL);
+CREATE TABLE IF NOT EXISTS lines(
+  game_id TEXT, game_date TEXT, home TEXT, away TEXT, captured TEXT, spread REAL, total REAL,
+  PRIMARY KEY (game_id, captured));
 CREATE TABLE IF NOT EXISTS bets(
   id INTEGER PRIMARY KEY AUTOINCREMENT, placed_at TEXT, book TEXT, stake REAL, odds INTEGER,
   note TEXT, status TEXT DEFAULT 'pending', payout REAL DEFAULT 0, model_prob REAL);
@@ -168,7 +184,7 @@ def phi(z):
     return 0.5 * (1 + math.erf(z / math.sqrt(2)))
 
 
-def price_dist(xs, line, side, halflife=HALFLIFE, scale=1.0, prior=PRIOR):
+def price_dist(xs, line, side, halflife=HALFLIFE, scale=1.0, prior=PRIOR, shrink=None):
     """xs newest first. Blend of recency-weighted normal and recency-weighted hit rate."""
     xs = [x * scale for x in xs]
     w = [0.5 ** (i / halflife) for i in range(len(xs))]
@@ -195,14 +211,14 @@ def price_dist(xs, line, side, halflife=HALFLIFE, scale=1.0, prior=PRIOR):
     p_over, p_under, p_push = p_over / tot, p_under / tot, p_push / tot
     over = side == "over"
     p_win = p_over if over else p_under
-    p_win = 0.5 + SHRINK * (p_win - 0.5)
+    p_win = 0.5 + (SHRINK if shrink is None else shrink) * (p_win - 0.5)
     p_win = min(max(p_win, 0.02), 0.98)
     return dict(p_win=p_win, p_push=p_push, p_norm=n_over if over else n_under,
                 p_emp=e_over if over else e_under, mu=mu, sd=sd, neff=neff)
 
 
 def history(con, pid, stat, before=None, limit=40):
-    q = ("SELECT %s AS v, mins, home, opp, game_date FROM game_log "
+    q = ("SELECT %s AS v, mins, home, opp, game_date, starter, pts, reb, ast, fg3m, team FROM game_log "
          "WHERE player_id=? AND mins>=5" % stat_expr(stat))
     args = [pid]
     if before:
@@ -253,7 +269,172 @@ def opp_factor(con, opp, stat):
     return opp_factors(con, stat).get(opp, (1.0, 0))
 
 
-def predict(con, pid, stat, line, side, before=None, opp=None, exp_min=None, halflife=HALFLIFE):
+def spread_bucket(spread):
+    a = abs(spread)
+    return sum(1 for e in SPREAD_EDGES if a >= e)
+
+
+def compute_ctx(con, before=None):
+    """Learn from history how minutes depend on the point spread and how stats depend on the game total."""
+    q = ("SELECT g.player_id pid, g.season, g.mins, g.starter, g.pts, g.reb, g.ast, g.fg3m, g.stl, g.blk, g.tov, "
+         "m.spread, m.total, g.game_id FROM game_log g JOIN games m ON m.game_id = g.game_id "
+         "WHERE g.season_type='Regular Season' AND g.mins>0 AND m.spread IS NOT NULL AND m.total IS NOT NULL")
+    args = []
+    if before:
+        q += " AND g.game_date < ?"
+        args.append(before)
+    rows = con.execute(q, args).fetchall()
+    if len(rows) < 2000:
+        return None
+    totals = {r["game_id"]: r["total"] for r in rows}
+    t_mean = sum(totals.values()) / len(totals)
+    agg_m, agg_s = {}, {}
+    for r in rows:
+        k = (r["pid"], r["season"])
+        if r["mins"] >= 5:
+            x = agg_m.setdefault(k, [0.0, 0])
+            x[0] += r["mins"]
+            x[1] += 1
+        if r["mins"] >= 15:
+            x = agg_s.setdefault(k, [[0.0] * len(CTX_STATS), 0])
+            for i, st in enumerate(CTX_STATS):
+                x[0][i] += row_value(r, st)
+            x[1] += 1
+    mins = {"starter": [[0.0, 0] for _ in range(len(SPREAD_EDGES) + 1)], "bench": [[0.0, 0] for _ in range(len(SPREAD_EDGES) + 1)]}
+    sxy, sxx, cnt = [0.0] * len(CTX_STATS), [0.0] * len(CTX_STATS), [0] * len(CTX_STATS)
+    for r in rows:
+        k = (r["pid"], r["season"])
+        am = agg_m.get(k)
+        if am and am[1] >= 8 and am[0] / am[1] >= 10:
+            cell = mins["starter" if r["starter"] else "bench"][spread_bucket(r["spread"])]
+            cell[0] += r["mins"] / (am[0] / am[1])
+            cell[1] += 1
+        asx = agg_s.get(k)
+        if r["mins"] >= 15 and asx and asx[1] >= 8:
+            x = (r["total"] - t_mean) / t_mean
+            for i, st in enumerate(CTX_STATS):
+                avg = asx[0][i] / asx[1]
+                if avg >= 2:
+                    sxy[i] += x * (row_value(r, st) / avg - 1)
+                    sxx[i] += x * x
+                    cnt[i] += 1
+    out_min = {}
+    for role, cells in mins.items():
+        tot_n = sum(c[1] for c in cells)
+        overall = sum(c[0] for c in cells) / tot_n if tot_n else 1.0
+        out_min[role] = []
+        for c in cells:
+            m = c[0] / c[1] if c[1] else overall
+            m = overall + (m - overall) * c[1] / (c[1] + 300.0)
+            out_min[role].append(round(m / overall, 4))
+    slope = {}
+    for i, st in enumerate(CTX_STATS):
+        k = sxy[i] / sxx[i] if sxx[i] > 0 else 0.0
+        slope[st] = round(k * cnt[i] / (cnt[i] + 3000.0), 4)
+    return {"t_mean": round(t_mean, 2), "edges": SPREAD_EDGES, "min": out_min, "slope": slope, "n": len(rows)}
+
+
+def compute_boost(con, before=None, k_shrink=BOOST_SHRINK, min_out=3):
+    """With/without splits: how a player's stats change when a rotation teammate does not play.
+    {player_id: {teammate_id: [n_games_out, r_pts, r_reb, r_ast, r_3pm]}} (ratios shrunk toward 1)."""
+    seasons = [r[0] for r in con.execute("SELECT DISTINCT season FROM game_log ORDER BY season DESC LIMIT 2")]
+    if not seasons:
+        return {}
+    q = ("SELECT player_id, team, game_id, game_date, mins, pts, reb, ast, fg3m FROM game_log "
+         "WHERE season IN (%s)" % ",".join("?" * len(seasons)))
+    args = list(seasons)
+    if before:
+        q += " AND game_date < ?"
+        args.append(before)
+    by_player, last = {}, {}
+    first_with = {}
+    for r in con.execute(q, args):
+        by_player.setdefault(r["player_id"], {})[r["game_id"]] = r
+        if r["player_id"] not in last or r["game_date"] >= last[r["player_id"]][0]:
+            last[r["player_id"]] = (r["game_date"], r["team"])
+        k = (r["player_id"], r["team"])
+        if k not in first_with or r["game_date"] < first_with[k]:
+            first_with[k] = r["game_date"]
+    roster = {}
+    for pid, (_, team) in last.items():
+        rows = [r for r in by_player[pid].values() if r["team"] == team and r["mins"] >= 5]
+        if len(rows) >= 8 and sum(r["mins"] for r in rows) / len(rows) >= 12:
+            roster.setdefault(team, []).append((pid, sum(r["mins"] for r in rows) / len(rows)))
+    cols = ["pts", "reb", "ast", "fg3m"]
+    out = {}
+    for team, plist in roster.items():
+        for pid, _ in plist:
+            prow = {g: r for g, r in by_player[pid].items() if r["team"] == team and r["mins"] >= 5}
+            for yid, ymin in plist:
+                if yid == pid or ymin < 20:
+                    continue
+                yg = by_player[yid]
+                yfirst = first_with[(yid, team)]
+                present = [r for g, r in prow.items() if g in yg and yg[g]["mins"] >= 5]
+                absent = [r for g, r in prow.items() if (g not in yg or yg[g]["mins"] < 5) and r["game_date"] >= yfirst]
+                if len(absent) < min_out or len(present) < 5:
+                    continue
+                arr = [len(absent)]
+                for c in cols:
+                    ma = sum(r[c] for r in absent) / len(absent)
+                    mp = sum(r[c] for r in present) / len(present)
+                    ratio = ma / mp if mp >= 0.5 else 1.0
+                    ratio = 1 + (ratio - 1) * len(absent) / (len(absent) + k_shrink)
+                    arr.append(round(min(max(ratio, 0.7), 1.5), 3))
+                out.setdefault(pid, {})[yid] = arr
+    return out
+
+
+def ctx_factors(ctx, stat, starter, spread, total):
+    fm, ft = 1.0, 1.0
+    if ctx and spread is not None and ctx.get("min"):
+        fm = ctx["min"]["starter" if starter else "bench"][spread_bucket(spread)]
+    if ctx and total is not None and stat in ctx.get("slope", {}) and ctx.get("t_mean"):
+        ft = min(max(1 + ctx["slope"][stat] * (total - ctx["t_mean"]) / ctx["t_mean"], 0.85), 1.15)
+    return fm, ft
+
+
+def stat_ratio(arr, stat, comp):
+    """The with/without ratio for one stat (combos use the player's own mix of points, rebounds, assists),
+    scaled by USAGE_STRENGTH because the raw splits overshoot."""
+    if stat in BOOST_STATS:
+        r = arr[1 + BOOST_STATS.index(stat)]
+    elif stat in COMBO:
+        comps = COMBO[stat]
+        tot = sum(comp[c] for c in comps)
+        r = sum(comp[c] * arr[1 + BOOST_STATS.index(c)] for c in comps) / tot if tot > 0 else 1.0
+    else:
+        r = 1.0
+    return 1 + USAGE_STRENGTH * (r - 1)
+
+
+def absent_fraction(dates, halflife, ydates, same=None):
+    """Weighted share of the player's recent games (newest first) that teammate Y missed.
+    Games played for a different team than today's count as 'Y was there' (no information)."""
+    if not ydates:
+        return 0.0
+    d0, have = min(ydates), set(ydates)
+    num = den = 0.0
+    for i, d in enumerate(dates):
+        w = 0.5 ** (i / halflife)
+        den += w
+        if d >= d0 and d not in have and (same is None or same[i]):
+            num += w
+    return num / den if den else 0.0
+
+
+def usage_mult(entries, stat, comp):
+    """entries: (ratio array, teammate is out tonight, share of recent games he missed).
+    The recent average already contains his past absences, so divide those out, then add tonight's."""
+    m = 1.0
+    for arr, out_now, f in entries:
+        r = stat_ratio(arr, stat, comp)
+        m *= (r if out_now else 1.0) / (1 + f * (r - 1))
+    return min(max(m, 0.7), 1.5)
+
+
+def predict(con, pid, stat, line, side, before=None, opp=None, exp_min=None, halflife=HALFLIFE,
+            spread=None, total=None, outs=None, ctx=None, boost=None, shrink=None, prior=PRIOR):
     h = history(con, pid, stat, before)
     if len(h) < 5:
         return None
@@ -261,14 +442,40 @@ def predict(con, pid, stat, line, side, before=None, opp=None, exp_min=None, hal
     ms = [r["mins"] for r in h]
     avg_min = sum(ms[:10]) / len(ms[:10])
     scale, notes = 1.0, []
-    if opp:
+    if opp and stat in CTX_STATS:  # same stats the dashboard has factors for
         f, n = opp_factor(con, opp, stat)
         scale *= f
         notes.append("opponent factor x%.3f (from %d player-games, shrunk)" % (f, n))
+    starter = sum(1 for r in h[:5] if r["starter"]) >= 3
+    fm, ft = ctx_factors(ctx, stat, starter, spread, total)
     if exp_min and avg_min > 0 and stat != "min":
         scale *= exp_min / avg_min
-        notes.append("minutes scaled %.1f -> %.1f" % (avg_min, exp_min))
-    res = price_dist(xs, line, side, halflife, scale)
+        notes.append("minutes scaled %.1f -> %.1f (your number)" % (avg_min, exp_min))
+    elif fm != 1.0:
+        scale *= fm
+        notes.append("spread %+g: %s minutes x%.3f" % (spread, "starter" if starter else "bench", fm))
+    if ft != 1.0:
+        scale *= ft
+        notes.append("game total %g: pace x%.3f" % (total, ft))
+    if outs is not None and boost and boost.get(pid):
+        comp = {c: sum(r[c if c != "3pm" else "fg3m"] for r in h[:10]) / len(h[:10]) for c in BOOST_STATS}
+        dates = [r["game_date"] for r in h]
+        same = [r["team"] == h[0]["team"] for r in h]
+        entries = []
+        for y, arr in boost[pid].items():
+            q = "SELECT game_date FROM game_log WHERE player_id=? AND mins>=5"
+            qa = [y]
+            if before:
+                q += " AND game_date<?"
+                qa.append(before)
+            yd = [r[0] for r in con.execute(q + " ORDER BY game_date DESC, game_id DESC LIMIT 40", qa)]
+            entries.append((arr, y in outs, absent_fraction(dates, halflife, yd, same)))
+        um = usage_mult(entries, stat, comp)
+        if abs(um - 1) > 1e-9:
+            scale *= um
+            notes.append("teammates: %d out tonight, usage x%.3f (past absences removed from his average)" %
+                         (sum(1 for e in entries if e[1]), um))
+    res = price_dist(xs, line, side, halflife, scale, prior, shrink)
     res.update(avg_min=avg_min, n=len(h), last=xs[:10], notes=notes)
     return res
 
@@ -333,21 +540,52 @@ def made_att(x):
         return 0.0, 0.0
 
 
+def parse_line(x):
+    """'-1.5' -> -1.5, 'o240.5' -> 240.5, 'EVEN'/'PK' -> 0."""
+    if x is None:
+        return None
+    t = str(x).strip().lower()
+    if t in ("even", "ev", "pk", "pick"):
+        return 0.0
+    try:
+        return float(t.lstrip("ou"))
+    except ValueError:
+        return None
+
+
+def game_lines(d):
+    """Closing and opening spread (home team's view) and total from a game summary."""
+    pcs = d.get("pickcenter") or []
+    if not pcs:
+        return None, None, None, None
+    pc = pcs[0]
+    ps = (pc.get("pointSpread") or {}).get("home") or {}
+    tt = (pc.get("total") or {}).get("over") or {}
+    spread = parse_line((ps.get("close") or {}).get("line"))
+    open_spread = parse_line((ps.get("open") or {}).get("line"))
+    total = parse_line((tt.get("close") or {}).get("line"))
+    open_total = parse_line((tt.get("open") or {}).get("line"))
+    if total is None:
+        total = parse_line(pc.get("overUnder"))
+    return spread, total, open_spread, open_total
+
+
 def parse_summary(d, game_date):
-    """One ESPN game summary -> list of game_log rows (tuples in GAME_COLS order). [] if not final."""
+    """One ESPN game summary -> (player rows, game row). ([], None) if the game is not final."""
     comp = d["header"]["competitions"][0]
     if comp["status"]["type"]["name"] != "STATUS_FINAL":
-        return []
+        return [], None
     info = d["header"].get("season", {})
     stype = info.get("type", 2)
     if stype not in (2, 3):
-        return []
+        return [], None
     year = int(info.get("year"))
     season = "%d-%02d" % (year - 1, year % 100)
+    stype_name = "Regular Season" if stype == 2 else "Playoffs"
     teams = {}
     for c in comp["competitors"]:
         teams[str(c["team"]["id"])] = dict(abbr=c["team"]["abbreviation"], home=1 if c["homeAway"] == "home" else 0,
-                                           win=bool(c.get("winner")))
+                                           win=bool(c.get("winner")), score=num(c.get("score")))
     gid = str(comp.get("id") or d["header"].get("id"))
     out = []
     for tb in d["boxscore"]["players"]:
@@ -371,12 +609,53 @@ def parse_summary(d, game_date):
             name = a["athlete"]["displayName"]
             matchup = "%s %s %s" % (me["abbr"], "vs." if me["home"] else "@", opp)
             out.append((int(a["athlete"]["id"]), name, norm(name), me["abbr"], gid, game_date.isoformat(),
-                        season, "Regular Season" if stype == 2 else "Playoffs", matchup, me["home"], opp,
+                        season, stype_name, matchup, me["home"], opp,
                         "W" if me["win"] else "L", mins, num(m.get("points")), num(m.get("rebounds")),
                         num(m.get("assists")), tpm, tpa, fgm, fga, ftm, fta, num(m.get("steals")),
                         num(m.get("blocks")), num(m.get("turnovers")), num(m.get("fouls")),
                         num(m.get("plusMinus")), 1 if a.get("starter") else 0))
-    return out
+    home = next((t for t in teams.values() if t["home"]), None)
+    away = next((t for t in teams.values() if not t["home"]), None)
+    game = None
+    if home and away:
+        sp, tot, osp, otot = game_lines(d)
+        game = (gid, game_date.isoformat(), season, stype_name, home["abbr"], away["abbr"], home["score"], away["score"],
+                sp, tot, osp, otot)
+    return out, game
+
+
+def home_spread(odds):
+    """Home team's spread from a scoreboard odds block (uses the favorite flag, so the sign is never ambiguous)."""
+    sp = odds.get("spread")
+    if sp is None:
+        return None
+    fav_home = (odds.get("homeTeamOdds") or {}).get("favorite")
+    return 0.0 if sp == 0 else (-abs(sp) if fav_home else abs(sp))
+
+
+def snapshot_lines(con):
+    """Save today's and tomorrow's game lines. A row is only added when the spread or total moved."""
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
+    added = 0
+    for d in (et_today(), et_today() + timedelta(days=1)):
+        j = http_json("%s/scoreboard?dates=%s&limit=100" % (ESPN, d.strftime("%Y%m%d")))
+        for e in j.get("events", []):
+            if e["status"]["type"]["state"] != "pre":
+                continue
+            c = e["competitions"][0]
+            odds = (c.get("odds") or [None])[0]
+            if not odds:
+                continue
+            ab = {t["homeAway"]: t["team"]["abbreviation"] for t in c["competitors"]}
+            row = (home_spread(odds), odds.get("overUnder"))
+            last = con.execute("SELECT spread, total FROM lines WHERE game_id=? ORDER BY captured DESC LIMIT 1",
+                               (str(e["id"]),)).fetchone()
+            if last is None or (last["spread"], last["total"]) != row:
+                con.execute("INSERT OR REPLACE INTO lines VALUES (?,?,?,?,?,?,?)",
+                            (str(e["id"]), d.isoformat(), ab.get("home"), ab.get("away"), stamp, row[0], row[1]))
+                added += 1
+    con.commit()
+    return added
 
 
 def cmd_sync(args):
@@ -385,7 +664,8 @@ def cmd_sync(args):
     if args.since:
         start = date.fromisoformat(args.since)
     else:
-        last = con.execute("SELECT MAX(game_date) FROM game_log").fetchone()[0]
+        last = con.execute("SELECT MAX(game_date) FROM games").fetchone()[0] or \
+            con.execute("SELECT MAX(game_date) FROM game_log").fetchone()[0]
         if last:
             start = date.fromisoformat(last) - timedelta(days=args.overlap)
         else:
@@ -394,7 +674,7 @@ def cmd_sync(args):
     end = date.fromisoformat(args.until) if args.until else today
     if start > end:
         die("--since is after the end date")
-    known = {r[0] for r in con.execute("SELECT DISTINCT game_id FROM game_log")}
+    known = {r[0] for r in con.execute("SELECT game_id FROM games")}
     days = [start + timedelta(n) for n in range((end - start).days + 1)]
 
     def day_events(day):
@@ -421,58 +701,73 @@ def cmd_sync(args):
     total, done, skipped = 0, 0, 0
     with cf.ThreadPoolExecutor(args.workers) as ex:
         futs = {ex.submit(one, it): it for it in todo}
-        batch = []
+        rows, games = [], []
         for fut in cf.as_completed(futs):
             done += 1
             try:
-                batch += fut.result()
+                r, g = fut.result()
+                rows += r
+                if g:
+                    games.append(g)
             except NotFound:
                 skipped += 1
             except Exception as e:
                 failed += 1
                 print("  game %s failed: %s" % (futs[fut][1], e))
-            if len(batch) >= 2000 or done == len(futs):
-                con.executemany("INSERT OR REPLACE INTO game_log VALUES (%s)" % ",".join("?" * len(GAME_COLS)), batch)
+            if len(rows) >= 2000 or done == len(futs):
+                con.executemany("INSERT OR REPLACE INTO game_log VALUES (%s)" % ",".join("?" * len(GAME_COLS)), rows)
+                con.executemany("INSERT OR REPLACE INTO games VALUES (%s)" % ",".join("?" * len(GAME_FIELDS)), games)
                 con.commit()
-                total += len(batch)
-                batch = []
+                total += len(rows)
+                rows, games = [], []
                 print("  %d/%d games" % (done, len(futs)))
     if skipped:
         print("  %d game(s) skipped: ESPN publishes no box score for them" % skipped)
+    if not args.no_lines:
+        try:
+            print("  game lines: %d new snapshot(s)" % snapshot_lines(con))
+        except Exception as e:
+            print("  could not snapshot game lines: %s" % e)
     print("done. %d player-games written to %s%s" % (total, args.db,
           ("  (%d request(s) failed, rerun to retry)" % failed) if failed else ""))
     if failed and not total:
         sys.exit(1)
 
 
+TABLES = [("game_log", GAME_COLS, "game_date, game_id, player_id", "game_log.csv"),
+          ("games", GAME_FIELDS, "game_date, game_id", "games.csv"),
+          ("lines", LINE_FIELDS, "game_id, captured", "lines.csv")]
+
+
 def cmd_dump(args):
     con = conn(args.db)
-    os.makedirs(os.path.dirname(os.path.abspath(args.path)), exist_ok=True)
-    rows = con.execute("SELECT %s FROM game_log ORDER BY game_date, game_id, player_id" % ",".join(GAME_COLS))
-    n = 0
-    with open(args.path, "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, lineterminator="\n")
-        w.writerow(GAME_COLS)
-        for r in rows:
-            w.writerow([("%g" % v) if isinstance(v, float) else v for v in tuple(r)])
-            n += 1
-    print("wrote %d rows to %s" % (n, args.path))
+    os.makedirs(args.path, exist_ok=True)
+    for table, cols, order, fname in TABLES:
+        n = 0
+        with open(os.path.join(args.path, fname), "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(cols)
+            for r in con.execute("SELECT %s FROM %s ORDER BY %s" % (",".join(cols), table, order)):
+                w.writerow([("%g" % v) if isinstance(v, float) else v for v in tuple(r)])
+                n += 1
+        print("wrote %d rows to %s" % (n, os.path.join(args.path, fname)))
 
 
 def cmd_load(args):
-    if not os.path.exists(args.path):
-        print("%s does not exist yet, nothing to load" % args.path)
-        return
     con = conn(args.db)
-    with open(args.path, newline="", encoding="utf-8") as f:
-        rd = csv.DictReader(f)
-        data = [tuple((None if r[c] == "" else r[c]) for c in GAME_COLS) for r in rd]
-    con.executemany("INSERT OR REPLACE INTO game_log VALUES (%s)" % ",".join("?" * len(GAME_COLS)), data)
-    con.commit()
-    print("loaded %d rows from %s" % (len(data), args.path))
+    for table, cols, _, fname in TABLES:
+        path = os.path.join(args.path, fname)
+        if not os.path.exists(path):
+            print("%s does not exist yet, skipping" % path)
+            continue
+        with open(path, newline="", encoding="utf-8") as f:
+            data = [tuple((None if r[c] == "" else r[c]) for c in cols) for r in csv.DictReader(f)]
+        con.executemany("INSERT OR REPLACE INTO %s VALUES (%s)" % (table, ",".join("?" * len(cols))), data)
+        con.commit()
+        print("loaded %d rows from %s" % (len(data), path))
 
 
-LOG_FIELDS = ["date", "opp", "home", "min", "pts", "reb", "ast", "3pm", "stl", "blk", "tov", "fga", "starter", "margin"]
+LOG_FIELDS = ["date", "opp", "home", "min", "pts", "reb", "ast", "3pm", "stl", "blk", "tov", "fga", "starter", "margin", "team"]
 
 
 def cmd_export(args):
@@ -504,16 +799,21 @@ def cmd_export(args):
             continue
         logs = [[r["game_date"], r["opp"], r["home"], round(r["mins"], 1), int(r["pts"]), int(r["reb"]), int(r["ast"]),
                  int(r["fg3m"]), int(r["stl"]), int(r["blk"]), int(r["tov"]), int(r["fga"]), r["starter"] or 0,
-                 margin(r["game_id"], r["team"])] for r in rows]
+                 margin(r["game_id"], r["team"]), r["team"]] for r in rows]
         players.append({"id": pid, "n": rows[0]["player"], "p": rows[0]["pnorm"], "t": rows[0]["team"], "logs": logs})
     factors = {}
     for st in ("pts", "reb", "ast", "3pm", "stl", "blk", "tov", "pra", "pr", "pa", "ra"):
         factors[st] = {t: [round(f, 4), n] for t, (f, n) in sorted(opp_factors(con, st).items())}
+    ctx = compute_ctx(con) or {}
+    keep = {p["id"] for p in players}
+    boost = {str(pid): {str(t): arr for t, arr in d.items() if t in keep}
+             for pid, d in compute_boost(con).items() if pid in keep}
+    boost = {k: v for k, v in boost.items() if v}
     n_rows = con.execute("SELECT COUNT(*) FROM game_log").fetchone()[0]
     n_games = con.execute("SELECT COUNT(DISTINCT game_id) FROM game_log").fetchone()[0]
     last = con.execute("SELECT MAX(game_date) FROM game_log").fetchone()[0]
     meta = {"season": season, "rows": n_rows, "games": n_games, "players": len(players), "last_game_date": last,
-            "fields": LOG_FIELDS, "model": {"halflife": HALFLIFE, "prior": PRIOR, "shrink": SHRINK}}
+            "fields": LOG_FIELDS, "model": {"halflife": HALFLIFE, "prior": PRIOR, "shrink": SHRINK, "usage": USAGE_STRENGTH}}
 
     def put(name, obj):
         with open(os.path.join(args.outdir, name), "w", encoding="utf-8") as f:
@@ -521,8 +821,10 @@ def cmd_export(args):
             f.write("\n")
     put("players.json", players)
     put("opp.json", factors)
+    put("ctx.json", ctx)
+    put("boost.json", boost)
     put("meta.json", meta)
-    print("exported %d players, %d games (last %s) to %s" % (len(players), n_games, last, args.outdir))
+    print("exported %d players, %d games (last %s), %d boost tables to %s" % (len(players), n_games, last, len(boost), args.outdir))
 
 
 def cmd_status(args):
@@ -536,6 +838,9 @@ def cmd_status(args):
     for r in rows:
         print("%s %-14s %6d player-games  %4d players  %s to %s"
               % (r["season"], r["season_type"], r["g"], r["p"], r["a"], r["b"]))
+    ng = con.execute("SELECT COUNT(*), SUM(spread IS NOT NULL) FROM games").fetchone()
+    print("games with closing lines: %d of %d   line snapshots: %d" %
+          (ng[1] or 0, ng[0], con.execute("SELECT COUNT(*) FROM lines").fetchone()[0]))
     nb = con.execute("SELECT COUNT(*), SUM(status='pending') FROM bets").fetchone()
     print("bets logged: %d (%d pending)" % (nb[0], nb[1] or 0))
 
@@ -578,6 +883,44 @@ def show_price(name, stat, line, side, res, odds=None):
                  kelly(res["p_win"], res["p_push"], odds) * 100))
 
 
+def team_of(con, pid):
+    r = con.execute("SELECT team FROM game_log WHERE player_id=? ORDER BY game_date DESC, game_id DESC LIMIT 1", (pid,)).fetchone()
+    return r["team"] if r else None
+
+
+def live_context(con, pid):
+    """Tonight's opponent, spread, total and the injury list for this player's team, straight from ESPN."""
+    team = team_of(con, pid)
+    out = dict(team=team, opp=None, spread=None, total=None, outs=[], doubtful=[], date=None)
+    for d in (et_today(), et_today() + timedelta(days=1)):
+        j = http_json("%s/scoreboard?dates=%s&limit=100" % (ESPN, d.strftime("%Y%m%d")))
+        for e in j.get("events", []):
+            c = e["competitions"][0]
+            ab = {t["homeAway"]: t["team"]["abbreviation"] for t in c["competitors"]}
+            if team in ab.values():
+                out["opp"] = ab["away"] if ab["home"] == team else ab["home"]
+                out["date"] = d.isoformat()
+                odds = (c.get("odds") or [None])[0]
+                if odds:
+                    out["spread"], out["total"] = home_spread(odds), odds.get("overUnder")
+                break
+        if out["opp"]:
+            break
+    for t in http_json(ESPN + "/injuries").get("injuries", []):
+        for e in t.get("injuries", []):
+            a = e.get("athlete") or {}
+            if (a.get("team") or {}).get("abbreviation") != team:
+                continue
+            r = con.execute("SELECT player_id FROM game_log WHERE pnorm=? ORDER BY game_date DESC LIMIT 1",
+                            (norm(a.get("displayName", "")),)).fetchone()
+            item = (r["player_id"] if r else None, a.get("displayName"), e.get("status"))
+            if e.get("status") == "Out":
+                out["outs"].append(item)
+            else:
+                out["doubtful"].append(item)
+    return out
+
+
 def cmd_price(args):
     con = conn(args.db)
     stat = stat_key(args.stat)
@@ -585,8 +928,29 @@ def cmd_price(args):
         die("unknown stat '%s'. Use: %s" % (args.stat, " ".join(STAT_COLS)))
     side = "under" if args.side.lower().startswith("u") else "over"
     p = find_player(con, args.name)
-    res = predict(con, p["player_id"], stat, args.line, side, opp=args.opp,
-                  exp_min=args.min, halflife=args.halflife)
+    opp, spread, total = args.opp, args.spread, args.total
+    outs = [find_player(con, n)["player_id"] for n in (args.out or [])] if (args.out or args.auto) else None
+    if args.auto:
+        lc = live_context(con, p["player_id"])
+        if lc["opp"]:
+            print("tonight: %s vs %s (%s)  spread %s  total %s" % (lc["team"], lc["opp"], lc["date"],
+                  "n/a" if lc["spread"] is None else "%+g (home view)" % lc["spread"], lc["total"] or "n/a"))
+            opp = opp or lc["opp"]
+            spread = spread if spread is not None else lc["spread"]
+            total = total if total is not None else lc["total"]
+        else:
+            print("no game found for %s today or tomorrow" % lc["team"])
+        known = [i for i, _, _ in lc["outs"] if i]
+        outs += [i for i in known if i != p["player_id"] and i not in outs]
+        print("injury report, out: %s" % (", ".join(n for _, n, _ in lc["outs"]) or "none"))
+        if lc["doubtful"]:
+            print("injury report, not applied: %s" % ", ".join("%s (%s)" % (n, st) for _, n, st in lc["doubtful"]))
+        if any(i == p["player_id"] for i, _, _ in lc["outs"]):
+            print("WARNING: %s is listed OUT" % p["player"])
+    ctx = compute_ctx(con) if (spread is not None or total is not None) else None
+    boost = compute_boost(con) if outs is not None else None
+    res = predict(con, p["player_id"], stat, args.line, side, opp=opp, exp_min=args.min, halflife=args.halflife,
+                  spread=spread, total=total, outs=outs, ctx=ctx, boost=boost)
     if not res:
         die("not enough games for %s" % p["player"])
     show_price(p["player"], stat, args.line, side, res, parse_odds(args.odds) if args.odds else None)
@@ -852,39 +1216,144 @@ def cmd_report(args):
                      "?" if l["margin"] is None else "%+d" % l["margin"],
                      ", ".join(flags) or "no flag, just variance"))
         print("  flag totals over %d misses: %s" % (len(misses), flags_count or "none"))
-    print("\nRead the groups above only once each has 30+ legs; before that it is noise.")
+    book = [l for l in legs if l["model_prob"] is not None and l["odds"] is not None and l["result"] != "push"]
+    if len(book) >= 10:
+        yb = lambda l: 1 if l["result"] == "win" else 0
+        bm = sum((l["model_prob"] - yb(l)) ** 2 for l in book) / len(book)
+        bb = sum((1 / dec(l["odds"]) - yb(l)) ** 2 for l in book) / len(book)
+        print("\nMODEL VS BOOK  %d legs with odds   Brier model %.3f vs book-implied %.3f  (lower wins; book number includes the vig)" % (len(book), bm, bb))
+    print("\nWHAT THE MISSES SAY")
+    if len(legs) < 30:
+        print("  %d of 30 settled legs so far. Below that, any pattern is noise." % len(legs))
+    else:
+        for name, test in (("blowout", lambda l: l["margin"] is not None and abs(l["margin"]) >= BLOWOUT),
+                           ("minutes short", lambda l: l["minutes"] is not None and l["avg_min_at_bet"] and l["minutes"] < 0.85 * l["avg_min_at_bet"])):
+            fl = [l for l in legs if test(l) and l["result"] != "push"]
+            ot = [l for l in legs if not test(l) and l["result"] != "push"]
+            if len(fl) >= 8 and ot:
+                lf = sum(1 for l in fl if l["result"] == "loss") / len(fl)
+                lo_ = sum(1 for l in ot if l["result"] == "loss") / len(ot)
+                verdict = "costs you: plan for it with --min, --spread or --out" if lf - lo_ > 0.15 else "no clear damage"
+                print("  %-14s %d legs, %.0f%% lost vs %.0f%% otherwise: %s" % (name, len(fl), lf * 100, lo_ * 100, verdict))
+            else:
+                print("  %-14s only %d legs flagged, need 8" % (name, len(fl)))
+
+
+def build_cases(con, split, sample, seed=1):
+    """Out-of-sample test cases: player-games on or after `split`, priced only from earlier games."""
+    by = {}
+    for r in con.execute("SELECT * FROM game_log WHERE mins>=5 ORDER BY player_id, game_date, game_id"):
+        by.setdefault(r["player_id"], []).append(r)
+    info = {r["game_id"]: (r["spread"], r["total"]) for r in con.execute("SELECT game_id, spread, total FROM games")}
+    played = {}
+    for pid, lst in by.items():
+        for r in lst:
+            played.setdefault(r["game_id"], set()).add(pid)
+    spots = [(pid, i) for pid, lst in by.items() for i in range(15, len(lst))
+             if lst[i]["mins"] >= 15 and lst[i]["game_date"] >= split and lst[i]["season_type"] == "Regular Season"]
+    random.seed(seed)
+    if len(spots) > sample:
+        spots = random.sample(spots, sample)
+    return by, info, played, spots
+
+
+def make_cases(by, info, played, spots, boost, stats=("pts", "reb", "ast", "3pm", "pra")):
+    dates_by = {pid: [r["game_date"] for r in lst] for pid, lst in by.items()}
+    cases = []
+    for pid, i in spots:
+        lst = by[pid]
+        prior = lst[max(0, i - 40):i][::-1]
+        row = lst[i]
+        spread, total = info.get(row["game_id"], (None, None))
+        starter = sum(1 for r in prior[:5] if r["starter"]) >= 3
+        pdates = [r["game_date"] for r in prior]
+        spot = {"entries": [], "f": {}, "pdates": pdates, "same": [r["team"] == prior[0]["team"] for r in prior]}
+        for y, arr in (boost or {}).get(pid, {}).items():
+            ds = dates_by.get(y, [])
+            k = bisect.bisect_left(ds, row["game_date"])
+            spot["entries"].append((arr, y not in played[row["game_id"]], ds[max(0, k - 40):k]))
+        comp = {c: sum(r[c if c != "3pm" else "fg3m"] for r in prior[:10]) / len(prior[:10]) for c in BOOST_STATS}
+        for st in stats:
+            xs = [row_value(r, st) for r in prior]
+            base = price_dist(xs, 0.5, "over")
+            y = row_value(row, st)
+            for k in (-0.75, -0.25, 0.25, 0.75):
+                line = math.floor(base["mu"] + k * base["sd"]) + 0.5
+                cases.append(dict(xs=xs, y=y, line=line, stat=st, starter=starter, spread=spread, total=total,
+                                  spot=spot, comp=comp))
+    return cases
+
+
+def eval_cases(cases, ctx=None, use_ctx=False, use_boost=False, halflife=HALFLIFE, prior=PRIOR, shrink=None):
+    obs = []
+    for c in cases:
+        scale = 1.0
+        if use_ctx and ctx:
+            fm, ft = ctx_factors(ctx, c["stat"], c["starter"], c["spread"], c["total"])
+            scale *= fm * ft
+        sp = c["spot"]
+        if use_boost and sp["entries"]:
+            if halflife not in sp["f"]:
+                sp["f"][halflife] = [absent_fraction(sp["pdates"], halflife, yd, sp["same"]) for _, _, yd in sp["entries"]]
+            ents = [(arr, out, f) for (arr, out, _), f in zip(sp["entries"], sp["f"][halflife])]
+            scale *= usage_mult(ents, c["stat"], c["comp"])
+        p = price_dist(c["xs"], c["line"], "over", halflife, scale, prior, shrink)["p_win"]
+        obs.append((p, 1 if c["y"] > c["line"] else 0))
+    return obs
+
+
+def scores(obs):
+    n = len(obs)
+    brier = sum((p - y) ** 2 for p, y in obs) / n
+    ll = -sum(math.log(min(max(p if y else 1 - p, 1e-6), 1)) for p, y in obs) / n
+    return brier, ll
+
+
+def pick_split(con, given):
+    if given:
+        return given
+    dates = [r[0] for r in con.execute(
+        "SELECT DISTINCT game_date FROM game_log WHERE season_type='Regular Season' ORDER BY game_date")]
+    if len(dates) < 30:
+        die("not enough data. Run `sync` first.")
+    return dates[int(len(dates) * 0.6)]
 
 
 def cmd_calibrate(args):
     con = conn(args.db)
-    stats = ["pts", "reb", "ast", "3pm", "pra"]
-    by = {}
-    for r in con.execute("SELECT * FROM game_log WHERE mins>=5 ORDER BY player_id, game_date, game_id"):
-        by.setdefault(r["player_id"], []).append(r)
-    spots = [(pid, i) for pid, lst in by.items() for i in range(15, len(lst)) if lst[i]["mins"] >= 15]
+    split = pick_split(con, args.split)
+    ctx, boost = compute_ctx(con, before=split), compute_boost(con, before=split)
+    by, info, played, spots = build_cases(con, split, args.sample)
     if not spots:
-        die("not enough data. Need players with 15+ prior games.")
-    random.seed(1)
-    if len(spots) > args.sample:
-        spots = random.sample(spots, args.sample)
-    obs = []
-    for pid, i in spots:
-        lst = by[pid]
-        prior = lst[max(0, i - 40):i][::-1]
-        actual = lst[i]
-        for st in stats:
-            xs = [row_value(r, st) for r in prior]
-            base = price_dist(xs, 0.5, "over")
-            y = row_value(actual, st)
-            for k in (-0.75, -0.25, 0.25, 0.75):
-                line = math.floor(base["mu"] + k * base["sd"]) + 0.5
-                p = price_dist(xs, line, "over")["p_win"]
-                obs.append((p, 1 if y > line else 0))
-    n = len(obs)
-    brier = sum((p - y) ** 2 for p, y in obs) / n
-    ll = -sum(math.log(min(max(p if y else 1 - p, 1e-6), 1)) for p, y in obs) / n
-    print("walk-forward test: %d predictions from %d player-games (each uses only earlier games)" % (n, len(spots)))
-    print("Brier %.4f (always 50%% = 0.2500)   log loss %.4f (always 50%% = 0.6931)" % (brier, ll))
+        die("no test games on or after %s" % split)
+    cases = make_cases(by, info, played, spots, boost)
+    print("out-of-sample test: context effects and teammate splits fitted on games BEFORE %s," % split)
+    print("then %d predictions on %d player-games from that date on (each priced from earlier games only)\n" % (len(cases), len(spots)))
+    variants = [("own history only", False, False), ("+ spread and game total", True, False),
+                ("+ spread, total, teammates out", True, True)]
+    print("%-34s %8s %9s" % ("model", "Brier", "log loss"))
+    results = []
+    for name, uc, ub in variants:
+        if uc and not ctx:
+            print("%-34s %s" % (name, "needs games with closing lines (run sync --since for a backfill)"))
+            continue
+        obs = eval_cases(cases, ctx, uc, ub)
+        b, ll = scores(obs)
+        results.append((name, obs))
+        print("%-34s %8.4f %9.4f" % (name, b, ll))
+    if len(results) > 1:
+        full = results[-1][1]
+        base = results[0][1]
+        big = [i for i, c in enumerate(cases) if c["spread"] is not None and abs(c["spread"]) >= 10]
+        outs = [i for i, c in enumerate(cases) if any(e[1] for e in c["spot"]["entries"])]
+        for label, idx in (("big spread (10+) games", big), ("games with a teammate out", outs)):
+            if len(idx) >= 200:
+                b0 = scores([base[i] for i in idx])[0]
+                b1 = scores([full[i] for i in idx])[0]
+                print("  %-30s %5d cases   Brier %.4f -> %.4f" % (label, len(idx), b0, b1))
+        obs = full
+    else:
+        obs = results[0][1]
     print("\npredicted    n     predicted   actual")
     for b in range(10):
         lo, hi = b / 10, (b + 1) / 10
@@ -892,8 +1361,35 @@ def cmd_calibrate(args):
         if sub:
             print("%.1f-%.1f  %6d   %6.1f%%    %6.1f%%" % (
                 lo, hi, len(sub), 100 * sum(p for p, _ in sub) / len(sub), 100 * sum(y for _, y in sub) / len(sub)))
-    print("\nThis checks the engine against a player's own history. It does NOT prove an edge over the")
-    print("book, because sportsbook lines are not in the data. Log real lines with `bet add` to test that.")
+    print("\nLower Brier and log loss are better; a coin flip scores 0.2500 and 0.6931.")
+    print("This checks the engine against what actually happened. It does NOT prove an edge over the")
+    print("book, because player prop lines are not in the data. Log real lines with `bet add` to test that.")
+
+
+def cmd_tune(args):
+    """Grid search of the model knobs on games after the split (everything priced from earlier games)."""
+    con = conn(args.db)
+    split = pick_split(con, args.split)
+    ctx, boost = compute_ctx(con, before=split), compute_boost(con, before=split)
+    by, info, played, spots = build_cases(con, split, args.sample, seed=7)
+    cases = make_cases(by, info, played, spots, boost)
+    full = bool(ctx)
+    print("tuning on %d predictions (%d player-games from %s on), %s model\n" %
+          (len(cases), len(spots), split, "full" if full else "own-history"))
+    grid = []
+    for hl in (8, 12, 16, 24):
+        for pr in (4, 8, 12, 20):
+            for sh in (0.85, 0.92, 1.0):
+                b, ll = scores(eval_cases(cases, ctx, full, full, hl, pr, sh))
+                grid.append((ll, b, hl, pr, sh))
+    grid.sort()
+    cur = scores(eval_cases(cases, ctx, full, full))
+    print("current settings (halflife %g, prior %g, shrink %g): Brier %.4f, log loss %.4f" % (HALFLIFE, PRIOR, SHRINK, cur[0], cur[1]))
+    print("\nbest by log loss:        halflife  prior  shrink    Brier  log loss")
+    for ll, b, hl, pr, sh in grid[:5]:
+        print("                         %8g  %5g  %6g  %7.4f  %8.4f" % (hl, pr, sh, b, ll))
+    print("\nIf the best row beats the current one by more than about 0.0005 log loss, change HALFLIFE, PRIOR or")
+    print("SHRINK at the top of nba_edge.py (and re-run `export` so the dashboard follows).")
 
 
 def cmd_demo(args):
@@ -915,7 +1411,7 @@ def cmd_demo(args):
                 r_ast=random.uniform(0.05, 0.28), r_3=random.uniform(0.03, 0.1)))
             pid += 1
     strength = {t: random.gauss(0, 5) for t in teams}
-    rows = []
+    rows, games = [], []
     start = date(2026, 10, 20)
     for day in range(45):
         d = date.fromordinal(start.toordinal() + day).isoformat()
@@ -932,7 +1428,7 @@ def cmd_demo(args):
                     if abs(target) > 16:
                         mins += -(abs(target) - 16) * 0.5 if j < 5 else (abs(target) - 16) * 0.4
                     mins = max(0.0, min(42.0, mins))
-                    if mins < 5:
+                    if mins < 5 or (j < 5 and random.random() < 0.08):  # bench cameos and starters resting
                         continue
 
                     def draw(rate, m=mins):
@@ -949,10 +1445,14 @@ def cmd_demo(args):
                                  tpm * 2 + 1, round(pts / 2.2), round(pts / 1.1), pts // 5, pts // 4,
                                  stl, blk, tov, random.randint(0, 5), 0, 1 if j < 5 else 0])
             wl = {home: "W" if made[home] > made[away] else "L", away: "W" if made[away] > made[home] else "L"}
+            sp = round(-(strength[home] - strength[away] + 2) * 2) / 2.0
+            games.append((gid, d, "2026-27", "Regular Season", home, away, made[home], made[away], sp,
+                          round((226 + random.gauss(0, 6)) * 2) / 2.0, sp, 226.0))
             for r in rows:
                 if r[4] == gid:
                     r[11] = wl[r[3]]
     con.executemany("INSERT OR REPLACE INTO game_log VALUES (%s)" % ",".join("?" * len(GAME_COLS)), rows)
+    con.executemany("INSERT OR REPLACE INTO games VALUES (%s)" % ",".join("?" * len(GAME_FIELDS)), games)
     con.commit()
     print("demo league written to %s: %d player-games, 100 fake players, %s to %s"
           % (path, len(rows), start.isoformat(), d))
@@ -968,12 +1468,13 @@ def main():
     s.add_argument("--until", help="YYYY-MM-DD (default: today, US Eastern)")
     s.add_argument("--overlap", type=int, default=2, help="re-check this many days before the newest stored game")
     s.add_argument("--workers", type=int, default=6)
+    s.add_argument("--no-lines", action="store_true", help="skip saving today's game lines")
     s.set_defaults(fn=cmd_sync)
-    s = sub.add_parser("dump", help="write the game log to CSV")
-    s.add_argument("path")
+    s = sub.add_parser("dump", help="write game_log.csv, games.csv and lines.csv into a folder")
+    s.add_argument("path", help="folder, e.g. data")
     s.set_defaults(fn=cmd_dump)
-    s = sub.add_parser("load", help="read a CSV written by dump")
-    s.add_argument("path")
+    s = sub.add_parser("load", help="read the CSVs written by dump")
+    s.add_argument("path", help="folder, e.g. data")
     s.set_defaults(fn=cmd_load)
     s = sub.add_parser("export", help="write dashboard JSON")
     s.add_argument("outdir")
@@ -992,7 +1493,11 @@ def main():
     s.add_argument("--side", default="over")
     s.add_argument("--odds")
     s.add_argument("--opp", help="opponent code, e.g. OKC")
-    s.add_argument("--min", type=float, help="expected minutes (use for blowout risk)")
+    s.add_argument("--min", type=float, help="expected minutes (overrides the automatic spread adjustment)")
+    s.add_argument("--spread", type=float, help="game spread (either team's view); big spreads cut starters' minutes")
+    s.add_argument("--total", type=float, help="game total; fast, high-scoring games lift counting stats")
+    s.add_argument("--out", action="append", help="a teammate who is out (repeat for several)")
+    s.add_argument("--auto", action="store_true", help="fetch tonight's opponent, spread, total and injuries from ESPN")
     s.add_argument("--halflife", type=float, default=HALFLIFE)
     s.set_defaults(fn=cmd_price)
     s = sub.add_parser("slip", help="price several legs together")
@@ -1024,9 +1529,14 @@ def main():
     s.add_argument("--void-dnp", action="store_true")
     s.set_defaults(fn=cmd_settle)
     sub.add_parser("report").set_defaults(fn=cmd_report)
-    s = sub.add_parser("calibrate")
-    s.add_argument("--sample", type=int, default=6000)
+    s = sub.add_parser("calibrate", help="out-of-sample test of the whole model")
+    s.add_argument("--sample", type=int, default=4000, help="player-games to test")
+    s.add_argument("--split", help="YYYY-MM-DD: fit before, test from this date (default: 60%% through the data)")
     s.set_defaults(fn=cmd_calibrate)
+    s = sub.add_parser("tune", help="grid search halflife, prior and shrink")
+    s.add_argument("--sample", type=int, default=1500)
+    s.add_argument("--split")
+    s.set_defaults(fn=cmd_tune)
     sub.add_parser("demo", help="fake league for testing").set_defaults(fn=cmd_demo)
     args = ap.parse_args()
     if args.cmd == "demo" and args.db == DEFAULT_DB:

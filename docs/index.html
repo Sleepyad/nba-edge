@@ -99,7 +99,12 @@ svg text { fill: var(--muted); font-size: 10px; }
         <div><label for="opp">Opponent</label><select id="opp"><option value="">none</option></select></div>
         <div><label for="expmin">Expected minutes</label><input id="expmin" type="number" step="1" inputmode="numeric" placeholder="auto"></div>
       </div>
-      <div class="row one"><div><label for="gdate">Game date (US Eastern)</label><input id="gdate" type="date"></div></div>
+      <div class="row three">
+        <div><label for="spread">Spread (either view)</label><input id="spread" type="number" step="0.5" inputmode="decimal" placeholder="auto"></div>
+        <div><label for="total">Game total</label><input id="total" type="number" step="0.5" inputmode="decimal" placeholder="auto"></div>
+        <div><label for="gdate">Game date (ET)</label><input id="gdate" type="date"></div>
+      </div>
+      <div id="ctxBox" class="sub" style="margin-bottom:10px"></div>
       <div class="btns">
         <button class="primary" id="btnPrice">Price it</button>
         <button id="btnAdd" disabled>Add to slip</button>
@@ -130,7 +135,7 @@ svg text { fill: var(--muted); font-size: 10px; }
     <div class="scroll"><table id="logTable"></table></div>
   </section>
 
-  <p class="note">Stats come from ESPN's public feed and refresh automatically. The probability model is a recency-weighted blend of each player's hit rate and a bell curve, nudged for opponent and minutes. It is a tool for sizing up bets, not a guarantee.</p>
+  <p class="note">Stats come from ESPN's public feed and refresh automatically. The probability model is a recency-weighted blend of each player's hit rate and a bell curve, nudged for opponent, game spread and total, and which teammates are out. It is a tool for sizing up bets, not a guarantee.</p>
 </div>
 
 <script>
@@ -138,10 +143,12 @@ svg text { fill: var(--muted); font-size: 10px; }
 const ESPN = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const STATS = { pts: "Points", reb: "Rebounds", ast: "Assists", "3pm": "3-pointers made", stl: "Steals", blk: "Blocks",
                 tov: "Turnovers", min: "Minutes", fga: "FG attempts", pra: "Pts + Reb + Ast", pr: "Pts + Reb", pa: "Pts + Ast", ra: "Reb + Ast" };
-// index of each stat inside a log row: [date,opp,home,min,pts,reb,ast,3pm,stl,blk,tov,fga,starter,margin]
+// index of each stat inside a log row: [date,opp,home,min,pts,reb,ast,3pm,stl,blk,tov,fga,starter,margin,team]
 const IDX = { min: [3], pts: [4], reb: [5], ast: [6], "3pm": [7], stl: [8], blk: [9], tov: [10], fga: [11],
               pra: [4, 5, 6], pr: [4, 5], pa: [4, 6], ra: [5, 6] };
-let PLAYERS = [], OPP = {}, META = { model: { halflife: 8, prior: 4, shrink: 0.92 } };
+let PLAYERS = [], OPP = {}, CTX = null, BOOST = {}, BY_ID = new Map(), INJ = null, INJ_AT = 0;
+let META = { model: { halflife: 12, prior: 20, shrink: 0.92, usage: 0.5 } };
+const BOOST_STATS = ["pts", "reb", "ast", "3pm"], COMBO = { pra: ["pts", "reb", "ast"], pr: ["pts", "reb"], pa: ["pts", "ast"], ra: ["reb", "ast"] };
 let slip = [], current = null, todayGames = [], summaries = new Map(), liveValues = new Map(), timer = null;
 const $ = id => document.getElementById(id);
 
@@ -208,7 +215,36 @@ function priceDist(xsIn, line, side, scale = 1, halflife = META.model.halflife, 
   return { pWin, pPush: pP, pNorm: over ? nOver : nUnder, pEmp: over ? eOver : eUnder, mu, sd, neff };
 }
 const statVal = (row, stat) => IDX[stat].reduce((a, i) => a + row[i], 0);
-function predict(p, stat, line, side, opp, expMin) {
+function spreadBucket(sp) { const a = Math.abs(sp); return CTX.edges.filter(e => a >= e).length; }
+function ctxFactors(stat, starter, spread, total) {
+  let fm = 1, ft = 1;
+  if (CTX && CTX.min && spread !== null) fm = CTX.min[starter ? "starter" : "bench"][spreadBucket(spread)];
+  if (CTX && CTX.slope && total !== null && stat in CTX.slope && CTX.t_mean) ft = Math.min(Math.max(1 + CTX.slope[stat] * (total - CTX.t_mean) / CTX.t_mean, 0.85), 1.15);
+  return [fm, ft];
+}
+function statRatio(arr, stat, comp) {
+  let r = 1;
+  if (BOOST_STATS.includes(stat)) r = arr[1 + BOOST_STATS.indexOf(stat)];
+  else if (COMBO[stat]) {
+    const cs = COMBO[stat], tot = cs.reduce((a, c) => a + comp[c], 0);
+    r = tot > 0 ? cs.reduce((a, c) => a + comp[c] * arr[1 + BOOST_STATS.indexOf(c)], 0) / tot : 1;
+  }
+  return 1 + META.model.usage * (r - 1);
+}
+function absentFraction(dates, halflife, yd, same) {
+  if (!yd.length) return 0;
+  const d0 = yd.reduce((a, b) => (a < b ? a : b)), have = new Set(yd);
+  let num = 0, den = 0;
+  dates.forEach((d, i) => { const w = Math.pow(0.5, i / halflife); den += w; if (d >= d0 && !have.has(d) && same[i]) num += w; });
+  return den ? num / den : 0;
+}
+function usageMult(entries, stat, comp) {
+  let m = 1;
+  for (const [arr, outNow, f] of entries) { const r = statRatio(arr, stat, comp); m *= (outNow ? r : 1) / (1 + f * (r - 1)); }
+  return Math.min(Math.max(m, 0.7), 1.5);
+}
+// outs: array of teammate ids who are out (may be empty), or null to skip the teammate adjustment
+function predict(p, stat, line, side, opp, expMin, spread = null, total = null, outs = null) {
   const h = p.logs.filter(r => r[3] >= 5).slice(0, 40);
   if (h.length < 5) return null;
   const xs = h.map(r => statVal(r, stat));
@@ -218,7 +254,24 @@ function predict(p, stat, line, side, opp, expMin) {
     const [f, n] = OPP[stat][opp]; scale *= f;
     notes.push(`opponent factor x${f.toFixed(3)} (${n} player-games, shrunk)`);
   }
-  if (expMin && avgMin > 0 && stat !== "min") { scale *= expMin / avgMin; notes.push(`minutes scaled ${avgMin.toFixed(1)} to ${expMin}`); }
+  const starter = h.slice(0, 5).filter(r => r[12]).length >= 3;
+  const [fm, ft] = ctxFactors(stat, starter, spread, total);
+  if (expMin && avgMin > 0 && stat !== "min") { scale *= expMin / avgMin; notes.push(`minutes scaled ${avgMin.toFixed(1)} to ${expMin} (your number)`); }
+  else if (fm !== 1) { scale *= fm; notes.push(`spread ${spread > 0 ? "+" : ""}${spread}: ${starter ? "starter" : "bench"} minutes x${fm.toFixed(3)}`); }
+  if (ft !== 1) { scale *= ft; notes.push(`game total ${total}: pace x${ft.toFixed(3)}`); }
+  const mine = BOOST[String(p.id)];
+  if (outs !== null && mine) {
+    const comp = { pts: 0, reb: 0, ast: 0, "3pm": 0 }, k = Math.min(10, h.length);
+    h.slice(0, k).forEach(r => { comp.pts += r[4] / k; comp.reb += r[5] / k; comp.ast += r[6] / k; comp["3pm"] += r[7] / k; });
+    const dates = h.map(r => r[0]), same = h.map(r => r[14] === h[0][14]), entries = [];
+    for (const [yid, arr] of Object.entries(mine)) {
+      const y = BY_ID.get(Number(yid)); if (!y) continue;
+      const yd = y.logs.filter(r => r[3] >= 5).slice(0, 40).map(r => r[0]);
+      entries.push([arr, outs.includes(Number(yid)), absentFraction(dates, META.model.halflife, yd, same)]);
+    }
+    const um = usageMult(entries, stat, comp);
+    if (Math.abs(um - 1) > 1e-9) { scale *= um; notes.push(`teammates: ${entries.filter(e => e[1]).length} out tonight, usage x${um.toFixed(3)} (past absences removed from his average)`); }
+  }
   const res = priceDist(xs, line, side, scale);
   return Object.assign(res, { avgMin, n: h.length, last: xs.slice(0, 15), notes, dates: h.slice(0, 15).map(r => `${r[0]} ${r[2] ? "vs" : "@"} ${r[1]}`) });
 }
@@ -254,12 +307,64 @@ function showLog(p) {
     rows.map(r => `<tr><td>${esc(r[0])}</td><td>${r[2] ? "" : "@"}${esc(r[1])}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td><td>${r[7]}</td><td>${r[8]}</td><td>${r[9]}</td><td>${r[10]}</td><td>${r[13] == null ? "" : (r[13] > 0 ? "+" : "") + r[13]}</td></tr>`).join("") +
     `<tr><td><b>Avg</b></td><td></td><td>${avg(3)}</td><td>${avg(4)}</td><td>${avg(5)}</td><td>${avg(6)}</td><td>${avg(7)}</td><td>${avg(8)}</td><td>${avg(9)}</td><td>${avg(10)}</td><td></td></tr>`;
 }
+const f_player_id = p => p.id;
+let outChecks = new Map(); // teammate id -> checked
+function tonightGame(p) {
+  const today = etDate();
+  if (($("gdate").value || today) !== today) return null;
+  return todayGames.find(g => g.teams.some(t => t.abbr === p.t)) || null;
+}
+function teamInjuries(p) {
+  if (!INJ) return [];
+  const out = [];
+  for (const t of INJ) for (const e of t.injuries || []) {
+    const a = e.athlete || {};
+    if ((a.team || {}).abbreviation !== p.t) continue;
+    const q = PLAYERS.find(x => x.p === norm(a.displayName || ""));
+    out.push({ name: a.displayName, status: e.status, id: q ? q.id : null });
+  }
+  return out;
+}
+function currentOuts(pid) {
+  if (!INJ || !BOOST[String(pid)]) return INJ ? [] : null;
+  return [...outChecks.entries()].filter(([id, on]) => on && id !== pid).map(([id]) => id);
+}
+function renderCtx() {
+  const p = findPlayer($("player").value), box = $("ctxBox");
+  if (!p) { box.innerHTML = ""; return; }
+  const g = tonightGame(p);
+  let html = "";
+  if (g) {
+    const [a, h] = g.teams;
+    html += `Tonight: ${esc(a.abbr)} @ ${esc(h.abbr)}` + (g.spread !== null ? ` · ${esc(h.abbr)} ${g.spread > 0 ? "+" : ""}${g.spread}` : "") + (g.total ? ` · total ${g.total}` : "");
+  } else html += "No game found today for " + esc(p.t) + ". Enter spread and total by hand if you want them used.";
+  const inj = teamInjuries(p);
+  const self = inj.find(i => i.id === p.id);
+  if (self) html += `<br><b class="${self.status === "Out" ? "neg" : "warn"}">${esc(p.n)} is listed ${esc(self.status)}.</b>`;
+  const mates = inj.filter(i => i.id && i.id !== p.id);
+  if (INJ === null) html += `<br><span class="muted">Injury feed not loaded, teammate adjustment is off.</span>`;
+  else if (!mates.length) html += `<br><span class="muted">No teammates on the injury report.</span>`;
+  else {
+    html += `<br>Teammates on the report (tick = assume out):<br>`;
+    html += mates.map(m => {
+      if (!outChecks.has(m.id)) outChecks.set(m.id, m.status === "Out");
+      const b = (BOOST[String(p.id)] || {})[String(m.id)];
+      return `<label style="display:inline-flex;gap:6px;align-items:center;margin:2px 10px 2px 0;color:var(--ink);font-size:13px"><input type="checkbox" data-out="${m.id}" ${outChecks.get(m.id) ? "checked" : ""} style="width:auto;min-height:0"> ${esc(m.name)} (${esc(m.status)}${b ? "" : ", no history together"})</label>`;
+    }).join("");
+  }
+  box.innerHTML = html;
+  box.querySelectorAll("[data-out]").forEach(c => c.onchange = () => { outChecks.set(Number(c.dataset.out), c.checked); });
+  if (g && g.spread !== null && !$("spread").dataset.touched) $("spread").value = g.spread;
+  if (g && g.total && !$("total").dataset.touched) $("total").value = g.total;
+}
 function onPlayerPicked() {
   const p = findPlayer($("player").value);
   if (!p) return;
   showLog(p);
-  const o = opponentTonight(p);
-  if (o && !$("opp").value) $("opp").value = o;
+  $("spread").dataset.touched = ""; $("total").dataset.touched = ""; $("spread").value = ""; $("total").value = "";
+  const g = tonightGame(p);
+  if (g && !$("opp").value) $("opp").value = g.teams.map(t => t.abbr).find(a => a !== p.t) || "";
+  renderCtx();
 }
 
 // ---------------------------------------------------------------- pricing UI
@@ -288,11 +393,13 @@ function readForm() {
   if (oddsRaw && odds === null) { $("msg").textContent = "Odds look like -145 or +120"; return null; }
   $("msg").textContent = "";
   const em = parseFloat($("expmin").value);
-  return { p, stat: $("stat").value, side: $("side").value, line, odds, opp: $("opp").value, expMin: Number.isFinite(em) ? em : null, date: $("gdate").value || etDate() };
+  const sp = parseFloat($("spread").value), tt = parseFloat($("total").value);
+  return { p, stat: $("stat").value, side: $("side").value, line, odds, opp: $("opp").value, expMin: Number.isFinite(em) ? em : null, date: $("gdate").value || etDate(),
+           spread: Number.isFinite(sp) ? sp : null, total: Number.isFinite(tt) ? tt : null, outs: currentOuts(f_player_id(p)) };
 }
 function priceIt() {
   const f = readForm(); if (!f) return;
-  const res = predict(f.p, f.stat, f.line, f.side, f.opp, f.expMin);
+  const res = predict(f.p, f.stat, f.line, f.side, f.opp, f.expMin, f.spread, f.total, f.outs);
   if (!res) { $("msg").textContent = "Not enough games on file for " + f.p.n; return; }
   current = Object.assign({}, f, { res });
   showLog(f.p);
@@ -316,7 +423,7 @@ function priceIt() {
 function addLeg() {
   if (!current) return;
   const c = current;
-  slip.push({ name: c.p.n, pnorm: c.p.p, team: c.p.t, stat: c.stat, side: c.side, line: c.line, odds: c.odds, date: c.date, pAtAdd: c.res.pWin });
+  slip.push({ name: c.p.n, pnorm: c.p.p, team: c.p.t, stat: c.stat, side: c.side, line: c.line, odds: c.odds, date: c.date, pAtAdd: c.res.pWin, spread: c.spread, total: c.total, outs: c.outs });
   save(); renderSlip(); refreshLive();
 }
 
@@ -341,7 +448,7 @@ function jointP() {
   let p = 1;
   for (const l of slip) {
     const pl = PLAYERS.find(x => x.p === l.pnorm);
-    const r = pl ? predict(pl, l.stat, l.line, l.side, "", null) : null;
+    const r = pl ? predict(pl, l.stat, l.line, l.side, "", null, l.spread ?? null, l.total ?? null, l.outs ?? null) : null;
     p *= r ? r.pWin : l.pAtAdd;
   }
   return p;
@@ -394,7 +501,9 @@ function logCommand() {
 function parseGame(e) {
   const c = e.competitions[0];
   const teams = c.competitors.slice().sort((a, b) => (a.homeAway === "away" ? -1 : 1)).map(t => ({ abbr: t.team.abbreviation, score: t.score, home: t.homeAway === "home" }));
-  return { id: e.id, state: e.status.type.state, detail: e.status.type.shortDetail, when: e.date, teams, name: e.shortName };
+  const odds = (c.odds || [])[0] || {};
+  const sp = odds.spread === undefined || odds.spread === null ? null : odds.spread === 0 ? 0 : ((odds.homeTeamOdds || {}).favorite ? -Math.abs(odds.spread) : Math.abs(odds.spread));
+  return { id: e.id, state: e.status.type.state, detail: e.status.type.shortDetail, when: e.date, teams, name: e.shortName, spread: sp, total: odds.overUnder ?? null };
 }
 async function fetchGames(date) {
   const j = await getJSON(`${ESPN}/scoreboard?dates=${date.replaceAll("-", "")}&limit=100`);
@@ -430,6 +539,10 @@ async function refreshLive() {
     await Promise.all(dates.map(async d => { byDate[d] = await fetchGames(d); }));
     todayGames = byDate[today] || [];
     renderSlate(); $("slateDate").textContent = today;
+    if (Date.now() - INJ_AT > 300000) {
+      try { INJ = (await getJSON(`${ESPN}/injuries`)).injuries || []; INJ_AT = Date.now(); } catch (e) { /* keep the last list */ }
+    }
+    renderCtx();
     const need = new Map();
     for (const l of slip) {
       const games = (byDate[l.date] || []).filter(g => g.state !== "pre" && (!l.team || g.teams.some(t => t.abbr === l.team)));
@@ -482,13 +595,16 @@ async function boot() {
   };
   ["slipOdds", "stake", "book"].forEach(id => $(id).addEventListener("input", () => { save(); renderSlip(); }));
   $("player").addEventListener("change", onPlayerPicked);
+  ["spread", "total"].forEach(id => $(id).addEventListener("input", () => { $(id).dataset.touched = "1"; }));
   document.addEventListener("keydown", e => { if (e.key === "Enter" && ["player", "line", "odds", "expmin"].includes(e.target.id)) priceIt(); });
   document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshLive(); });
   renderSlip();
   refreshLive(); // the live feed does not need the database
   try {
-    const [pl, opp, meta] = await Promise.all([getJSON("data/players.json"), getJSON("data/opp.json"), getJSON("data/meta.json")]);
-    PLAYERS = pl; OPP = opp; META = meta;
+    const [pl, opp, meta, ctx, boost] = await Promise.all([getJSON("data/players.json"), getJSON("data/opp.json"), getJSON("data/meta.json"),
+      getJSON("data/ctx.json").catch(() => ({})), getJSON("data/boost.json").catch(() => ({}))]);
+    PLAYERS = pl; OPP = opp; META = meta; CTX = ctx && ctx.min ? ctx : null; BOOST = boost;
+    BY_ID = new Map(PLAYERS.map(p => [p.id, p]));
     $("plist").innerHTML = PLAYERS.map(p => `<option value="${esc(p.n)}">${esc(p.t)}</option>`).join("");
     const teams = Object.keys(OPP.pts || {}).sort();
     $("opp").innerHTML = `<option value="">none</option>` + teams.map(t => `<option>${esc(t)}</option>`).join("");

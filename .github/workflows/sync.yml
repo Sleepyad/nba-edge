@@ -38,13 +38,13 @@ jobs:
         env:
           SINCE: ${{ github.event.inputs.since }}
         run: |
-          python nba_edge.py --db nba.db load data/game_log.csv
+          python nba_edge.py --db nba.db load data
           if [ -n "$SINCE" ]; then
             python nba_edge.py --db nba.db sync --since "$SINCE"
           else
             python nba_edge.py --db nba.db sync
           fi
-          python nba_edge.py --db nba.db dump data/game_log.csv
+          python nba_edge.py --db nba.db dump data
           python nba_edge.py --db nba.db export docs/data
       - name: Commit data if it changed
         id: commit
