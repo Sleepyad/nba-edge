@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NBA Edge</title>
+<style>
+:root {
+  --bg: #f6f7f9; --card: #ffffff; --ink: #14181f; --muted: #5d6675; --line: #dfe3ea;
+  --accent: #1b5fe0; --good: #14833b; --bad: #c2321f; --warn: #a15c00; --chip: #eef1f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e1116; --card: #171b22; --ink: #e8ebf0; --muted: #9aa3b2; --line: #2a303b;
+          --accent: #6ea0ff; --good: #4cc27a; --bad: #ff7b68; --warn: #f0b255; --chip: #20262f; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 14px; }
+h1 { font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: 13px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 650; }
+.sub { color: var(--muted); font-size: 13px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } }
+label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+input, select, button { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-height: 40px; }
+input, select { width: 100%; }
+button { cursor: pointer; background: var(--chip); }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+button.ghost { background: transparent; }
+button:disabled { opacity: 0.5; cursor: default; }
+.row { display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr); margin-bottom: 10px; }
+.row.three { grid-template-columns: repeat(3, 1fr); }
+.row.one { grid-template-columns: 1fr; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.game { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); }
+.game:first-of-type { border-top: 0; }
+.teams b { font-variant-numeric: tabular-nums; }
+.status { font-size: 13px; color: var(--muted); text-align: right; white-space: nowrap; }
+.status.in { color: var(--good); font-weight: 650; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--good); margin-right: 5px; animation: pulse 1.4s infinite; }
+@keyframes pulse { 50% { opacity: 0.25; } }
+.big { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin: 10px 0; }
+.kv div { background: var(--chip); border-radius: 8px; padding: 8px 10px; }
+.kv span { display: block; font-size: 11px; color: var(--muted); }
+.kv b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.pos { color: var(--good); } .neg { color: var(--bad); } .warn { color: var(--warn); } .muted { color: var(--muted); }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 13px; }
+th, td { padding: 5px 6px; text-align: right; border-top: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; border-top: 0; }
+th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+.scroll { overflow-x: auto; }
+.leg { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; padding: 10px 0; border-top: 1px solid var(--line); }
+.leg:first-of-type { border-top: 0; }
+.leg .t { font-weight: 600; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 650; background: var(--chip); }
+.pill.hit { background: color-mix(in srgb, var(--good) 20%, transparent); color: var(--good); }
+.pill.dead { background: color-mix(in srgb, var(--bad) 20%, transparent); color: var(--bad); }
+.pill.live { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent); }
+.bar { height: 6px; border-radius: 3px; background: var(--chip); overflow: hidden; grid-column: 1 / -1; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.bar i.hit { background: var(--good); } .bar i.dead { background: var(--bad); }
+.note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+svg text { fill: var(--muted); font-size: 10px; }
+#msg { color: var(--bad); font-size: 13px; min-height: 18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>NBA Edge</h1>
+    <span class="sub" id="fresh">loading database…</span>
+    <span class="sub" id="liveStamp"></span>
+  </header>
+
+  <section class="card">
+    <h2>Today's games <span class="sub" id="slateDate"></span></h2>
+    <div id="slate" class="sub">loading…</div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Price a prop</h2>
+      <div class="row one">
+        <div><label for="player">Player</label>
+          <input id="player" list="plist" autocomplete="off" placeholder="Type a name, e.g. Jokic">
+          <datalist id="plist"></datalist></div>
+      </div>
+      <div class="row three">
+        <div><label for="stat">Stat</label><select id="stat"></select></div>
+        <div><label for="side">Side</label><select id="side"><option value="over">Over</option><option value="under">Under</option></select></div>
+        <div><label for="line">Line</label><input id="line" type="number" step="0.5" inputmode="decimal" placeholder="9.5"></div>
+      </div>
+      <div class="row three">
+        <div><label for="odds">Odds (American)</label><input id="odds" type="text" inputmode="numeric" placeholder="-145"></div>
+        <div><label for="opp">Opponent</label><select id="opp"><option value="">none</option></select></div>
+        <div><label for="expmin">Expected minutes</label><input id="expmin" type="number" step="1" inputmode="numeric" placeholder="auto"></div>
+      </div>
+      <div class="row one"><div><label for="gdate">Game date (US Eastern)</label><input id="gdate" type="date"></div></div>
+      <div class="btns">
+        <button class="primary" id="btnPrice">Price it</button>
+        <button id="btnAdd" disabled>Add to slip</button>
+      </div>
+      <div id="msg"></div>
+      <div id="result"></div>
+    </section>
+
+    <section class="card">
+      <h2>Slip tracker <span class="sub">(updates live)</span></h2>
+      <div id="legs" class="sub">No legs yet. Price a prop and add it.</div>
+      <div class="row three" style="margin-top:12px">
+        <div><label for="slipOdds">Slip odds</label><input id="slipOdds" type="text" inputmode="numeric" placeholder="+450"></div>
+        <div><label for="stake">Stake ($)</label><input id="stake" type="number" step="1" inputmode="decimal" placeholder="10"></div>
+        <div><label for="book">Book</label><input id="book" type="text" placeholder="bet365"></div>
+      </div>
+      <div id="slipSummary"></div>
+      <div class="btns">
+        <button id="btnCopy" disabled>Copy log command</button>
+        <button class="ghost" id="btnClear" disabled>Clear slip</button>
+      </div>
+      <div class="note">Joint chance multiplies the legs as if they were independent. Legs from the same game are correlated, so your book's same game price differs.</div>
+    </section>
+  </div>
+
+  <section class="card" id="logCard" hidden>
+    <h2 id="logTitle">Game log</h2>
+    <div class="scroll"><table id="logTable"></table></div>
+  </section>
+
+  <p class="note">Stats come from ESPN's public feed and refresh automatically. The probability model is a recency-weighted blend of each player's hit rate and a bell curve, nudged for opponent and minutes. It is a tool for sizing up bets, not a guarantee.</p>
+</div>
+
+<script>
+"use strict";
+const ESPN = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
+const STATS = { pts: "Points", reb: "Rebounds", ast: "Assists", "3pm": "3-pointers made", stl: "Steals", blk: "Blocks",
+                tov: "Turnovers", min: "Minutes", fga: "FG attempts", pra: "Pts + Reb + Ast", pr: "Pts + Reb", pa: "Pts + Ast", ra: "Reb + Ast" };
+// index of each stat inside a log row: [date,opp,home,min,pts,reb,ast,3pm,stl,blk,tov,fga,starter,margin]
+const IDX = { min: [3], pts: [4], reb: [5], ast: [6], "3pm": [7], stl: [8], blk: [9], tov: [10], fga: [11],
+              pra: [4, 5, 6], pr: [4, 5], pa: [4, 6], ra: [5, 6] };
+let PLAYERS = [], OPP = {}, META = { model: { halflife: 8, prior: 4, shrink: 0.92 } };
+let slip = [], current = null, todayGames = [], summaries = new Map(), liveValues = new Map(), timer = null;
+const $ = id => document.getElementById(id);
+
+// ---------------------------------------------------------------- helpers
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = s => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[.'’]/g, "").replace(/-/g, " ").trim();
+const fmtOdds = o => (o > 0 ? "+" + o : String(o));
+const dec = o => (o > 0 ? 1 + o / 100 : 1 + 100 / Math.abs(o));
+const toAmerican = d => (d >= 2 ? Math.round((d - 1) * 100) : Math.round(-100 / (d - 1)));
+const pct = x => (x * 100).toFixed(1) + "%";
+function parseOdds(v) {
+  const n = parseInt(String(v).trim().replace("+", ""), 10);
+  return Number.isFinite(n) && Math.abs(n) >= 100 ? n : null;
+}
+function etDate(d = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+}
+function save() { try { localStorage.setItem("nbaedge.slip", JSON.stringify({ slip, odds: $("slipOdds").value, stake: $("stake").value, book: $("book").value })); } catch (e) {} }
+function restore() {
+  try {
+    const s = JSON.parse(localStorage.getItem("nbaedge.slip") || "null");
+    if (s) { slip = s.slip || []; $("slipOdds").value = s.odds || ""; $("stake").value = s.stake || ""; $("book").value = s.book || ""; }
+  } catch (e) {}
+}
+async function getJSON(url) {
+  const r = await fetch(url, { cache: "no-store" });
+  if (!r.ok) throw new Error(url + " -> " + r.status);
+  return r.json();
+}
+
+// ---------------------------------------------------------------- model (mirror of nba_edge.py)
+function erf(x) { // Abramowitz-Stegun 7.1.26, error < 1.5e-7
+  const s = Math.sign(x); x = Math.abs(x);
+  const t = 1 / (1 + 0.3275911 * x);
+  const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+  return s * y;
+}
+const phi = z => 0.5 * (1 + erf(z / Math.SQRT2));
+function priceDist(xsIn, line, side, scale = 1, halflife = META.model.halflife, prior = META.model.prior) {
+  const xs = xsIn.map(x => x * scale);
+  const w = xs.map((_, i) => Math.pow(0.5, i / halflife));
+  const sw = w.reduce((a, b) => a + b, 0);
+  const mu = xs.reduce((a, x, i) => a + w[i] * x, 0) / sw;
+  let v = xs.reduce((a, x, i) => a + w[i] * (x - mu) ** 2, 0) / sw;
+  const neff = sw * sw / w.reduce((a, b) => a + b * b, 0);
+  v *= neff / Math.max(neff - 1, 1);
+  const sd = Math.max(Math.sqrt(v * (1 + 1 / neff)), 0.5);
+  const hi = Number.isInteger(line) ? line + 1 : Math.floor(line) + 1;
+  const lo = Number.isInteger(line) ? line - 1 : Math.floor(line);
+  const nOver = 1 - phi((hi - 0.5 - mu) / sd), nUnder = phi((lo + 0.5 - mu) / sd);
+  const nPush = Math.max(0, 1 - nOver - nUnder);
+  let eOver = 0, eUnder = 0;
+  xs.forEach((x, i) => { if (x > line + 1e-9) eOver += w[i]; else if (x < line - 1e-9) eUnder += w[i]; });
+  eOver /= sw; eUnder /= sw;
+  const ePush = Math.max(0, 1 - eOver - eUnder);
+  let pO = (eOver * sw + prior * nOver) / (sw + prior);
+  let pU = (eUnder * sw + prior * nUnder) / (sw + prior);
+  let pP = (ePush * sw + prior * nPush) / (sw + prior);
+  const tot = pO + pU + pP; pO /= tot; pU /= tot; pP /= tot;
+  const over = side === "over";
+  let pWin = over ? pO : pU;
+  pWin = 0.5 + META.model.shrink * (pWin - 0.5);
+  pWin = Math.min(Math.max(pWin, 0.02), 0.98);
+  return { pWin, pPush: pP, pNorm: over ? nOver : nUnder, pEmp: over ? eOver : eUnder, mu, sd, neff };
+}
+const statVal = (row, stat) => IDX[stat].reduce((a, i) => a + row[i], 0);
+function predict(p, stat, line, side, opp, expMin) {
+  const h = p.logs.filter(r => r[3] >= 5).slice(0, 40);
+  if (h.length < 5) return null;
+  const xs = h.map(r => statVal(r, stat));
+  const avgMin = h.slice(0, 10).reduce((a, r) => a + r[3], 0) / Math.min(10, h.length);
+  let scale = 1; const notes = [];
+  if (opp && OPP[stat] && OPP[stat][opp]) {
+    const [f, n] = OPP[stat][opp]; scale *= f;
+    notes.push(`opponent factor x${f.toFixed(3)} (${n} player-games, shrunk)`);
+  }
+  if (expMin && avgMin > 0 && stat !== "min") { scale *= expMin / avgMin; notes.push(`minutes scaled ${avgMin.toFixed(1)} to ${expMin}`); }
+  const res = priceDist(xs, line, side, scale);
+  return Object.assign(res, { avgMin, n: h.length, last: xs.slice(0, 15), notes, dates: h.slice(0, 15).map(r => `${r[0]} ${r[2] ? "vs" : "@"} ${r[1]}`) });
+}
+function ev(p, push, odds) { return p * (dec(odds) - 1) - (1 - p - push); }
+function kelly(p, push, odds) {
+  const b = dec(odds) - 1, q = 1 - p - push;
+  return Math.max(0, Math.min(((b * p - q) / b) * 0.25, 0.05));
+}
+
+// ---------------------------------------------------------------- players
+function findPlayer(q) {
+  const n = norm(q || "");
+  if (!n) return null;
+  const exact = PLAYERS.filter(p => p.p === n);
+  if (exact.length === 1) return exact[0];
+  const lead = PLAYERS.filter(p => p.p.includes(n));
+  return lead.length === 1 ? lead[0] : null;
+}
+function opponentTonight(p) {
+  for (const g of todayGames) {
+    const abbr = g.teams.map(t => t.abbr);
+    const i = abbr.indexOf(p.t);
+    if (i >= 0) return abbr[1 - i];
+  }
+  return "";
+}
+function showLog(p) {
+  $("logCard").hidden = false;
+  $("logTitle").textContent = `${p.n} (${p.t}) last 10 games`;
+  const rows = p.logs.slice(0, 10);
+  const avg = i => (rows.reduce((a, r) => a + r[i], 0) / rows.length).toFixed(1);
+  $("logTable").innerHTML = `<tr><th>Date</th><th>Opp</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>3PM</th><th>Stl</th><th>Blk</th><th>TO</th><th>Margin</th></tr>` +
+    rows.map(r => `<tr><td>${esc(r[0])}</td><td>${r[2] ? "" : "@"}${esc(r[1])}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td><td>${r[7]}</td><td>${r[8]}</td><td>${r[9]}</td><td>${r[10]}</td><td>${r[13] == null ? "" : (r[13] > 0 ? "+" : "") + r[13]}</td></tr>`).join("") +
+    `<tr><td><b>Avg</b></td><td></td><td>${avg(3)}</td><td>${avg(4)}</td><td>${avg(5)}</td><td>${avg(6)}</td><td>${avg(7)}</td><td>${avg(8)}</td><td>${avg(9)}</td><td>${avg(10)}</td><td></td></tr>`;
+}
+function onPlayerPicked() {
+  const p = findPlayer($("player").value);
+  if (!p) return;
+  showLog(p);
+  const o = opponentTonight(p);
+  if (o && !$("opp").value) $("opp").value = o;
+}
+
+// ---------------------------------------------------------------- pricing UI
+function spark(res, line) {
+  const xs = res.last.slice().reverse(), dates = res.dates.slice().reverse();
+  const W = 300, H = 90, pad = 14, bw = Math.min(16, (W - 2 * pad) / xs.length - 3);
+  const max = Math.max(line * 1.25, ...xs, 1);
+  const y = v => H - 16 - (v / max) * (H - 30);
+  const gap = (W - 2 * pad - bw * xs.length) / Math.max(xs.length - 1, 1);
+  let out = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Last ${xs.length} games against the line">`;
+  xs.forEach((v, i) => {
+    const x = pad + i * (bw + gap), top = y(v);
+    const hit = v > line, push = v === line;
+    out += `<rect x="${x.toFixed(1)}" y="${top.toFixed(1)}" width="${bw}" height="${(H - 16 - top).toFixed(1)}" rx="2" fill="${push ? "var(--muted)" : hit ? "var(--good)" : "var(--bad)"}" opacity="0.85"><title>${esc(dates[i])}: ${v}</title></rect>`;
+    out += `<text x="${(x + bw / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle">${v}</text>`;
+  });
+  out += `<line x1="0" x2="${W}" y1="${y(line).toFixed(1)}" y2="${y(line).toFixed(1)}" stroke="var(--ink)" stroke-dasharray="4 3" opacity="0.7"/>`;
+  return out + `</svg>`;
+}
+function readForm() {
+  const p = findPlayer($("player").value);
+  if (!p) { $("msg").textContent = "Pick a player from the list (type more letters if the name matches several)."; return null; }
+  const line = parseFloat($("line").value);
+  if (!Number.isFinite(line)) { $("msg").textContent = "Enter the line, e.g. 9.5"; return null; }
+  const oddsRaw = $("odds").value.trim(), odds = oddsRaw ? parseOdds(oddsRaw) : null;
+  if (oddsRaw && odds === null) { $("msg").textContent = "Odds look like -145 or +120"; return null; }
+  $("msg").textContent = "";
+  const em = parseFloat($("expmin").value);
+  return { p, stat: $("stat").value, side: $("side").value, line, odds, opp: $("opp").value, expMin: Number.isFinite(em) ? em : null, date: $("gdate").value || etDate() };
+}
+function priceIt() {
+  const f = readForm(); if (!f) return;
+  const res = predict(f.p, f.stat, f.line, f.side, f.opp, f.expMin);
+  if (!res) { $("msg").textContent = "Not enough games on file for " + f.p.n; return; }
+  current = Object.assign({}, f, { res });
+  showLog(f.p);
+  let edge = "";
+  if (f.odds !== null) {
+    const imp = 1 / dec(f.odds), e = ev(res.pWin, res.pPush, f.odds), k = kelly(res.pWin, res.pPush, f.odds);
+    edge = `<div class="kv"><div><span>Book implies</span><b>${pct(imp)}</b></div>
+      <div><span>Edge</span><b class="${res.pWin - imp >= 0 ? "pos" : "neg"}">${((res.pWin - imp) * 100).toFixed(1)} pts</b></div>
+      <div><span>EV per $1</span><b class="${e >= 0 ? "pos" : "neg"}">${e >= 0 ? "+" : ""}${e.toFixed(2)}</b></div>
+      <div><span>Quarter Kelly</span><b>${(k * 100).toFixed(1)}%</b></div></div>`;
+  }
+  $("result").innerHTML = `<div style="margin-top:14px"><div class="muted">${esc(f.p.n)} ${esc(STATS[f.stat])} ${f.side} ${f.line}</div>
+    <div class="big">${pct(res.pWin)}</div>
+    <div class="kv"><div><span>Recent mean</span><b>${res.mu.toFixed(1)}</b></div><div><span>Spread (sd)</span><b>${res.sd.toFixed(1)}</b></div>
+    <div><span>Hit rate (weighted)</span><b>${pct(res.pEmp)}</b></div><div><span>Bell curve</span><b>${pct(res.pNorm)}</b></div>
+    <div><span>Avg minutes</span><b>${res.avgMin.toFixed(1)}</b></div><div><span>Games used</span><b>${res.n}</b></div></div>
+    ${edge}${spark(res, f.line)}
+    <div class="note">${res.notes.map(esc).join(" · ") || "no opponent or minutes adjustment"}${res.pPush > 0.005 ? ` · push ${pct(res.pPush)}` : ""}</div></div>`;
+  $("btnAdd").disabled = false;
+}
+function addLeg() {
+  if (!current) return;
+  const c = current;
+  slip.push({ name: c.p.n, pnorm: c.p.p, team: c.p.t, stat: c.stat, side: c.side, line: c.line, odds: c.odds, date: c.date, pAtAdd: c.res.pWin });
+  save(); renderSlip(); refreshLive();
+}
+
+// ---------------------------------------------------------------- slip + live status
+function legState(l) {
+  const key = legKey(l), live = liveValues.get(key);
+  if (!live) return { cls: "", label: "not started", v: null };
+  const v = live.value, over = l.side === "over";
+  if (live.final) {
+    if (live.dnp) return { cls: "", label: "void (did not play)", v, done: "void" };
+    if (v === l.line) return { cls: "", label: "push", v, done: "push" };
+    const won = over ? v > l.line : v < l.line;
+    return { cls: won ? "hit" : "dead", label: won ? "WON" : "LOST", v, done: won ? "win" : "loss" };
+  }
+  if (live.state === "pre") return { cls: "", label: "not started", v: null };
+  if (over && v > l.line) return { cls: "hit", label: "HIT (locked)", v, done: "win" };
+  if (!over && v > l.line) return { cls: "dead", label: "BUSTED", v, done: "loss" };
+  return { cls: "live", label: "live", v, detail: live.detail };
+}
+const legKey = l => `${l.date}|${l.pnorm}|${l.stat}`;
+function jointP() {
+  let p = 1;
+  for (const l of slip) {
+    const pl = PLAYERS.find(x => x.p === l.pnorm);
+    const r = pl ? predict(pl, l.stat, l.line, l.side, "", null) : null;
+    p *= r ? r.pWin : l.pAtAdd;
+  }
+  return p;
+}
+function renderSlip() {
+  const box = $("legs");
+  if (!slip.length) { box.className = "sub"; box.textContent = "No legs yet. Price a prop and add it."; $("slipSummary").innerHTML = ""; $("btnCopy").disabled = true; $("btnClear").disabled = true; return; }
+  box.className = "";
+  let dead = false, allWon = true;
+  box.innerHTML = slip.map((l, i) => {
+    const st = legState(l);
+    if (st.done === "loss") dead = true;
+    if (st.done !== "win") allWon = false;
+    const maxUnder = Number.isInteger(l.line) ? l.line - 1 : Math.floor(l.line);
+    const need = st.v === null || st.done ? "" : l.side === "over"
+      ? (st.v > l.line ? "" : ` needs ${Math.floor(l.line) + 1 - st.v} more`)
+      : (st.v > l.line || st.v > maxUnder ? "" : ` ${maxUnder - st.v} to spare`);
+    const frac = st.v === null ? 0 : Math.min(1, st.v / Math.max(l.line, 1));
+    return `<div class="leg"><div><div class="t">${esc(l.name)} ${esc(STATS[l.stat])} ${l.side} ${l.line}${l.odds !== null ? ` <span class="muted">(${fmtOdds(l.odds)})</span>` : ""}</div>
+      <div class="sub">${esc(l.date)} · now <b>${st.v === null ? "–" : st.v}</b>${esc(need)}${st.detail ? " · " + esc(st.detail) : ""}</div></div>
+      <div style="text-align:right"><span class="pill ${st.cls}">${esc(st.label)}</span><br><button class="ghost" data-rm="${i}" style="min-height:28px;padding:2px 8px;margin-top:4px">remove</button></div>
+      <div class="bar"><i class="${st.cls}" style="width:${(frac * 100).toFixed(0)}%"></i></div></div>`;
+  }).join("");
+  box.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { slip.splice(+b.dataset.rm, 1); save(); renderSlip(); });
+  const p = jointP(), so = parseOdds($("slipOdds").value), stake = parseFloat($("stake").value);
+  const legDec = slip.every(l => l.odds !== null) ? slip.reduce((a, l) => a * dec(l.odds), 1) : null;
+  const d = so !== null ? dec(so) : legDec;
+  let html = `<div class="kv"><div><span>Joint chance</span><b>${pct(p)}</b></div><div><span>1 in</span><b>${(1 / p).toFixed(1)}</b></div>`;
+  if (d) {
+    html += `<div><span>Pays ${so === null ? "(legs multiplied)" : ""}</span><b>${fmtOdds(toAmerican(d))}</b></div>`;
+    html += `<div><span>Fair price</span><b>${fmtOdds(toAmerican(1 / p))}</b></div>`;
+    html += `<div><span>EV per $1</span><b class="${p * (d - 1) - (1 - p) >= 0 ? "pos" : "neg"}">${(p * (d - 1) - (1 - p)).toFixed(2)}</b></div>`;
+    if (Number.isFinite(stake)) html += `<div><span>To win</span><b>$${(stake * (d - 1)).toFixed(2)}</b></div>`;
+  }
+  html += `</div>`;
+  if (dead) html += `<div class="neg"><b>Slip is dead.</b> At least one leg has lost.</div>`;
+  else if (allWon) html += `<div class="pos"><b>Every leg has won.</b></div>`;
+  $("slipSummary").innerHTML = html;
+  $("btnCopy").disabled = false; $("btnClear").disabled = false;
+}
+function logCommand() {
+  const so = parseOdds($("slipOdds").value), stake = parseFloat($("stake").value) || 10;
+  const d = so !== null ? dec(so) : slip.every(l => l.odds !== null) ? slip.reduce((a, l) => a * dec(l.odds), 1) : null;
+  if (!d) return null;
+  const legs = slip.map(l => `--leg "${l.name}:${l.stat}:${l.side}:${l.line}:${l.odds !== null ? fmtOdds(l.odds) : ""}:${l.date}"`).join(" ");
+  return `python nba_edge.py bet add --book ${$("book").value || "bet365"} --stake ${stake} --odds ${fmtOdds(toAmerican(d))} ${legs}`;
+}
+
+// ---------------------------------------------------------------- live feed
+function parseGame(e) {
+  const c = e.competitions[0];
+  const teams = c.competitors.slice().sort((a, b) => (a.homeAway === "away" ? -1 : 1)).map(t => ({ abbr: t.team.abbreviation, score: t.score, home: t.homeAway === "home" }));
+  return { id: e.id, state: e.status.type.state, detail: e.status.type.shortDetail, when: e.date, teams, name: e.shortName };
+}
+async function fetchGames(date) {
+  const j = await getJSON(`${ESPN}/scoreboard?dates=${date.replaceAll("-", "")}&limit=100`);
+  return (j.events || []).map(parseGame);
+}
+function renderSlate() {
+  const box = $("slate");
+  if (!todayGames.length) { box.className = "sub"; box.textContent = "No games today."; return; }
+  box.className = "";
+  box.innerHTML = todayGames.map(g => {
+    const [a, h] = g.teams;
+    const status = g.state === "pre" ? new Date(g.when).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : g.detail;
+    const live = g.state === "in";
+    return `<div class="game"><div class="teams">${esc(a.abbr)} <b>${g.state === "pre" ? "" : esc(a.score)}</b> @ ${esc(h.abbr)} <b>${g.state === "pre" ? "" : esc(h.score)}</b></div>
+      <div class="status ${live ? "in" : ""}">${live ? '<span class="dot"></span>' : ""}${esc(status)}</div></div>`;
+  }).join("");
+}
+function athleteValue(a, keys, stat) {
+  const m = {}; keys.forEach((k, i) => (m[k] = a.stats[i]));
+  const n = k => parseFloat(String(m[k] ?? 0).replace("+", "")) || 0;
+  const part = (k, i) => parseFloat(String(m[k] ?? "0-0").split("-")[i]) || 0;
+  const base = { pts: n("points"), reb: n("rebounds"), ast: n("assists"), "3pm": part("threePointFieldGoalsMade-threePointFieldGoalsAttempted", 0),
+                 stl: n("steals"), blk: n("blocks"), tov: n("turnovers"), min: n("minutes"), fga: part("fieldGoalsMade-fieldGoalsAttempted", 1) };
+  const combo = { pra: ["pts", "reb", "ast"], pr: ["pts", "reb"], pa: ["pts", "ast"], ra: ["reb", "ast"] };
+  return combo[stat] ? combo[stat].reduce((s, k) => s + base[k], 0) : base[stat];
+}
+async function refreshLive() {
+  const stamp = $("liveStamp");
+  try {
+    const today = etDate();
+    const dates = [...new Set([today, ...slip.map(l => l.date)])];
+    const byDate = {};
+    await Promise.all(dates.map(async d => { byDate[d] = await fetchGames(d); }));
+    todayGames = byDate[today] || [];
+    renderSlate(); $("slateDate").textContent = today;
+    const need = new Map();
+    for (const l of slip) {
+      const games = (byDate[l.date] || []).filter(g => g.state !== "pre" && (!l.team || g.teams.some(t => t.abbr === l.team)));
+      for (const g of games) need.set(g.id, g);
+    }
+    await Promise.all([...need.values()].map(async g => {
+      if (g.state === "post" && summaries.has(g.id)) return;
+      try { summaries.set(g.id, await getJSON(`${ESPN}/summary?event=${g.id}`)); } catch (e) { /* keep last good copy */ }
+    }));
+    liveValues = new Map();
+    for (const l of slip) {
+      const games = (byDate[l.date] || []).filter(g => !l.team || g.teams.some(t => t.abbr === l.team));
+      const g = games[0];
+      if (!g) continue;
+      if (g.state === "pre") { liveValues.set(legKey(l), { state: "pre" }); continue; }
+      const sm = summaries.get(g.id);
+      if (!sm) continue;
+      let found = null;
+      for (const tb of sm.boxscore?.players || []) {
+        const st = tb.statistics?.[0]; if (!st) continue;
+        for (const a of st.athletes) if (norm(a.athlete.displayName) === l.pnorm) found = { a, keys: st.keys };
+      }
+      const final = g.state === "post";
+      if (!found) { if (final) liveValues.set(legKey(l), { value: 0, final: true, dnp: true, state: g.state }); continue; }
+      const dnp = !!found.a.didNotPlay || !found.a.stats?.length;
+      liveValues.set(legKey(l), { value: dnp ? 0 : athleteValue(found.a, found.keys, l.stat), final, dnp: dnp && final, state: g.state, detail: `${g.teams[0].abbr} ${g.teams[0].score}-${g.teams[1].score} ${g.teams[1].abbr}, ${g.detail}` });
+    }
+    renderSlip();
+    stamp.textContent = "live feed updated " + new Date().toLocaleTimeString();
+  } catch (e) {
+    stamp.textContent = "live feed unavailable, retrying";
+  }
+  clearTimeout(timer);
+  const anyLive = todayGames.some(g => g.state === "in");
+  timer = setTimeout(() => { if (!document.hidden) refreshLive(); else timer = setTimeout(refreshLive, 30000); }, anyLive ? 15000 : 60000);
+}
+
+// ---------------------------------------------------------------- boot
+async function boot() {
+  $("stat").innerHTML = Object.entries(STATS).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join("");
+  $("gdate").value = etDate();
+  restore();
+  $("btnPrice").onclick = priceIt;
+  $("btnAdd").onclick = addLeg;
+  $("btnClear").onclick = () => { slip = []; save(); renderSlip(); };
+  $("btnCopy").onclick = async () => {
+    const c = logCommand(); if (!c) { $("msg").textContent = "Enter the slip odds or give every leg odds first."; return; }
+    try { await navigator.clipboard.writeText(c); $("btnCopy").textContent = "Copied"; } catch (e) { prompt("Copy this:", c); }
+    setTimeout(() => ($("btnCopy").textContent = "Copy log command"), 1500);
+  };
+  ["slipOdds", "stake", "book"].forEach(id => $(id).addEventListener("input", () => { save(); renderSlip(); }));
+  $("player").addEventListener("change", onPlayerPicked);
+  document.addEventListener("keydown", e => { if (e.key === "Enter" && ["player", "line", "odds", "expmin"].includes(e.target.id)) priceIt(); });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshLive(); });
+  renderSlip();
+  refreshLive(); // the live feed does not need the database
+  try {
+    const [pl, opp, meta] = await Promise.all([getJSON("data/players.json"), getJSON("data/opp.json"), getJSON("data/meta.json")]);
+    PLAYERS = pl; OPP = opp; META = meta;
+    $("plist").innerHTML = PLAYERS.map(p => `<option value="${esc(p.n)}">${esc(p.t)}</option>`).join("");
+    const teams = Object.keys(OPP.pts || {}).sort();
+    $("opp").innerHTML = `<option value="">none</option>` + teams.map(t => `<option>${esc(t)}</option>`).join("");
+    $("fresh").textContent = `${meta.players} players, ${meta.games} games through ${meta.last_game_date}`;
+    renderSlip();
+  } catch (e) {
+    $("fresh").textContent = "database not found: run the sync workflow first";
+  }
+}
+boot();
+</script>
+</body>
+</html>

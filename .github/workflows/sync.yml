@@ -1,0 +1,88 @@
+name: sync-and-deploy
+
+# Pulls new final games from ESPN, commits the data, and publishes the dashboard to GitHub Pages.
+# Needs: Settings > Pages > Source = "GitHub Actions", and Settings > Actions > General >
+# Workflow permissions = "Read and write".
+on:
+  schedule:
+    # every 30 min during the evening/night games (UTC), off during the dead hours
+    - cron: "*/30 0-6,17-23 * * *"
+  push:
+    branches: [main]
+    paths: ["docs/**", "nba_edge.py", ".github/workflows/sync.yml"]
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "Force a backfill from this date (YYYY-MM-DD). Leave blank for a normal sync."
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Load, sync, dump, export
+        env:
+          SINCE: ${{ github.event.inputs.since }}
+        run: |
+          python nba_edge.py --db nba.db load data/game_log.csv
+          if [ -n "$SINCE" ]; then
+            python nba_edge.py --db nba.db sync --since "$SINCE"
+          else
+            python nba_edge.py --db nba.db sync
+          fi
+          python nba_edge.py --db nba.db dump data/game_log.csv
+          python nba_edge.py --db nba.db export docs/data
+      - name: Commit data if it changed
+        id: commit
+        run: |
+          git config user.name "nba-edge bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data docs/data
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "no new games"
+          else
+            git commit -m "data: sync $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true' || github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4
