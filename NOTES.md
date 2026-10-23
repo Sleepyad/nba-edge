@@ -3,6 +3,16 @@
 Read this first. Owner: AD (Sleepyad). Personal project, free, not a business. Friends may get shown how to build their own later.
 Working style: casual, concise, direct, no em dashes, match his language (English or French), no heavy caveats, never repeat an instruction he already gave, check what he actually sees before giving click-by-click steps. The repo and Pages site are public; bets must never be committed.
 
+## ALWAYS REMIND AD (standing request, Oct 23)
+He easily forgets and wants EVERY reminder EVERY time, in plain steps, whenever he opens a session or asks for picks. Nothing runs on his PC in the background; the cloud does the rest.
+On his PC (folder C:\dieTrying\nba-edge, PowerShell, use `py` not `python`):
+1. `git pull` to get the latest code and data.
+2. `py nba_edge.py sync` before a night of picks (updates his private database).
+3. Build the slip on the dashboard, press "Copy log command", paste it in PowerShell to log the bet.
+4. Next day: `py nba_edge.py settle`, then `py nba_edge.py report`.
+5. Send me the real book lines and odds (a screenshot is fine) so they go in the paper log (`paper.py bet ... --source book`).
+Cloud, no action needed: GitHub sync every 30 min, paper-bet grading, daily news briefing at 11:17 ET (news/ folder).
+
 ## Links
 - Repo: https://github.com/Sleepyad/nba-edge (public, branch main)
 - Live dashboard: https://sleepyad.github.io/nba-edge/ (GitHub Pages, source = GitHub Actions)
