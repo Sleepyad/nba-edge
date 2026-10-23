@@ -52,6 +52,12 @@ Python (`predict`) and JavaScript (`predict` in docs/index.html) must stay ident
 - Qualitative idea (podcasts, previews, news): use only for hard facts (minutes limits, injuries, roles) and write them in the `reason` of `claude` bets, so we can measure later whether judgment beats the `rule` baseline. Transcripts are noisy and cannot be backtested, so they do not go into the model.
 - Read groups only with 30+ settled bets. Tonight's first logged slate: 6 rule bets and 3 claude bets, all DEN@OKC.
 
+## Results log
+- Oct 22: AD's bet365 SGP+ ($5, +6380, returns $324) LOST. CLE@PHI legs all won (PHI came back from 24 down, won 114-106; Maxey 32, Mitchell 32, Edgecombe 11, Harden 3 threes). DEN@OKC (OKC 96-84) legs all lost: Jokic 7 reb and 5 ast, Murray 6 pts.
+- Paper log after day 1 (16 bets, tiny sample, read nothing from it yet): rule 4-2, claude 2-1, book legs 4-3. Unders 5-0, overs 5-6 (stat lines are over bets mostly). Tickets: all three lost (R-, C-, B365-).
+- Lessons to test, not conclusions: (1) stacking 3 legs on one player (Jokic reb, ast, pts) fails together; (2) Murray pts over 21.5 had sd about 10; (3) OKC defense factor for assists/rebounds may be too weak; (4) log real book lines with every bet; (5) the over/under split deserves a watch once there are 30+ bets, since early overs went 5-6 while unders went 5-0.
+- Correlation-aware slip pricing is PAUSED at AD's request (Oct 23). Do not build it until he says so.
+
 ## Open items and ideas
 1. Check tonight (Oct 22) that a "data: sync" commit appeared after Cavs-76ers and Nuggets-Thunder finished; if not, read the failed run in the Actions tab.
 2. AD runs `python nba_edge.py sync` once on his home PC to build his private bet database, then logs bets with `bet add` (or the dashboard's copy button), `settle` after games, `report`.

@@ -1,16 +1,16 @@
 id,placed,game_date,ticket,source,player_id,player,team,opp,stat,side,line,odds,model_p,reason,status,actual,ticket_odds
-1,2026-10-22,2026-10-22,R-2026-10-22,rule,2991350,Alex Caruso,OKC,DEN,pts,under,12.5,-110,0.6684,auto: model 67% vs proxy line,pending,,
-2,2026-10-22,2026-10-22,R-2026-10-22,rule,4433255,Chet Holmgren,OKC,DEN,pts,over,12.5,-110,0.6513,auto: model 65% vs proxy line,pending,,
-3,2026-10-22,2026-10-22,R-2026-10-22,rule,4683778,Jared McCain,OKC,DEN,pts,under,12.5,-110,0.6313,auto: model 63% vs proxy line,pending,,
-4,2026-10-22,2026-10-22,,rule,4683692,Cason Wallace,OKC,DEN,pts,under,9.5,-110,0.6259,auto: model 63% vs proxy line,pending,,
-5,2026-10-22,2026-10-22,,rule,4278073,Shai Gilgeous-Alexander,OKC,DEN,ast,under,8.5,-110,0.6187,auto: model 62% vs proxy line,pending,,
-6,2026-10-22,2026-10-22,,rule,4593803,Jalen Williams,OKC,DEN,ast,over,3.5,-110,0.608,auto: model 61% vs proxy line,pending,,
-7,2026-10-22,2026-10-22,C-2026-10-22,claude,3112335,Nikola Jokic,DEN,OKC,reb,over,13.5,-110,0.572,"averages 14.0 reb, OKC opp factor x1.02, last-10 line 13.5; judgment: not a blowout stat",pending,,
-8,2026-10-22,2026-10-22,C-2026-10-22,claude,3112335,Nikola Jokic,DEN,OKC,pts,under,25.5,-110,0.5736,OKC defense cuts his scoring ~5%; DEN is a road dog at 8.5 so blowout trims minutes,pending,,
-9,2026-10-22,2026-10-22,C-2026-10-22,claude,3064290,Aaron Gordon,DEN,OKC,pts,over,12.5,-110,0.586,"model 58.6% vs recent-form line; low confidence, no news checked",pending,,
-10,2026-10-22,2026-10-22,B365-2026-10-22,book,3112335,Nikola Jokic,DEN,OKC,reb,over,12.5,-110,0.6492,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
-11,2026-10-22,2026-10-22,B365-2026-10-22,book,3112335,Nikola Jokic,DEN,OKC,ast,over,9.5,-110,0.5685,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
-12,2026-10-22,2026-10-22,B365-2026-10-22,book,3936299,Jamal Murray,DEN,OKC,pts,over,21.5,-110,0.5767,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
+1,2026-10-22,2026-10-22,R-2026-10-22,rule,2991350,Alex Caruso,OKC,DEN,pts,under,12.5,-110,0.6684,auto: model 67% vs proxy line,win,7.0,
+2,2026-10-22,2026-10-22,R-2026-10-22,rule,4433255,Chet Holmgren,OKC,DEN,pts,over,12.5,-110,0.6513,auto: model 65% vs proxy line,lose,12.0,
+3,2026-10-22,2026-10-22,R-2026-10-22,rule,4683778,Jared McCain,OKC,DEN,pts,under,12.5,-110,0.6313,auto: model 63% vs proxy line,win,4.0,
+4,2026-10-22,2026-10-22,,rule,4683692,Cason Wallace,OKC,DEN,pts,under,9.5,-110,0.6259,auto: model 63% vs proxy line,win,9.0,
+5,2026-10-22,2026-10-22,,rule,4278073,Shai Gilgeous-Alexander,OKC,DEN,ast,under,8.5,-110,0.6187,auto: model 62% vs proxy line,win,3.0,
+6,2026-10-22,2026-10-22,,rule,4593803,Jalen Williams,OKC,DEN,ast,over,3.5,-110,0.608,auto: model 61% vs proxy line,lose,3.0,
+7,2026-10-22,2026-10-22,C-2026-10-22,claude,3112335,Nikola Jokic,DEN,OKC,reb,over,13.5,-110,0.572,"averages 14.0 reb, OKC opp factor x1.02, last-10 line 13.5; judgment: not a blowout stat",lose,7.0,
+8,2026-10-22,2026-10-22,C-2026-10-22,claude,3112335,Nikola Jokic,DEN,OKC,pts,under,25.5,-110,0.5736,OKC defense cuts his scoring ~5%; DEN is a road dog at 8.5 so blowout trims minutes,win,13.0,
+9,2026-10-22,2026-10-22,C-2026-10-22,claude,3064290,Aaron Gordon,DEN,OKC,pts,over,12.5,-110,0.586,"model 58.6% vs recent-form line; low confidence, no news checked",win,20.0,
+10,2026-10-22,2026-10-22,B365-2026-10-22,book,3112335,Nikola Jokic,DEN,OKC,reb,over,12.5,-110,0.6492,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",lose,7.0,6380
+11,2026-10-22,2026-10-22,B365-2026-10-22,book,3112335,Nikola Jokic,DEN,OKC,ast,over,9.5,-110,0.5685,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",lose,5.0,6380
+12,2026-10-22,2026-10-22,B365-2026-10-22,book,3936299,Jamal Murray,DEN,OKC,pts,over,21.5,-110,0.5767,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",lose,6.0,6380
 13,2026-10-22,2026-10-22,B365-2026-10-22,book,4431678,Tyrese Maxey,PHI,CLE,pts,over,23.5,-110,0.5794,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,32.0,6380
 14,2026-10-22,2026-10-22,B365-2026-10-22,book,5124612,VJ Edgecombe,PHI,CLE,pts,over,10.5,-110,0.6433,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,11.0,6380
 15,2026-10-22,2026-10-22,B365-2026-10-22,book,3908809,Donovan Mitchell,CLE,PHI,pts,over,25.5,-110,0.5805,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,32.0,6380
