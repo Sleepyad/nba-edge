@@ -15,3 +15,9 @@ id,placed,game_date,ticket,source,player_id,player,team,opp,stat,side,line,odds,
 14,2026-10-22,2026-10-22,B365-2026-10-22,book,5124612,VJ Edgecombe,PHI,CLE,pts,over,10.5,-110,0.6433,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,11.0,6380
 15,2026-10-22,2026-10-22,B365-2026-10-22,book,3908809,Donovan Mitchell,CLE,PHI,pts,over,25.5,-110,0.5805,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,32.0,6380
 16,2026-10-22,2026-10-22,B365-2026-10-22,book,3992,James Harden,CLE,PHI,3pm,over,2.5,-110,0.5095,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,3.0,6380
+17,2026-10-23,2026-10-23,R-2026-10-23,rule,4066259,De'Aaron Fox,SA,HOU,pts,over,11.5,-110,0.6725,auto: model 67% vs proxy line,pending,,
+18,2026-10-23,2026-10-23,R-2026-10-23,rule,3147657,Mikal Bridges,NY,BOS,ast,under,3.5,-110,0.6681,auto: model 67% vs proxy line,pending,,
+19,2026-10-23,2026-10-23,R-2026-10-23,rule,4277847,Wendell Carter Jr.,ORL,MIN,ast,under,2.5,-110,0.6617,auto: model 66% vs proxy line,pending,,
+20,2026-10-23,2026-10-23,,rule,4566434,Franz Wagner,ORL,MIN,3pm,under,1.5,-110,0.6377,auto: model 64% vs proxy line,pending,,
+21,2026-10-23,2026-10-23,,rule,3934719,OG Anunoby,NY,BOS,reb,over,4.5,-110,0.6266,auto: model 63% vs proxy line,pending,,
+22,2026-10-23,2026-10-23,,rule,5037871,Dylan Harper,SA,HOU,ast,under,3.5,-110,0.6137,auto: model 61% vs proxy line,pending,,
