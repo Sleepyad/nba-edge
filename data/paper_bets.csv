@@ -11,7 +11,7 @@ id,placed,game_date,ticket,source,player_id,player,team,opp,stat,side,line,odds,
 10,2026-10-22,2026-10-22,B365-2026-10-22,book,3112335,Nikola Jokic,DEN,OKC,reb,over,12.5,-110,0.6492,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
 11,2026-10-22,2026-10-22,B365-2026-10-22,book,3112335,Nikola Jokic,DEN,OKC,ast,over,9.5,-110,0.5685,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
 12,2026-10-22,2026-10-22,B365-2026-10-22,book,3936299,Jamal Murray,DEN,OKC,pts,over,21.5,-110,0.5767,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
-13,2026-10-22,2026-10-22,B365-2026-10-22,book,4431678,Tyrese Maxey,PHI,CLE,pts,over,23.5,-110,0.5794,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
-14,2026-10-22,2026-10-22,B365-2026-10-22,book,5124612,VJ Edgecombe,PHI,CLE,pts,over,10.5,-110,0.6433,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
-15,2026-10-22,2026-10-22,B365-2026-10-22,book,3908809,Donovan Mitchell,CLE,PHI,pts,over,25.5,-110,0.5805,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
-16,2026-10-22,2026-10-22,B365-2026-10-22,book,3992,James Harden,CLE,PHI,3pm,over,2.5,-110,0.5095,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",pending,,6380
+13,2026-10-22,2026-10-22,B365-2026-10-22,book,4431678,Tyrese Maxey,PHI,CLE,pts,over,23.5,-110,0.5794,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,32.0,6380
+14,2026-10-22,2026-10-22,B365-2026-10-22,book,5124612,VJ Edgecombe,PHI,CLE,pts,over,10.5,-110,0.6433,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,11.0,6380
+15,2026-10-22,2026-10-22,B365-2026-10-22,book,3908809,Donovan Mitchell,CLE,PHI,pts,over,25.5,-110,0.5805,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,32.0,6380
+16,2026-10-22,2026-10-22,B365-2026-10-22,book,3992,James Harden,CLE,PHI,3pm,over,2.5,-110,0.5095,"bet365 SGP+ placed by AD, $5 returns $324 (+6380 combined: DEN +440 x CLE +1100)",win,3.0,6380
