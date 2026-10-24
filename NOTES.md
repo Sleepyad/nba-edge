@@ -52,6 +52,9 @@ Python (`predict`) and JavaScript (`predict` in docs/index.html) must stay ident
 - Qualitative idea (podcasts, previews, news): use only for hard facts (minutes limits, injuries, roles) and write them in the `reason` of `claude` bets, so we can measure later whether judgment beats the `rule` baseline. Transcripts are noisy and cannot be backtested, so they do not go into the model.
 - Read groups only with 30+ settled bets. Tonight's first logged slate: 6 rule bets and 3 claude bets, all DEN@OKC.
 
+## Lab (experiments, no live changes)
+- `LAB.md` and `lab/`. First result Oct 24: overs ran cold in the first four days of the 2026-27 season (model 48%, actual 37%); no persistence inside a season. Decision pending: re-run around Nov 7. Until then, shade overs and prefer unders at similar edge.
+
 ## Results log
 - Oct 22: AD's bet365 SGP+ ($5, +6380, returns $324) LOST. CLE@PHI legs all won (PHI came back from 24 down, won 114-106; Maxey 32, Mitchell 32, Edgecombe 11, Harden 3 threes). DEN@OKC (OKC 96-84) legs all lost: Jokic 7 reb and 5 ast, Murray 6 pts.
 - Paper log after day 1 (16 bets, tiny sample, read nothing from it yet): rule 4-2, claude 2-1, book legs 4-3. Unders 5-0, overs 5-6 (stat lines are over bets mostly). Tickets: all three lost (R-, C-, B365-).
