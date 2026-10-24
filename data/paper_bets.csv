@@ -38,3 +38,11 @@ id,placed,game_date,ticket,source,player_id,player,team,opp,stat,side,line,odds,
 37,2026-10-24,2026-10-24,R-2026-10-24,rule,4592479,Julian Champagnie,SA,DAL,pts,under,12.5,-110,0.6375,auto: model 64% vs proxy line,pending,,
 38,2026-10-24,2026-10-24,,rule,5104157,Victor Wembanyama,SA,DAL,reb,over,10.5,-110,0.6153,auto: model 62% vs proxy line,pending,,
 39,2026-10-24,2026-10-24,,rule,4845367,Stephon Castle,SA,DAL,pts,over,16.5,-110,0.5717,auto: model 57% vs proxy line,pending,,
+40,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4432639,Jabari Smith Jr.,HOU,ATL,pts,over,14.5,-125,0.6829,"AD real bet365 8-leg, $6 to return $1068.65; model 68% flux",pending,,17711
+41,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4684740,Amen Thompson,HOU,ATL,pts,over,17.5,-110,0.613,model 61% flux,pending,,17711
+42,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397040,Brandon Williams,GS,PHX,pts,under,15.5,-112,0.6882,model 69% flux,pending,,17711
+43,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,5104157,Victor Wembanyama,SA,DAL,reb,over,11.5,-120,0.5549,"AD added; near-fair lean, SA -14.5 blowout risk",pending,,17711
+44,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395630,Devin Vassell,SA,DAL,reb,over,4.5,122,0.5782,model 58%,pending,,17711
+45,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,model 69% flux,pending,,17711
+46,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397688,Trey Murphy III,NO,DEN,pts,over,15.5,-125,0.6898,model 69% flux,pending,,17711
+47,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,3112335,Nikola Jokic,DEN,NO,pts,under,26.5,-110,0.5835,model 58% thin edge,pending,,17711
