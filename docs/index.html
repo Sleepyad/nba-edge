@@ -244,7 +244,14 @@ function usageMult(entries, stat, comp) {
   return Math.min(Math.max(m, 0.7), 1.5);
 }
 // outs: array of teammate ids who are out (may be empty), or null to skip the teammate adjustment
-function predict(p, stat, line, side, opp, expMin, spread = null, total = null, outs = null) {
+function earlyShift(day) {
+  const E = META.early;
+  if (!E || !E.on || !E.start) return 0;
+  const d = Math.round((Date.parse(day + "T00:00:00Z") - Date.parse(E.start + "T00:00:00Z")) / 86400000);
+  for (const [lim, sh] of E.steps) if (d < lim) return sh;
+  return 0;
+}
+function predict(p, stat, line, side, opp, expMin, spread = null, total = null, outs = null, onDate = null) {
   const h = p.logs.filter(r => r[3] >= 5).slice(0, 40);
   if (h.length < 5) return null;
   const xs = h.map(r => statVal(r, stat));
@@ -273,6 +280,8 @@ function predict(p, stat, line, side, opp, expMin, spread = null, total = null, 
     if (Math.abs(um - 1) > 1e-9) { scale *= um; notes.push(`teammates: ${entries.filter(e => e[1]).length} out tonight, usage x${um.toFixed(3)} (past absences removed from his average)`); }
   }
   const res = priceDist(xs, line, side, scale);
+  const sh = earlyShift(onDate || etDate());
+  if (sh) { res.pWin = Math.min(Math.max(res.pWin + (side === "over" ? sh : -sh), 0.02), 0.98); notes.push(`early season: overs ${(sh * 100).toFixed(0)} points, unders ${(-sh * 100).toFixed(0)} points (lab experiment 3)`); }
   return Object.assign(res, { avgMin, n: h.length, last: xs.slice(0, 15), notes, dates: h.slice(0, 15).map(r => `${r[0]} ${r[2] ? "vs" : "@"} ${r[1]}`) });
 }
 function ev(p, push, odds) { return p * (dec(odds) - 1) - (1 - p - push); }

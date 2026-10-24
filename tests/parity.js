@@ -18,7 +18,7 @@ const lib = new Function("OPP", "META", "CTX", "BOOST", "BY_ID", idx + "\n" + ht
 const cases = JSON.parse(fs.readFileSync(casesFile, "utf8"));
 const out = cases.map(c => {
   const p = players.find(x => x.id === c.player_id);
-  const r = lib.predict(p, c.stat, c.line, c.side, c.opp || "", c.exp_min || null, c.spread ?? null, c.total ?? null, c.outs ?? null);
+  const r = lib.predict(p, c.stat, c.line, c.side, c.opp || "", c.exp_min || null, c.spread ?? null, c.total ?? null, c.outs ?? null, c.on_date ?? null);
   return r && { pWin: r.pWin, pPush: r.pPush, mu: r.mu, sd: r.sd, avgMin: r.avgMin };
 });
 console.log(JSON.stringify(out));

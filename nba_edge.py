@@ -64,6 +64,12 @@ SHRINK = 0.92  # pull probabilities toward 50% (real stats are fatter-tailed tha
 HALFLIFE = 12.0  # games; recent games count double every 12 games back (tested out of sample)
 PRIOR = 20.0  # pseudo-games of bell-curve belief blended with the raw hit rate (tested out of sample)
 OPP_SHRINK = 150.0  # opponent adjustment is pulled hard toward 1.0
+# Early-season discount on overs (lab experiment 3 in LAB.md). OFF until AD approves it: the first days of a season
+# run cold (overs hit about 5 points less than priced in Oct 2024 and Oct 2025). Steps are (days since the season's
+# first game, change to P(over)); P(under) moves the other way. EARLY_START overrides the auto-detected first game date.
+EARLY_ON = False
+EARLY_STEPS = [(7, -0.05), (21, -0.01)]
+EARLY_START = None
 USAGE_STRENGTH = 0.5  # share of the measured with/without effect that is applied (0.5 tested best out of sample)
 BOOST_SHRINK = 20.0  # games-out pseudo-count: teammate splits are noisy, so pull them toward 1.0
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
@@ -433,8 +439,32 @@ def usage_mult(entries, stat, comp):
     return min(max(m, 0.7), 1.5)
 
 
+def season_start(con, day):
+    """First regular-season game date of the season containing `day` (YYYY-MM-DD), or EARLY_START if set."""
+    if EARLY_START:
+        return EARLY_START
+    r = con.execute("SELECT MIN(game_date) FROM game_log WHERE season_type LIKE '%Regular%' AND season="
+                    "(SELECT season FROM game_log WHERE season_type LIKE '%Regular%' AND game_date<=? "
+                    "ORDER BY game_date DESC LIMIT 1)", (day,)).fetchone()
+    return r[0] if r else None
+
+
+def early_shift(con, day):
+    """Change to P(over) for the early-season discount, 0 when it is off or the season is past day 21."""
+    if not EARLY_ON:
+        return 0.0
+    start = season_start(con, day)
+    if not start:
+        return 0.0
+    d = (date.fromisoformat(day) - date.fromisoformat(start)).days
+    for lim, sh in EARLY_STEPS:
+        if d < lim:
+            return sh
+    return 0.0
+
+
 def predict(con, pid, stat, line, side, before=None, opp=None, exp_min=None, halflife=HALFLIFE,
-            spread=None, total=None, outs=None, ctx=None, boost=None, shrink=None, prior=PRIOR):
+            spread=None, total=None, outs=None, ctx=None, boost=None, shrink=None, prior=PRIOR, on_date=None):
     h = history(con, pid, stat, before)
     if len(h) < 5:
         return None
@@ -476,6 +506,10 @@ def predict(con, pid, stat, line, side, before=None, opp=None, exp_min=None, hal
             notes.append("teammates: %d out tonight, usage x%.3f (past absences removed from his average)" %
                          (sum(1 for e in entries if e[1]), um))
     res = price_dist(xs, line, side, halflife, scale, prior, shrink)
+    sh = early_shift(con, on_date or before or et_today().isoformat())
+    if sh:
+        res["p_win"] = min(max(res["p_win"] + (sh if side == "over" else -sh), 0.02), 0.98)
+        notes.append("early season: overs %+.0f points, unders %+.0f points (lab experiment 3)" % (sh * 100, -sh * 100))
     res.update(avg_min=avg_min, n=len(h), last=xs[:10], notes=notes)
     return res
 
@@ -813,7 +847,9 @@ def cmd_export(args):
     n_games = con.execute("SELECT COUNT(DISTINCT game_id) FROM game_log").fetchone()[0]
     last = con.execute("SELECT MAX(game_date) FROM game_log").fetchone()[0]
     meta = {"season": season, "rows": n_rows, "games": n_games, "players": len(players), "last_game_date": last,
-            "fields": LOG_FIELDS, "model": {"halflife": HALFLIFE, "prior": PRIOR, "shrink": SHRINK, "usage": USAGE_STRENGTH}}
+            "fields": LOG_FIELDS, "model": {"halflife": HALFLIFE, "prior": PRIOR, "shrink": SHRINK, "usage": USAGE_STRENGTH},
+            "early": {"on": EARLY_ON, "steps": EARLY_STEPS, "start": EARLY_START or (con.execute(
+                "SELECT MIN(game_date) FROM game_log WHERE season_type LIKE '%Regular%' AND season=?", (season,)).fetchone()[0])}}
 
     def put(name, obj):
         with open(os.path.join(args.outdir, name), "w", encoding="utf-8") as f:

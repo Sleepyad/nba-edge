@@ -55,6 +55,9 @@ Python (`predict`) and JavaScript (`predict` in docs/index.html) must stay ident
 ## Lab (experiments, no live changes)
 - `LAB.md` and `lab/`. Oct 24: overs ran cold in the first four days of 2026-27 (model 48%, actual 37%) and the same happened in the first week of Oct 2024 and Oct 2025 (about -4 to -6 points), fading within two weeks. Proposal waiting for AD: early-season discount on overs (about -5 points week 1, -1 points weeks 2 to 3). Until approved: shade overs, prefer unders. 2023-25 data sits in a lab database only (not in the repo); rebuild command is in LAB.md.
 
+## Early-season switch (built Oct 24, OFF)
+`EARLY_ON`, `EARLY_STEPS`, `EARLY_START` at the top of nba_edge.py; mirrored in docs/index.html through meta.json `early`. When on: P(over) minus 5 points in the first 7 days of the regular season, minus 1 point on days 8 to 21; P(under) the opposite. Tests cover the on and off cases. To turn on: set `EARLY_ON = True` (and `EARLY_START` to opening day if it can't be detected yet) only after AD approves. Scheduled reminders: re-run lab on Nov 7, 2026; prepare the switch on Oct 1, 2027.
+
 ## Results log
 - Oct 22: AD's bet365 SGP+ ($5, +6380, returns $324) LOST. CLE@PHI legs all won (PHI came back from 24 down, won 114-106; Maxey 32, Mitchell 32, Edgecombe 11, Harden 3 threes). DEN@OKC (OKC 96-84) legs all lost: Jokic 7 reb and 5 ast, Murray 6 pts.
 - Paper log after day 1 (16 bets, tiny sample, read nothing from it yet): rule 4-2, claude 2-1, book legs 4-3. Unders 5-0, overs 5-6 (stat lines are over bets mostly). Tickets: all three lost (R-, C-, B365-).

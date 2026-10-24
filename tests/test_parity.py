@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from datetime import date, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -43,13 +44,22 @@ class Parity(unittest.TestCase):
                                   side=random.choice(["over", "under"]), opp=random.choice(teams + [""]),
                                   exp_min=random.choice([None, None, 20, 32]),
                                   spread=random.choice([None, -11.5, -2, 4.5, 14]), total=random.choice([None, 214.5, 238]), outs=outs))
+            first = con.execute("SELECT MIN(game_date) FROM game_log").fetchone()[0]
+            offsets = [-2, 0, 3, 6, 7, 10, 20, 21, 40]
+            for c in cases:
+                c["on_date"] = (date.fromisoformat(first) + timedelta(days=random.choice(offsets))).isoformat()
+            ne.EARLY_ON, ne.EARLY_START = True, first
+            mp = os.path.join(ex.outdir, "meta.json")
+            meta = json.load(open(mp))
+            meta["early"] = {"on": True, "steps": ne.EARLY_STEPS, "start": first}
+            json.dump(meta, open(mp, "w"))
             cf = os.path.join(tmp, "cases.json")
             json.dump(cases, open(cf, "w"))
             js = json.loads(subprocess.check_output(["node", os.path.join(ROOT, "tests", "parity.js"), ex.outdir, cf]))
             worst, with_outs = 0.0, 0
             for c, j in zip(cases, js):
                 py = ne.predict(con, c["player_id"], c["stat"], c["line"], c["side"], opp=c["opp"] or None, exp_min=c["exp_min"],
-                                spread=c["spread"], total=c["total"], outs=c["outs"], ctx=ctx, boost=boost)
+                                spread=c["spread"], total=c["total"], outs=c["outs"], ctx=ctx, boost=boost, on_date=c["on_date"])
                 self.assertEqual(py is None, j is None, c)
                 if py:
                     with_outs += bool(c["outs"])
@@ -58,6 +68,30 @@ class Parity(unittest.TestCase):
             self.assertGreater(with_outs, 20, "test should exercise the teammate-out path")
             self.assertLess(worst, 2e-3, "JS and Python probabilities drifted apart")
             print("worst probability difference JS vs Python: %.2e over %d cases (%d with teammates out)" % (worst, len(cases), with_outs))
+        finally:
+            ne.EARLY_ON, ne.EARLY_START = False, None
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_early_season_switch(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            db = os.path.join(tmp, "demo.db")
+            ne.cmd_demo(type("A", (), {"db": db})())
+            con = ne.conn(db)
+            first = con.execute("SELECT MIN(game_date) FROM game_log").fetchone()[0]
+            pid = con.execute("SELECT player_id FROM game_log LIMIT 1").fetchone()[0]
+            day = lambda n: (date.fromisoformat(first) + timedelta(days=n)).isoformat()
+            off = ne.predict(con, pid, "pts", 12.5, "over", on_date=day(1))["p_win"]
+            offu = ne.predict(con, pid, "pts", 12.5, "under", on_date=day(1))["p_win"]
+            try:
+                ne.EARLY_ON, ne.EARLY_START = True, first
+                self.assertAlmostEqual(ne.predict(con, pid, "pts", 12.5, "over", on_date=day(1))["p_win"], off - 0.05, places=6)
+                self.assertAlmostEqual(ne.predict(con, pid, "pts", 12.5, "under", on_date=day(1))["p_win"], offu + 0.05, places=6)
+                self.assertAlmostEqual(ne.predict(con, pid, "pts", 12.5, "over", on_date=day(10))["p_win"],
+                                       ne.predict(con, pid, "pts", 12.5, "over", on_date=day(60))["p_win"] - 0.01, places=6)
+            finally:
+                ne.EARLY_ON, ne.EARLY_START = False, None
+            self.assertAlmostEqual(ne.predict(con, pid, "pts", 12.5, "over", on_date=day(1))["p_win"], off, places=9)
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 
