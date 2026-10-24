@@ -39,7 +39,7 @@ def run(con, start, end):
 
 def main():
     start, end = sys.argv[1], sys.argv[2]
-    con = N.conn(N.DEFAULT_DB)
+    con = N.conn(os.environ.get("NBA_DB", N.DEFAULT_DB))
     res = run(con, start, end)
     allr = [x for v in res.values() for x in v]
     print("window %s to %s" % (start, end))

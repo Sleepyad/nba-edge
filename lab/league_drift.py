@@ -15,7 +15,7 @@ import nba_edge as N
 def main():
     start = sys.argv[1] if len(sys.argv) > 1 else "2025-11-01"
     end = sys.argv[2] if len(sys.argv) > 2 else "2026-04-12"
-    con = N.conn(N.DEFAULT_DB)
+    con = N.conn(os.environ.get("NBA_DB", N.DEFAULT_DB))
     days = [r["d"] for r in con.execute("SELECT DISTINCT game_date d FROM game_log WHERE game_date>=? AND game_date<=? "
                                          "AND season_type LIKE '%Regular%' ORDER BY d", (start, end))]
     resid = {}

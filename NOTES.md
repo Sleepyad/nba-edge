@@ -53,7 +53,7 @@ Python (`predict`) and JavaScript (`predict` in docs/index.html) must stay ident
 - Read groups only with 30+ settled bets. Tonight's first logged slate: 6 rule bets and 3 claude bets, all DEN@OKC.
 
 ## Lab (experiments, no live changes)
-- `LAB.md` and `lab/`. First result Oct 24: overs ran cold in the first four days of the 2026-27 season (model 48%, actual 37%); no persistence inside a season. Decision pending: re-run around Nov 7. Until then, shade overs and prefer unders at similar edge.
+- `LAB.md` and `lab/`. Oct 24: overs ran cold in the first four days of 2026-27 (model 48%, actual 37%) and the same happened in the first week of Oct 2024 and Oct 2025 (about -4 to -6 points), fading within two weeks. Proposal waiting for AD: early-season discount on overs (about -5 points week 1, -1 points weeks 2 to 3). Until approved: shade overs, prefer unders. 2023-25 data sits in a lab database only (not in the repo); rebuild command is in LAB.md.
 
 ## Results log
 - Oct 22: AD's bet365 SGP+ ($5, +6380, returns $324) LOST. CLE@PHI legs all won (PHI came back from 24 down, won 114-106; Maxey 32, Mitchell 32, Edgecombe 11, Harden 3 threes). DEN@OKC (OKC 96-84) legs all lost: Jokic 7 reb and 5 ast, Murray 6 pts.
