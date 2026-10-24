@@ -46,3 +46,4 @@ id,placed,game_date,ticket,source,player_id,player,team,opp,stat,side,line,odds,
 45,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,model 69% flux,pending,,17711
 46,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397688,Trey Murphy III,NO,DEN,pts,over,15.5,-125,0.6898,model 69% flux,pending,,17711
 47,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,3112335,Nikola Jokic,DEN,NO,pts,under,26.5,-110,0.5835,model 58% thin edge,pending,,17711
+48,2026-10-24,2026-10-24,LADDER-d01,claude,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,"LADDER day 1 (unit 1.00); model 69% at real bet365 line; flux team, bends the unflagged rule",pending,,
