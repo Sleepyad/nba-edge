@@ -33,17 +33,23 @@ id,placed,game_date,ticket,source,player_id,player,team,opp,stat,side,line,odds,
 32,2026-10-23,2026-10-23,,book,3945274,Luka Doncic,LAL,LAC,reb,over,7.5,110,0.452,AD's $5 bonus-bet 6-leg parlay on bet365 (net return $230.77). model leaned LOWER at 8.5+,lose,6.0,
 33,2026-10-23,2026-10-23,,book,4683021,Deni Avdija,POR,SAC,pts,over,21.5,-115,0.5783,AD's $5 bonus-bet 6-leg parlay on bet365 (net return $230.77). model pick,win,26.0,
 34,2026-10-23,2026-10-23,,book,4395628,Zion Williamson,NO,UTAH,pts,over,20.5,-105,0.6016,AD's $5 bonus-bet 6-leg parlay on bet365 (net return $230.77). model pick,win,23.0,
-35,2026-10-24,2026-10-24,R-2026-10-24,rule,4066259,De'Aaron Fox,SA,DAL,pts,over,12.5,-110,0.6736,auto: model 67% vs proxy line,pending,,
-36,2026-10-24,2026-10-24,R-2026-10-24,rule,4395630,Devin Vassell,SA,DAL,pts,over,10.5,-110,0.6722,auto: model 67% vs proxy line,pending,,
-37,2026-10-24,2026-10-24,R-2026-10-24,rule,4592479,Julian Champagnie,SA,DAL,pts,under,12.5,-110,0.6375,auto: model 64% vs proxy line,pending,,
-38,2026-10-24,2026-10-24,,rule,5104157,Victor Wembanyama,SA,DAL,reb,over,10.5,-110,0.6153,auto: model 62% vs proxy line,pending,,
-39,2026-10-24,2026-10-24,,rule,4845367,Stephon Castle,SA,DAL,pts,over,16.5,-110,0.5717,auto: model 57% vs proxy line,pending,,
-40,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4432639,Jabari Smith Jr.,HOU,ATL,pts,over,14.5,-125,0.6829,"AD real bet365 8-leg, $6 to return $1068.65; model 68% flux",pending,,17711
-41,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4684740,Amen Thompson,HOU,ATL,pts,over,17.5,-110,0.613,model 61% flux,pending,,17711
-42,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397040,Brandon Williams,GS,PHX,pts,under,15.5,-112,0.6882,model 69% flux,pending,,17711
-43,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,5104157,Victor Wembanyama,SA,DAL,reb,over,11.5,-120,0.5549,"AD added; near-fair lean, SA -14.5 blowout risk",pending,,17711
-44,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395630,Devin Vassell,SA,DAL,reb,over,4.5,122,0.5782,model 58%,pending,,17711
-45,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,model 69% flux,pending,,17711
-46,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397688,Trey Murphy III,NO,DEN,pts,over,15.5,-125,0.6898,model 69% flux,pending,,17711
-47,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,3112335,Nikola Jokic,DEN,NO,pts,under,26.5,-110,0.5835,model 58% thin edge,pending,,17711
-48,2026-10-24,2026-10-24,LADDER-d01,claude,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,"LADDER day 1 (unit 1.00); model 69% at real bet365 line; flux team, bends the unflagged rule",pending,,
+35,2026-10-24,2026-10-24,R-2026-10-24,rule,4066259,De'Aaron Fox,SA,DAL,pts,over,12.5,-110,0.6736,auto: model 67% vs proxy line,win,19.0,
+36,2026-10-24,2026-10-24,R-2026-10-24,rule,4395630,Devin Vassell,SA,DAL,pts,over,10.5,-110,0.6722,auto: model 67% vs proxy line,win,11.0,
+37,2026-10-24,2026-10-24,R-2026-10-24,rule,4592479,Julian Champagnie,SA,DAL,pts,under,12.5,-110,0.6375,auto: model 64% vs proxy line,win,12.0,
+38,2026-10-24,2026-10-24,,rule,5104157,Victor Wembanyama,SA,DAL,reb,over,10.5,-110,0.6153,auto: model 62% vs proxy line,lose,7.0,
+39,2026-10-24,2026-10-24,,rule,4845367,Stephon Castle,SA,DAL,pts,over,16.5,-110,0.5717,auto: model 57% vs proxy line,win,19.0,
+40,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4432639,Jabari Smith Jr.,HOU,ATL,pts,over,14.5,-125,0.6829,"AD real bet365 8-leg, $6 to return $1068.65; model 68% flux",lose,14.0,17711
+41,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4684740,Amen Thompson,HOU,ATL,pts,over,17.5,-110,0.613,model 61% flux,lose,17.0,17711
+42,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397040,Brandon Williams,GS,PHX,pts,under,15.5,-112,0.6882,model 69% flux,lose,20.0,17711
+43,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,5104157,Victor Wembanyama,SA,DAL,reb,over,11.5,-120,0.5549,"AD added; near-fair lean, SA -14.5 blowout risk",lose,7.0,17711
+44,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395630,Devin Vassell,SA,DAL,reb,over,4.5,122,0.5782,model 58%,lose,4.0,17711
+45,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,model 69% flux,lose,17.0,17711
+46,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,4397688,Trey Murphy III,NO,DEN,pts,over,15.5,-125,0.6898,model 69% flux,win,26.0,17711
+47,2026-10-24,2026-10-24,B-2026-10-24-8leg,book,3112335,Nikola Jokic,DEN,NO,pts,under,26.5,-110,0.5835,model 58% thin edge,lose,35.0,17711
+48,2026-10-24,2026-10-24,LADDER-d01,claude,4395628,Zion Williamson,NO,DEN,pts,over,18.5,-112,0.6874,"LADDER day 1 (unit 1.00); model 69% at real bet365 line; flux team, bends the unflagged rule",lose,17.0,
+49,2026-10-25,2026-10-25,R-2026-10-25,rule,3934719,OG Anunoby,NY,ORL,ast,under,2.5,-110,0.654,auto: model 65% vs proxy line,pending,,
+50,2026-10-25,2026-10-25,R-2026-10-25,rule,3147657,Mikal Bridges,NY,ORL,reb,under,3.5,-110,0.6524,auto: model 65% vs proxy line,pending,,
+51,2026-10-25,2026-10-25,R-2026-10-25,rule,3136195,Karl-Anthony Towns,NY,ORL,ast,over,2.5,-110,0.6357,auto: model 64% vs proxy line,pending,,
+52,2026-10-25,2026-10-25,,rule,4432165,Jalen Suggs,ORL,NY,reb,under,4.5,-110,0.6342,auto: model 63% vs proxy line,pending,,
+53,2026-10-25,2026-10-25,,rule,4066320,Desmond Bane,ORL,NY,pts,over,15.5,-110,0.6222,auto: model 62% vs proxy line,pending,,
+54,2026-10-25,2026-10-25,,rule,4712849,Anthony Black,ORL,NY,reb,under,3.5,-110,0.6198,auto: model 62% vs proxy line,pending,,
