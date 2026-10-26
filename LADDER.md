@@ -15,6 +15,7 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | Day | Date | Pick | Line | Odds | Model % | Result | Balance |
 |---|---|---|---|---|---|---|---|
 | 1 | 2026-10-24 | Zion Williamson pts OVER | 18.5 | -112 | 69% | loss (17 pts) | 1.00 |
-| 2 | 2026-10-25 | Wendell Carter Jr. ast UNDER (proxy) | 2.5 | -110 | 68% | pending | 1.00 (restart after d01 loss) |
+| 2 | 2026-10-25 | Wendell Carter Jr. ast UNDER (proxy) | 2.5 | -110 | 68% | win (2 ast) | 1.91 (1.00 x 1.909) |
+| 3 | 2026-10-26 | Jock Landale ast UNDER (proxy) | 2.5 | -110 | 65% | pending | 1.91 |
 
-Running: picks won / picks made = 0 / 1 after day 1, day 2 pending. Ladder restart #1 at day 2 (balance 1.00).
+Running: picks won / picks made = 1 / 2 after day 2, day 3 pending. Ladder restart #1 at day 2 (balance 1.00), balance 1.91 after the day 2 win.
