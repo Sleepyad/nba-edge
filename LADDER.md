@@ -19,8 +19,11 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 3 | 2026-10-26 | Jock Landale ast UNDER (proxy) | 2.5 | -110 | 65% | loss (4 ast) | 1.00 (ladder dead, restart #2 at day 4) |
 | 4 | 2026-10-27 | OG Anunoby ast UNDER (proxy) | 2.5 | -110 | 68% | win (2 ast) | 1.91 (1.00 x 1.909) |
 | 5 | 2026-10-28 | Karl-Anthony Towns ast OVER (proxy) | 2.5 | -110 | 68% | win (5 ast) | 3.64 (1.91 x 1.909) |
-| 6 | 2026-10-29 | Dejounte Murray ast UNDER (proxy) | 7.5 | -110 | 70% | pending | 3.64 |
+| 6 | 2026-10-29 | Dejounte Murray ast UNDER (proxy) | 7.5 | -110 | 70% | void (did not play, no stat line) | 3.64 (stake returned, ladder holds) |
+| 7 | 2026-10-30 | Jalen Brunson ast OVER (proxy) | 4.5 | -110 | 68% | pending | 3.64 |
 
-Running: picks won / picks made = 3 / 5 after day 5, day 6 pending. Ladder restart #2 started day 4 and is alive at 3.64 after two straight wins (days 4 and 5).
+Running: picks won / picks made = 3 / 5 after day 6 (day 6 void, does not count), day 7 pending. Ladder restart #2 started day 4 and is alive at 3.64 after two straight wins (days 4 and 5).
 
 Day 6 note: all three games today (ATL-CLE, MEM-POR, SAC-NO) have flux flags, so no flux-free pick existed. NO was the lightest flux. Model 69.5% is rounded to 70% in the table.
+
+Day 7 note: NY-PHI is a 1.5 point spread, NY has no flux flag (only Alvarado out). Brunson averages 6.2 ast over the last 10 (36.9 min) against a 4.5 line; model 67.8%. The ORL-TOR unders were skipped because of heavy ORL injuries (flux).
