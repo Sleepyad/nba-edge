@@ -20,10 +20,13 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 4 | 2026-10-27 | OG Anunoby ast UNDER (proxy) | 2.5 | -110 | 68% | win (2 ast) | 1.91 (1.00 x 1.909) |
 | 5 | 2026-10-28 | Karl-Anthony Towns ast OVER (proxy) | 2.5 | -110 | 68% | win (5 ast) | 3.64 (1.91 x 1.909) |
 | 6 | 2026-10-29 | Dejounte Murray ast UNDER (proxy) | 7.5 | -110 | 70% | void (did not play, no stat line) | 3.64 (stake returned, ladder holds) |
-| 7 | 2026-10-30 | Jalen Brunson ast OVER (proxy) | 4.5 | -110 | 68% | pending | 3.64 |
+| 7 | 2026-10-30 | Jalen Brunson ast OVER (proxy) | 4.5 | -110 | 68% | win (6 ast) | 6.95 (3.64 x 1.909) |
+| 8 | 2026-10-31 | James Harden ast OVER (proxy) | 4.5 | -110 | 68% | pending | 6.95 |
 
-Running: picks won / picks made = 3 / 5 after day 6 (day 6 void, does not count), day 7 pending. Ladder restart #2 started day 4 and is alive at 3.64 after two straight wins (days 4 and 5).
+Running: picks won / picks made = 4 / 6 after day 7 (day 6 void, does not count), day 8 pending. Ladder restart #2 started day 4 and is alive at 6.95 after three straight wins (days 4, 5 and 7, day 6 void).
 
 Day 6 note: all three games today (ATL-CLE, MEM-POR, SAC-NO) have flux flags, so no flux-free pick existed. NO was the lightest flux. Model 69.5% is rounded to 70% in the table.
 
 Day 7 note: NY-PHI is a 1.5 point spread, NY has no flux flag (only Alvarado out). Brunson averages 6.2 ast over the last 10 (36.9 min) against a 4.5 line; model 67.8%. The ORL-TOR unders were skipped because of heavy ORL injuries (flux).
+
+Day 8 note: SA-MIN had the only flux-free players but SA is a 12.5 point favourite (blowout risk), so skipped. CLE at MIL: MIL favoured by 9.5, CLE has only Tyson out. Harden averages 6.3 ast over the last 10 (35.5 min) against a 4.5 line; model 68.0%. CHA-PHI picks skipped (Knueppel, White out, heavy flux).
