@@ -2421,7 +2421,7 @@ captured,game_date,player_id,player,team,opp,stat,line,p_over,flux
 2026-11-01,2026-11-01,4712849,Anthony Black,ORL,BOS,3pm,1.5,0.4609,
 2026-11-01,2026-11-01,4702382,Tristan da Silva,ORL,BOS,3pm,1.5,0.5339,
 2026-11-01,2026-11-01,4065648,Jayson Tatum,BOS,ORL,pts,25.5,0.3879,Paul George
-2026-11-01,2026-11-01,4065648,Jayson Tatum,BOS,ORL,reb,8.5,0.5392,Paul George
+2026-11-01,2026-11-01,4065648,Jayson Tatum,BOS,ORL,reb,8.5,0.5391,Paul George
 2026-11-01,2026-11-01,4065648,Jayson Tatum,BOS,ORL,ast,7.5,0.3431,Paul George
 2026-11-01,2026-11-01,4065648,Jayson Tatum,BOS,ORL,3pm,2.5,0.4549,Paul George
 2026-11-01,2026-11-01,3078576,Derrick White,BOS,ORL,pts,11.5,0.5133,Paul George
@@ -2431,92 +2431,92 @@ captured,game_date,player_id,player,team,opp,stat,line,p_over,flux
 2026-11-01,2026-11-01,4066354,Payton Pritchard,BOS,ORL,pts,16.5,0.4751,Paul George
 2026-11-01,2026-11-01,4066354,Payton Pritchard,BOS,ORL,ast,4.5,0.4929,Paul George
 2026-11-01,2026-11-01,4066354,Payton Pritchard,BOS,ORL,3pm,2.5,0.4803,Paul George
-2026-11-01,2026-11-01,4065804,Sam Hauser,BOS,ORL,reb,3.5,0.5777,Paul George
+2026-11-01,2026-11-01,4065804,Sam Hauser,BOS,ORL,reb,3.5,0.5775,Paul George
 2026-11-01,2026-11-01,4065804,Sam Hauser,BOS,ORL,3pm,2.5,0.4277,Paul George
-2026-11-01,2026-11-01,4397424,Neemias Queta,BOS,ORL,reb,7.5,0.4745,Paul George
-2026-11-01,2026-11-01,4395712,Andrew Nembhard,IND,BKN,pts,16.5,0.5005,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4395712,Andrew Nembhard,IND,BKN,ast,10.5,0.2447,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4395712,Andrew Nembhard,IND,BKN,3pm,2.5,0.3397,Kelly Oubre Jr.
-2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,pts,22.5,0.5206,Kelly Oubre Jr.
-2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,reb,7.5,0.3507,Kelly Oubre Jr.
-2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,ast,3.5,0.5032,Kelly Oubre Jr.
-2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,3pm,1.5,0.3928,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,pts,10.5,0.3949,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,reb,5.5,0.398,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,ast,3.5,0.3173,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,3pm,1.5,0.4106,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4396909,Aaron Nesmith,IND,BKN,pts,14.5,0.4187,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4396909,Aaron Nesmith,IND,BKN,3pm,2.5,0.4071,Kelly Oubre Jr.
-2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,pts,9.5,0.6339,Kelly Oubre Jr.
-2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,reb,6.5,0.364,Kelly Oubre Jr.
-2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,ast,2.5,0.5294,Kelly Oubre Jr.
-2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,3pm,1.5,0.5373,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4592829,Quenton Jackson,IND,BKN,pts,10.5,0.4296,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4592829,Quenton Jackson,IND,BKN,ast,4.5,0.351,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4398207,Jalen Slawson,IND,BKN,reb,4.5,0.4157,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4398207,Jalen Slawson,IND,BKN,ast,2.5,0.4137,Kelly Oubre Jr.
-2026-11-01,2026-11-01,4278104,Michael Porter Jr.,BKN,IND,pts,21.5,0.5646,Julius Randle
-2026-11-01,2026-11-01,4278104,Michael Porter Jr.,BKN,IND,reb,7.5,0.4186,Julius Randle
-2026-11-01,2026-11-01,4278104,Michael Porter Jr.,BKN,IND,3pm,3.5,0.4059,Julius Randle
-2026-11-01,2026-11-01,5242502,Ben Saraf,BKN,IND,pts,11.5,0.1883,Julius Randle
-2026-11-01,2026-11-01,5242502,Ben Saraf,BKN,IND,reb,3.5,0.1979,Julius Randle
-2026-11-01,2026-11-01,5242502,Ben Saraf,BKN,IND,ast,3.5,0.5349,Julius Randle
-2026-11-01,2026-11-01,5107173,Danny Wolf,BKN,IND,pts,9.5,0.4752,Julius Randle
-2026-11-01,2026-11-01,5107173,Danny Wolf,BKN,IND,reb,6.5,0.3413,Julius Randle
-2026-11-01,2026-11-01,5107173,Danny Wolf,BKN,IND,3pm,1.5,0.4724,Julius Randle
-2026-11-01,2026-11-01,4687718,Josh Minott,BKN,IND,pts,12.5,0.3494,Julius Randle
-2026-11-01,2026-11-01,4687718,Josh Minott,BKN,IND,reb,3.5,0.3928,Julius Randle
-2026-11-01,2026-11-01,4687718,Josh Minott,BKN,IND,3pm,2.5,0.2534,Julius Randle
-2026-11-01,2026-11-01,5174655,Chaney Johnson,BKN,IND,reb,4.5,0.4368,Julius Randle
-2026-11-01,2026-11-01,4432194,Day'Ron Sharpe,BKN,IND,reb,6.5,0.6525,Julius Randle
-2026-11-01,2026-11-01,4432194,Day'Ron Sharpe,BKN,IND,ast,2.5,0.3939,Julius Randle
-2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,pts,18.5,0.4071,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,reb,3.5,0.7122,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,ast,3.5,0.5773,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,3pm,2.5,0.4094,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4997536,Gui Santos,GS,LAC,pts,10.5,0.6319,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4997536,Gui Santos,GS,LAC,reb,4.5,0.5602,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4997536,Gui Santos,GS,LAC,ast,2.5,0.5894,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,pts,10.5,0.5237,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,reb,3.5,0.5247,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,ast,2.5,0.5295,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,3pm,2.5,0.3179,"Yaxel Lendeborg,Brandon Williams"
-2026-11-01,2026-11-01,4396907,Darius Garland,LAC,GS,pts,19.5,0.5244,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,4396907,Darius Garland,LAC,GS,ast,5.5,0.6391,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,4396907,Darius Garland,LAC,GS,3pm,2.5,0.5451,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,2991139,Kris Dunn,LAC,GS,reb,4.5,0.3933,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,2991139,Kris Dunn,LAC,GS,ast,4.5,0.4595,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,3936099,Derrick Jones Jr.,LAC,GS,pts,9.5,0.5545,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,3936099,Derrick Jones Jr.,LAC,GS,reb,4.5,0.4419,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,3936099,Derrick Jones Jr.,LAC,GS,3pm,1.5,0.4608,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,3448,Brook Lopez,LAC,GS,pts,13.5,0.3835,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,3448,Brook Lopez,LAC,GS,reb,5.5,0.4622,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,3448,Brook Lopez,LAC,GS,3pm,1.5,0.4625,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,4702352,Kobe Sanders,LAC,GS,pts,9.5,0.3382,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,4702352,Kobe Sanders,LAC,GS,3pm,1.5,0.3947,"Rui Hachimura,Keaton Wagler"
-2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,pts,22.5,0.4137,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
-2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,reb,3.5,0.5908,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
+2026-11-01,2026-11-01,4397424,Neemias Queta,BOS,ORL,reb,7.5,0.4744,Paul George
+2026-11-01,2026-11-01,4395712,Andrew Nembhard,IND,BKN,pts,16.5,0.4998,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4395712,Andrew Nembhard,IND,BKN,ast,10.5,0.2441,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4395712,Andrew Nembhard,IND,BKN,3pm,2.5,0.3393,Kelly Oubre Jr.
+2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,pts,22.5,0.5198,Kelly Oubre Jr.
+2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,reb,7.5,0.3499,Kelly Oubre Jr.
+2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,ast,3.5,0.5027,Kelly Oubre Jr.
+2026-11-01,2026-11-01,3149673,Pascal Siakam,IND,BKN,3pm,1.5,0.3924,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,pts,10.5,0.3944,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,reb,5.5,0.3973,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,ast,3.5,0.3169,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4431752,Kobe Brown,IND,BKN,3pm,1.5,0.4102,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4396909,Aaron Nesmith,IND,BKN,pts,14.5,0.4183,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4396909,Aaron Nesmith,IND,BKN,3pm,2.5,0.4066,Kelly Oubre Jr.
+2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,pts,9.5,0.6334,Kelly Oubre Jr.
+2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,reb,6.5,0.3631,Kelly Oubre Jr.
+2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,ast,2.5,0.5291,Kelly Oubre Jr.
+2026-11-01,2026-11-01,5106060,Jarace Walker,IND,BKN,3pm,1.5,0.5369,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4592829,Quenton Jackson,IND,BKN,pts,10.5,0.4292,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4592829,Quenton Jackson,IND,BKN,ast,4.5,0.3505,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4398207,Jalen Slawson,IND,BKN,reb,4.5,0.415,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4398207,Jalen Slawson,IND,BKN,ast,2.5,0.4133,Kelly Oubre Jr.
+2026-11-01,2026-11-01,4278104,Michael Porter Jr.,BKN,IND,pts,21.5,0.5639,Julius Randle
+2026-11-01,2026-11-01,4278104,Michael Porter Jr.,BKN,IND,reb,7.5,0.418,Julius Randle
+2026-11-01,2026-11-01,4278104,Michael Porter Jr.,BKN,IND,3pm,3.5,0.4054,Julius Randle
+2026-11-01,2026-11-01,5242502,Ben Saraf,BKN,IND,pts,11.5,0.1879,Julius Randle
+2026-11-01,2026-11-01,5242502,Ben Saraf,BKN,IND,reb,3.5,0.1973,Julius Randle
+2026-11-01,2026-11-01,5242502,Ben Saraf,BKN,IND,ast,3.5,0.5344,Julius Randle
+2026-11-01,2026-11-01,5107173,Danny Wolf,BKN,IND,pts,9.5,0.4747,Julius Randle
+2026-11-01,2026-11-01,5107173,Danny Wolf,BKN,IND,reb,6.5,0.3405,Julius Randle
+2026-11-01,2026-11-01,5107173,Danny Wolf,BKN,IND,3pm,1.5,0.4719,Julius Randle
+2026-11-01,2026-11-01,4687718,Josh Minott,BKN,IND,pts,12.5,0.349,Julius Randle
+2026-11-01,2026-11-01,4687718,Josh Minott,BKN,IND,reb,3.5,0.3923,Julius Randle
+2026-11-01,2026-11-01,4687718,Josh Minott,BKN,IND,3pm,2.5,0.2529,Julius Randle
+2026-11-01,2026-11-01,5174655,Chaney Johnson,BKN,IND,reb,4.5,0.4362,Julius Randle
+2026-11-01,2026-11-01,4432194,Day'Ron Sharpe,BKN,IND,reb,6.5,0.6518,Julius Randle
+2026-11-01,2026-11-01,4432194,Day'Ron Sharpe,BKN,IND,ast,2.5,0.3935,Julius Randle
+2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,pts,18.5,0.4078,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,reb,3.5,0.7124,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,ast,3.5,0.5778,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4709138,Brandin Podziemski,GS,LAC,3pm,2.5,0.41,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4997536,Gui Santos,GS,LAC,pts,10.5,0.6322,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4997536,Gui Santos,GS,LAC,reb,4.5,0.5608,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4997536,Gui Santos,GS,LAC,ast,2.5,0.5896,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,pts,10.5,0.524,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,reb,3.5,0.5253,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,ast,2.5,0.53,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4066436,De'Anthony Melton,GS,LAC,3pm,2.5,0.3184,"Yaxel Lendeborg,Brandon Williams"
+2026-11-01,2026-11-01,4396907,Darius Garland,LAC,GS,pts,19.5,0.5252,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,4396907,Darius Garland,LAC,GS,ast,5.5,0.6396,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,4396907,Darius Garland,LAC,GS,3pm,2.5,0.5456,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,2991139,Kris Dunn,LAC,GS,reb,4.5,0.422,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,2991139,Kris Dunn,LAC,GS,ast,4.5,0.4601,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,3936099,Derrick Jones Jr.,LAC,GS,pts,9.5,0.5549,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,3936099,Derrick Jones Jr.,LAC,GS,reb,4.5,0.4426,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,3936099,Derrick Jones Jr.,LAC,GS,3pm,1.5,0.4612,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,3448,Brook Lopez,LAC,GS,pts,13.5,0.3841,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,3448,Brook Lopez,LAC,GS,reb,5.5,0.4628,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,3448,Brook Lopez,LAC,GS,3pm,1.5,0.4629,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,4702352,Kobe Sanders,LAC,GS,pts,9.5,0.3387,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,4702352,Kobe Sanders,LAC,GS,3pm,1.5,0.3952,"Rui Hachimura,Brandon Ingram,Keaton Wagler"
+2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,pts,22.5,0.4138,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
+2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,reb,3.5,0.5903,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
 2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,ast,5.5,0.3506,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
-2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,3pm,2.5,0.3502,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
+2026-11-01,2026-11-01,4066457,Austin Reaves,LAL,TOR,3pm,2.5,0.3499,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
 2026-11-01,2026-11-01,3945274,Luka Doncic,LAL,TOR,pts,35.5,0.4619,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
-2026-11-01,2026-11-01,3945274,Luka Doncic,LAL,TOR,reb,6.5,0.5616,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
+2026-11-01,2026-11-01,3945274,Luka Doncic,LAL,TOR,reb,6.5,0.561,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
 2026-11-01,2026-11-01,3945274,Luka Doncic,LAL,TOR,ast,7.5,0.4489,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
-2026-11-01,2026-11-01,3945274,Luka Doncic,LAL,TOR,3pm,4.5,0.5163,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
+2026-11-01,2026-11-01,3945274,Luka Doncic,LAL,TOR,3pm,4.5,0.516,"Quentin Grimes,Walker Kessler,Lawson Lovering,Collin Sexton,Matisse Thybulle,Ziaire Williams"
 2026-11-01,2026-11-01,4433134,Scottie Barnes,TOR,LAL,pts,24.5,0.2958,Malachi Smith
-2026-11-01,2026-11-01,4433134,Scottie Barnes,TOR,LAL,reb,7.5,0.3159,Malachi Smith
+2026-11-01,2026-11-01,4433134,Scottie Barnes,TOR,LAL,reb,7.5,0.3156,Malachi Smith
 2026-11-01,2026-11-01,4433134,Scottie Barnes,TOR,LAL,ast,6.5,0.4092,Malachi Smith
 2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,pts,22.5,0.3731,Malachi Smith
-2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,reb,6.5,0.3474,Malachi Smith
-2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,ast,4.5,0.317,Malachi Smith
-2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,3pm,1.5,0.4674,Malachi Smith
+2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,reb,6.5,0.3471,Malachi Smith
+2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,ast,4.5,0.3169,Malachi Smith
+2026-11-01,2026-11-01,4395625,RJ Barrett,TOR,LAL,3pm,1.5,0.4672,Malachi Smith
 2026-11-01,2026-11-01,4684272,Ja'Kobe Walter,TOR,LAL,pts,11.5,0.3853,Malachi Smith
-2026-11-01,2026-11-01,4684272,Ja'Kobe Walter,TOR,LAL,reb,3.5,0.4103,Malachi Smith
-2026-11-01,2026-11-01,4684272,Ja'Kobe Walter,TOR,LAL,3pm,2.5,0.344,Malachi Smith
+2026-11-01,2026-11-01,4684272,Ja'Kobe Walter,TOR,LAL,reb,3.5,0.3315,Malachi Smith
+2026-11-01,2026-11-01,4684272,Ja'Kobe Walter,TOR,LAL,3pm,2.5,0.3438,Malachi Smith
 2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,pts,13.5,0.5732,Malachi Smith
-2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,reb,3.5,0.4351,Malachi Smith
-2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,ast,5.5,0.5328,Malachi Smith
-2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,3pm,2.5,0.5089,Malachi Smith
-2026-11-01,2026-11-01,4432241,Jamal Shead,TOR,LAL,ast,5.5,0.4465,Malachi Smith
-2026-11-01,2026-11-01,5093267,Collin Murray-Boyles,TOR,LAL,pts,11.5,0.3907,Malachi Smith
-2026-11-01,2026-11-01,5093267,Collin Murray-Boyles,TOR,LAL,reb,5.5,0.4056,Malachi Smith
-2026-11-01,2026-11-01,3134908,Jakob Poeltl,TOR,LAL,reb,6.5,0.4004,Malachi Smith
+2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,reb,3.5,0.4347,Malachi Smith
+2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,ast,5.5,0.5327,Malachi Smith
+2026-11-01,2026-11-01,4395724,Immanuel Quickley,TOR,LAL,3pm,2.5,0.5086,Malachi Smith
+2026-11-01,2026-11-01,4432241,Jamal Shead,TOR,LAL,ast,5.5,0.4333,Malachi Smith
+2026-11-01,2026-11-01,5093267,Collin Murray-Boyles,TOR,LAL,pts,11.5,0.3714,Malachi Smith
+2026-11-01,2026-11-01,5093267,Collin Murray-Boyles,TOR,LAL,reb,5.5,0.3905,Malachi Smith
+2026-11-01,2026-11-01,3134908,Jakob Poeltl,TOR,LAL,reb,6.5,0.4001,Malachi Smith
