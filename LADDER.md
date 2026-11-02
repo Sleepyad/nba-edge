@@ -22,9 +22,10 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 6 | 2026-10-29 | Dejounte Murray ast UNDER (proxy) | 7.5 | -110 | 70% | void (did not play, no stat line) | 3.64 (stake returned, ladder holds) |
 | 7 | 2026-10-30 | Jalen Brunson ast OVER (proxy) | 4.5 | -110 | 68% | win (6 ast) | 6.95 (3.64 x 1.909) |
 | 8 | 2026-10-31 | James Harden ast OVER (proxy) | 4.5 | -110 | 68% | win (7 ast) | 13.27 (6.95 x 1.909) |
-| 9 | 2026-11-01 | Scottie Barnes reb UNDER (proxy) | 7.5 | -110 | 68% | pending | 13.27 |
+| 9 | 2026-11-01 | Scottie Barnes reb UNDER (proxy) | 7.5 | -110 | 68% | win (6 reb) | 25.33 (13.27 x 1.909) |
+| 10 | 2026-11-02 | Scottie Barnes reb UNDER (proxy) | 7.5 | -110 | 68% | pending | 25.33 |
 
-Running: picks won / picks made = 5 / 7 after day 8 (day 6 void, does not count), day 9 pending. Ladder restart #2 started day 4 and is alive at 13.27 after four straight wins (days 4, 5, 7 and 8, day 6 void).
+Running: picks won / picks made = 6 / 8 after day 9 (day 6 void, does not count), day 10 pending. Ladder restart #2 started day 4 and is alive at 25.33 after five straight wins (days 4, 5, 7, 8 and 9, day 6 void). At a 10 dollar start that is 253 dollars.
 
 Day 6 note: all three games today (ATL-CLE, MEM-POR, SAC-NO) have flux flags, so no flux-free pick existed. NO was the lightest flux. Model 69.5% is rounded to 70% in the table.
 
@@ -33,3 +34,8 @@ Day 7 note: NY-PHI is a 1.5 point spread, NY has no flux flag (only Alvarado out
 Day 8 note: SA-MIN had the only flux-free players but SA is a 12.5 point favourite (blowout risk), so skipped. CLE at MIL: MIL favoured by 9.5, CLE has only Tyson out. Harden averages 6.3 ast over the last 10 (35.5 min) against a 4.5 line; model 68.0%. CHA-PHI picks skipped (Knueppel, White out, heavy flux).
 
 Day 9 note: BOS-ORL tips 3:30 PM, ORL picks skipped (Banchero and Suggs out, usage should rise against the model's 0.9 factor). BKN-IND and LAC-GS skipped (heavy flux, Curry and Green out). TOR-LAL spread is 2.5, Leonard has been out since Oct 29. Barnes averages 6.0 reb over the last 10 (36.2 min) against a 7.5 line; model 68.4%, 71% hit rate over 40 games.
+
+Day 10 note: 15 game slate. NY-BKN (NY -14.5) and SA-UTAH (SA -15.5) skipped for blowout risk, even though KAT ast over 2.5 (69.5%) and Castle pts over 14.5 (69.1%) priced well. Wagner reb u6.5 skipped because the normal model (61%) and hit-rate model (81%) disagree widely. Barnes reb u7.5 again: TOR +5.5 at LAC, no new flux, last-10 mean 6.1 (36.3 min), model 68.3%, both methods agree (67.7% and 72.6%).
+
+## Extension (instruction from AD, 2026-11-02)
+The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
