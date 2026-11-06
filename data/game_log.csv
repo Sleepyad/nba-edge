@@ -31165,3 +31165,55 @@ player_id,player,pnorm,team,game_id,game_date,season,season_type,matchup,home,op
 5106258,Gradey Dick,gradey dick,LAC,401909935,2026-11-04,2026-27,Regular Season,LAC vs. MIA,1,MIA,L,7,4,2,1,0,0,2,3,0,0,0,0,0,1,6,0
 5107157,Ryan Conwell,ryan conwell,MIA,401909935,2026-11-04,2026-27,Regular Season,MIA @ LAC,0,LAC,W,17,0,2,2,0,2,0,3,0,0,0,0,1,3,1,0
 5254165,Keaton Wagler,keaton wagler,LAC,401909935,2026-11-04,2026-27,Regular Season,LAC vs. MIA,1,MIA,L,16,11,2,1,3,4,3,6,2,2,0,0,0,0,15,0
+6478,Nikola Vucevic,nikola vucevic,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,4,0,0,0,0,1,0,1,0,0,0,0,0,0,-11,0
+3133635,Jevon Carter,jevon carter,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,3,0,0,0,0,0,0,0,0,0,0,0,0,0,-8,0
+3136193,Devin Booker,devin booker,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,34,30,1,8,4,8,11,22,4,4,3,0,3,2,16,1
+3155526,Dillon Brooks,dillon brooks,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,29,24,1,1,4,6,9,16,2,2,2,1,1,2,12,1
+3913174,Luke Kennard,luke kennard,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,21,12,1,5,3,6,4,8,1,2,0,0,0,2,8,0
+4066268,Duop Reath,duop reath,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,2,0,0,0,0,0,0,0,0,0,0,0,0,0,-4,0
+4066320,Desmond Bane,desmond bane,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,32,15,6,0,3,9,5,12,2,3,0,0,2,3,-6,1
+4066383,Miles Bridges,miles bridges,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,31,18,13,5,3,6,6,10,3,3,2,0,1,0,12,1
+4277847,Wendell Carter Jr.,wendell carter jr,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,34,27,13,2,2,2,10,12,5,6,1,1,3,3,-6,1
+4278572,Jamal Cain,jamal cain,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,25,5,5,0,1,6,2,9,0,1,0,0,2,0,-14,0
+4278585,Collin Gillespie,collin gillespie,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,24,6,2,2,2,5,2,9,0,0,3,0,1,4,12,0
+4280245,Jamaree Bouyea,jamaree bouyea,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,2,0,0,0,0,0,0,0,0,0,0,0,1,0,-4,0
+4348700,Goga Bitadze,goga bitadze,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,8,4,5,0,0,0,2,2,0,4,0,0,1,1,6,0
+4397204,Colin Castleton,colin castleton,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,2,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0
+4437244,Jalen Green,jalen green,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,24,6,0,3,0,1,3,7,0,0,2,0,2,3,1,1
+4566434,Franz Wagner,franz wagner,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,38,15,8,15,0,1,7,13,1,4,4,0,6,3,-7,1
+4592714,Pat Spencer,pat spencer,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,2,0,0,0,0,0,0,0,0,0,0,0,2,0,-4,0
+4593034,Alex Morales,alex morales,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,6,0,0,0,0,0,0,0,0,0,1,0,0,0,-1,0
+4601023,Oso Ighodaro,oso ighodaro,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,24,2,5,1,0,0,1,2,0,2,0,1,2,5,7,1
+4702382,Tristan da Silva,tristan da silva,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,30,18,2,1,4,12,6,15,2,2,0,0,3,1,-15,0
+4712849,Anthony Black,anthony black,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,31,10,7,6,1,3,3,8,3,4,1,0,5,2,-3,1
+4888725,Ryan Dunn,ryan dunn,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,25,11,3,3,1,2,5,7,0,0,0,1,0,2,3,0
+5041953,Koa Peat,koa peat,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,2,0,1,0,0,0,0,0,0,0,0,0,0,0,-7,0
+5203685,Khaman Maluach,khaman maluach,PHX,401909936,2026-11-05,2026-27,Regular Season,PHX vs. ORL,1,ORL,W,22,8,6,2,0,0,4,6,0,0,2,0,1,4,13,0
+5239561,Jase Richardson,jase richardson,ORL,401909936,2026-11-05,2026-27,Regular Season,ORL @ PHX,0,PHX,L,26,10,2,3,2,4,4,9,0,0,2,2,3,1,-4,1
+3213,Al Horford,al horford,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,18,8,5,1,2,2,3,3,0,0,0,0,0,4,21,0
+3975,Stephen Curry,stephen curry,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,28,29,1,4,6,12,9,19,5,5,1,0,0,1,17,1
+6475,Klay Thompson,klay thompson,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,23,11,0,3,2,7,3,10,3,3,0,2,3,3,-9,1
+6589,Draymond Green,draymond green,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,27,2,5,11,0,2,1,3,0,0,1,1,3,1,13,1
+2528210,Tim Hardaway Jr.,tim hardaway jr,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,4,0,0,1,0,3,0,3,0,0,0,0,0,0,-3,0
+2990969,Georges Niang,georges niang,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,22,13,4,3,2,5,5,8,1,2,1,0,2,0,16,0
+3032977,Giannis Antetokounmpo,giannis antetokounmpo,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,31,20,14,4,1,5,7,13,5,7,0,0,4,2,-22,1
+3059319,Andrew Wiggins,andrew wiggins,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,21,2,6,4,0,2,1,6,0,0,0,1,2,2,-1,1
+3064482,Bobby Portis,bobby portis,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,14,0,5,0,0,2,0,3,0,0,0,0,0,2,-5,0
+3134903,Gary Payton II,gary payton ii,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,10,9,0,0,1,1,3,3,2,2,1,0,1,1,5,0
+4066261,Bam Adebayo,bam adebayo,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,33,18,10,0,0,2,7,12,4,7,1,1,0,1,-9,1
+4066436,De'Anthony Melton,deanthony melton,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,17,5,6,2,0,4,1,5,3,4,3,0,3,1,9,0
+4066993,Dru Smith,dru smith,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,1,0,0,0,0,1,0,1,0,0,0,0,0,0,-2,0
+4278053,Davion Mitchell,davion mitchell,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,38,22,2,8,4,9,9,18,0,0,1,0,5,4,-16,1
+4278076,Nick Richards,nick richards,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,1,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,0
+4397040,Brandon Williams,brandon williams,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,21,10,1,4,0,1,4,7,2,2,0,2,2,1,7,0
+4397886,Charles Bassey,charles bassey,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,14,8,7,0,0,1,3,4,2,2,0,3,3,5,7,0
+4431772,Myron Gardner,myron gardner,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,1,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,0
+4433149,LJ Cryer,lj cryer,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0
+4601025,Pelle Larsson,pelle larsson,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,29,13,1,4,3,5,4,9,2,2,3,0,5,4,-15,0
+4703396,Graham Ike,graham ike,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,1,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0
+4709138,Brandin Podziemski,brandin podziemski,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,32,9,6,3,2,6,3,8,1,2,1,1,1,3,5,1
+4897262,Will Richard,will richard,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,16,10,0,2,2,4,4,6,0,0,0,1,1,1,-5,1
+4897449,Malevy Leons,malevy leons,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0
+4997528,Nikola Jovic,nikola jovic,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,12,1,0,1,0,2,0,2,1,2,0,1,0,2,-4,0
+5107157,Ryan Conwell,ryan conwell,MIA,401909937,2026-11-05,2026-27,Regular Season,MIA @ GS,0,GS,L,30,13,1,2,3,6,4,9,2,2,3,0,0,2,-10,0
+5175737,Yaxel Lendeborg,yaxel lendeborg,GS,401909937,2026-11-05,2026-27,Regular Season,GS vs. MIA,1,MIA,W,30,17,8,6,1,3,6,14,4,6,3,1,2,4,-1,1
