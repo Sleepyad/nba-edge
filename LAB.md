@@ -38,3 +38,14 @@ Early-season discount on P(over), mirrored on P(under): about -5 points for the 
 - Practical rule for now: treat overs as weaker than the model says for the first two weeks of the season, and prefer unders when the edge is similar.
 - Re-run `python lab/overs_early_season.py 2026-10-20 <today>` in two weeks (around Nov 7). If the gap is still over 5 points, propose a temporary early-season over discount for AD to approve; if it closes, drop the idea and record that here.
 - Experiment 3 answered the missing-data question: it repeats. See the proposal above.
+
+## 4. Re-check, Nov 7 2026
+Same script, same method, current data (through Nov 6). No model change, `EARLY_ON` stays False.
+
+| Window | Model P(over) | Actual over | Gap |
+|---|---|---|---|
+| Oct 20 to 26, 2026 (week 1, n=2164) | 47.9% | 41.6% | -6.3 |
+| Oct 27 to Nov 6, 2026 (weeks 2 to 3, n=3184) | 48.2% | 45.9% | -2.3 |
+
+- Week 1 is now -6.3 with a bigger sample (it was -10.5 on the first 4 days), in line with 2024 (-6.3) and 2025 (-4.3). Weeks 2 to 3 are -2.3, versus -1.6 in 2024 and -0.3 in 2025.
+- Does it fade like prior years? Yes, mostly: the gap shrinks by about 4 points, but it stays a bit wider than in 2024 and 2025 (points still -5.9, threes and rebounds back near zero), so the proposed -1 point for days 8 to 21 looks about right, maybe slightly light for points.
