@@ -28,7 +28,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 12 | 2026-11-04 | Derik Queen pts UNDER (proxy) | 15.5 | -110 | 69% | loss (20 pts) | 1.00 (ladder dead, restart #3 only reached 1.00; restart #4 at day 13) |
 | 13 | 2026-11-05 | Oso Ighodaro ast UNDER (proxy) | 4.5 | -110 | 68% | win (1 ast) | 1.91 (1.00 x 1.909) |
 | 14 | 2026-11-06 | Dejounte Murray ast UNDER (proxy) | 6.5 | -110 | 69% | win (4 ast) | 3.64 (1.91 x 1.909) |
-| 15 | 2026-11-07 | Karl-Anthony Towns ast OVER (proxy) | 2.5 | -110 | 68% | pending | 3.64 (staked, restart #4) |
+| 15 | 2026-11-07 | Karl-Anthony Towns ast OVER (proxy) | 2.5 | -110 | 68% | win (3 ast) | 6.95 (3.64 x 1.909) |
+| 16 | 2026-11-08 | Trey Murphy III pts OVER (proxy) | 14.5 | -110 | 67% | pending | 6.95 (staked, restart #4) |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -57,6 +58,10 @@ Day 14 note: 9 game slate (first tip 7 PM ET). SA-SAC skipped (SA -17.5, blowout
 Running: picks won / picks made = 8 / 12 after day 14 (day 6 void, day 11 pass). Restart #4 is 2 for 2 (days 13 and 14), balance 3.64 (36.4 dollars at a 10 dollar start). Best balance reached: 25.33.
 
 Day 15 note: 7 game slate, all unstarted at check time (first tip DEN-IND 5 PM ET). Towns ast o2.5: NY at CLE spread 5.5, only Hart out for NY, last-10 mean 2.8 (40-game mean 3.8, 29.9 min), model 67.7%, normal 69.5% and hit-rate 68.9% agree. Wagner ast u7.5 (67.6%) skipped: ORL has Banchero, Suggs, Bane, Isaac out (heavy flux) and normal 62.7% vs hit-rate 77.1% disagree.
+
+Running: picks won / picks made = 9 / 13 after day 15 (day 6 void, day 11 pass). Restart #4 is 3 for 3 (days 13 to 15), balance 6.95 (69.5 dollars at a 10 dollar start). Best balance reached: 25.33.
+
+Day 16 note: 7 game slate, all unstarted at check time (first tip PHI-CHI 4:30 PM ET). Murphy pts o14.5: NO -1.5 at LAC, only Missi out, last-10 mean 14.6 (40-game mean 18.4, 33.3 min), model 67.0%, normal 68.9% and hit-rate 68.0% agree. Skipped: Embiid pts o18.5 (69.6%, PHI +9.5 spread blowout risk), Giddey reb o4.5 (normal 73.0% vs hit-rate 63.8% split), Murphy 3pm o1.5 (72.9%, over the cap).
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
