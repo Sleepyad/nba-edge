@@ -32,7 +32,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 16 | 2026-11-08 | Trey Murphy III pts OVER (proxy) | 14.5 | -110 | 67% | win (26 pts) | 13.27 (6.95 x 1.909) |
 | 17 | 2026-11-09 | Stephon Castle ast OVER (proxy) | 4.5 | -110 | 68% | win (7 ast) | 25.33 (13.27 x 1.909) |
 | 18 | 2026-11-10 | Franz Wagner reb UNDER (proxy) | 6.5 | -110 | 70% | loss (7 reb) | 1.00 (ladder dead from 25.33, restart #5 at day 19) |
-| 19 | 2026-11-11 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 68% | pending | 1.00 (staked, restart #5) |
+| 19 | 2026-11-11 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 68% | loss (7 reb) | 1.00 (restart #5 died immediately; restart #6 at day 20) |
+| 20 | 2026-11-12 | Devin Booker 3pm UNDER (proxy) | 2.5 | -110 | 69% | pending | 1.00 (staked, restart #6) |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -77,6 +78,10 @@ Running: picks won / picks made = 11 / 15 after day 17 (day 6 void, day 11 pass)
 Running: picks won / picks made = 11 / 16 after day 18 (day 6 void, day 11 pass). Restart #4 climbed to 25.33 (253.3 dollars at a 10 dollar start, 5 for 5) then died on day 18 (Wagner grabbed 7 reb vs a 6.5 line). Balance back to 1.00 (10 dollars), restart #5 begins with day 19. Best balance reached: 25.33.
 
 Day 19 note: 10 game slate, all unstarted at check time (first tip WSH-IND 7 PM ET). Black reb u5.5: ORL -4.5 vs UTAH, no flux flag (Suggs, Banchero, Isaac, Penda out, already in usage x1.045 for reb), last-10 reb mean 5.4 (last 5 games 2 3 5 3 5, 32.0 min), model 67.5%, normal 68.9% and hit-rate 69.1% agree tightly. Skipped: Wagner ast u8.5 (70.2%, usage x1.15, last-10 mean 8.6 vs line) and reb u6.5 (68.3%, he went over yesterday), SA-CHI (SA -15.5) and LAL-MIL (LAL -14.5) for blowout risk, other games heavy flux.
+
+Running: picks won / picks made = 11 / 17 after day 19 (day 6 void, day 11 pass). Restart #5 died immediately on day 19 (Black grabbed 7 reb vs a 5.5 line). Balance 1.00 (10 dollars), restart #6 begins with day 20. Best balance reached: 25.33.
+
+Day 20 note: 4 game slate (TOR-PHI 7 PM, DET-WSH 7 PM, DAL-MIN 8 PM, CHA-PHX 9 PM ET), all unstarted at check time (3:15 PM ET). Booker 3pm u2.5: PHX -6.5 vs CHA, total 214.5, only Mark Williams out (Bridges and Spencer flagged on the CHA side of flux list), last-10 3pm mean 1.9 (2 3 2 4 2 2 3 0 2 0, 33.8 min), model 68.9%, normal 70.4% and hit-rate 70.8% agree tightly. Skipped: Shead ast u7.5 (71.8%, over the cap, normal 66.5% vs hit-rate 82.7% split), WSH unders (DET -9.5 blowout line, Davis and Dybantsa out, heavy flux), Barrett ast u4.5 (66.9%) and Green pts o11.5 (66.4%) lower ranked.
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
