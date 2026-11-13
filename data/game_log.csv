@@ -32279,3 +32279,27 @@ player_id,player,pnorm,team,game_id,game_date,season,season_type,matchup,home,op
 5105565,Donovan Clingan,donovan clingan,POR,401909975,2026-11-11,2026-27,Regular Season,POR vs. OKC,1,OKC,W,30,5,12,2,1,2,2,4,0,0,1,3,2,2,3,1
 5174983,Aday Mara,aday mara,OKC,401909975,2026-11-11,2026-27,Regular Season,OKC @ POR,0,POR,L,32,11,6,2,0,0,4,8,3,4,0,1,2,1,-6,1
 5241364,Bennett Stirtz,bennett stirtz,OKC,401909975,2026-11-11,2026-27,Regular Season,OKC @ POR,0,POR,L,25,6,1,1,2,5,2,9,0,0,3,1,1,0,-9,0
+2581018,Kentavious Caldwell-Pope,kentavious caldwell pope,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,27,11,4,5,3,5,4,7,0,0,1,1,0,3,21,0
+2993874,Kyle Anderson,kyle anderson,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,5,0,0,1,0,0,0,0,0,0,0,0,1,2,-8,0
+3059318,Joel Embiid,joel embiid,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,28,20,4,3,0,3,7,17,6,7,1,1,2,3,11,1
+3134908,Jakob Poeltl,jakob poeltl,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,25,9,5,3,0,0,3,7,3,4,1,0,0,4,7,1
+3904625,Tacko Fall,tacko fall,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,1,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,0
+3912848,Dean Wade,dean wade,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,34,6,5,2,2,5,2,6,0,0,0,0,0,3,2,1
+3917376,Jaylen Brown,jaylen brown,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,36,18,6,2,0,1,8,15,2,4,2,1,5,1,9,1
+4351851,Anfernee Simons,anfernee simons,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,23,17,3,2,5,6,6,9,0,0,0,0,0,1,22,0
+4395625,RJ Barrett,rj barrett,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,37,31,14,5,4,7,13,20,1,2,0,0,3,2,-5,1
+4395724,Immanuel Quickley,immanuel quickley,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,28,26,4,6,3,7,8,16,7,8,1,1,0,3,-12,1
+4397784,Malachi Smith,malachi smith,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,2,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0
+4431678,Tyrese Maxey,tyrese maxey,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,35,27,2,8,1,4,8,13,10,12,2,1,2,2,1,1
+4431893,Jamison Battle,jamison battle,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,25,13,1,1,3,6,5,9,0,0,1,1,0,3,-5,0
+4432241,Jamal Shead,jamal shead,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,22,5,1,5,1,4,1,6,2,2,1,0,2,3,-2,0
+4432446,Jabari Walker,jabari walker,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,16,9,8,1,1,2,4,8,0,0,0,0,0,1,-2,0
+4432737,Jaden Bradley,jaden bradley,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,2,1,0,0,0,0,0,0,1,2,0,0,0,0,1,0
+4433144,Caleb Love,caleb love,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,1,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0
+4684272,Ja'Kobe Walter,jakobe walter,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,32,6,5,0,1,6,2,8,1,2,1,0,2,2,10,1
+4702656,Alijah Martin,alijah martin,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,18,7,4,1,1,3,3,6,0,0,1,0,1,1,-14,0
+4711297,Justin Edwards,justin edwards,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,1,0,1,0,0,0,0,0,0,0,0,0,1,0,-1,0
+4873090,Labaron Philon Jr.,labaron philon jr,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,2,0,0,0,0,0,0,1,0,0,0,0,0,0,-3,0
+5093267,Collin Murray-Boyles,collin murray boyles,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,32,14,0,4,1,1,5,9,3,4,1,5,2,3,-15,1
+5124612,VJ Edgecombe,vj edgecombe,PHI,401909976,2026-11-12,2026-27,Regular Season,PHI vs. TOR,1,TOR,W,36,15,8,8,1,4,7,12,0,0,3,1,0,4,-3,1
+5149115,Allen Graves,allen graves,TOR,401909976,2026-11-12,2026-27,Regular Season,TOR @ PHI,0,PHI,L,13,0,2,0,0,2,0,2,0,0,0,0,1,0,-13,0
