@@ -32369,3 +32369,24 @@ player_id,player,pnorm,team,game_id,game_date,season,season_type,matchup,home,op
 5060701,Christian Anderson,christian anderson,CHA,401909979,2026-11-12,2026-27,Regular Season,CHA @ PHX,0,PHX,L,18,13,0,2,3,6,4,9,2,2,0,0,2,3,-5,0
 5203685,Khaman Maluach,khaman maluach,PHX,401909979,2026-11-12,2026-27,Regular Season,PHX vs. CHA,1,CHA,W,16,4,2,1,0,0,2,4,0,0,0,2,1,3,-7,0
 5211176,Tidjane Salaun,tidjane salaun,CHA,401909979,2026-11-12,2026-27,Regular Season,CHA @ PHX,0,PHX,L,16,2,4,0,0,2,1,3,0,0,0,0,0,4,-7,0
+6478,Nikola Vucevic,nikola vucevic,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,11,2,3,0,0,3,1,4,0,0,0,0,0,1,-7,0
+3133628,Myles Turner,myles turner,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,31,14,11,3,4,7,5,9,0,0,2,0,4,5,-3,1
+3133635,Jevon Carter,jevon carter,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,17,5,2,2,1,4,2,5,0,0,1,1,0,1,-14,0
+3134907,Kyle Kuzma,kyle kuzma,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,31,14,4,2,1,5,3,9,7,15,2,1,3,2,-2,1
+4066320,Desmond Bane,desmond bane,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,35,21,5,3,6,10,7,13,1,1,2,0,0,6,0,1
+4277843,Gary Trent Jr.,gary trent jr,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,16,1,0,0,0,2,0,4,1,3,1,0,1,1,-8,0
+4277847,Wendell Carter Jr.,wendell carter jr,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,30,12,8,0,1,4,5,9,1,1,1,1,2,3,-11,1
+4278572,Jamal Cain,jamal cain,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,4,0,4,1,0,1,0,1,0,0,0,0,0,1,6,0
+4348700,Goga Bitadze,goga bitadze,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,18,12,4,1,0,0,5,5,2,2,1,1,1,2,19,0
+4395725,Tyler Herro,tyler herro,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,34,18,1,2,2,7,5,17,6,7,2,1,1,3,-1,1
+4397475,AJ Green,aj green,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,8,0,0,2,0,1,0,1,0,0,0,0,0,0,-1,0
+4432165,Jalen Suggs,jalen suggs,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,21,3,2,3,1,6,1,8,0,0,0,0,1,3,-8,0
+4432848,Jaime Jaquez Jr.,jaime jaquez jr,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,28,22,6,4,5,7,8,15,1,3,0,0,2,2,-3,0
+4566434,Franz Wagner,franz wagner,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,36,35,9,12,3,8,13,22,6,6,1,1,3,2,34,1
+4591725,Ryan Rollins,ryan rollins,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,29,8,10,2,0,4,3,8,2,2,1,0,3,1,-4,0
+4702382,Tristan da Silva,tristan da silva,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,31,12,6,2,2,8,4,11,2,2,0,0,1,1,21,1
+4712849,Anthony Black,anthony black,ORL,401909297,2026-11-13,2026-27,Regular Season,ORL vs. MIL,1,MIL,W,37,5,2,5,1,6,1,9,2,2,1,2,5,4,0,1
+4997526,Ousmane Dieng,ousmane dieng,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,5,0,0,0,0,1,0,1,0,0,0,0,0,0,-8,1
+5082206,Brayden Burries,brayden burries,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,19,3,4,3,1,2,1,4,0,0,0,0,0,2,-4,1
+5105623,Kel'el Ware,kelel ware,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,17,10,6,1,2,3,4,6,0,0,1,1,1,3,-5,0
+5164559,Nate Ament,nate ament,MIL,401909297,2026-11-13,2026-27,Regular Season,MIL @ ORL,0,ORL,L,22,9,3,1,2,5,3,8,1,1,2,0,0,2,-1,0
