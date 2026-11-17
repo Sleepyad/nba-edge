@@ -66,7 +66,7 @@ def build(con):
                             (pid, d, r["game_id"])).fetchone()["v"]
             if a == line:
                 continue
-            out.append(dict(date=d, stat=stat, pa=p["p_win"], y=1.0 if a > line else 0.0, win=1.0 if r["wl"] == "W" else 0.0,
+            out.append(dict(date=d, gid=r["game_id"], team=r["team"], stat=stat, pa=p["p_win"], y=1.0 if a > line else 0.0, win=1.0 if r["wl"] == "W" else 0.0,
                             ut=u5 / max(u35, 1e-6) - 1, mt=m5 / max(m35, 1e-6) - 1, form=form))
     return out
 

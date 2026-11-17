@@ -63,3 +63,13 @@ Script: `lab/second_model.py [TRAIN_END]`. 31,839 regular-season player-games (2
 ### Decision (pending AD approval)
 - No live change. Does not meet the lab rule yet (needs a win on two time splits for a specific feature plus 30 settled paper bets for anything about picks). Candidates to keep testing: minutes trend and team form.
 - Next steps if AD wants them: (a) price same-game legs jointly using the player-over given team-win/loss rates above, (b) re-run with 2026-27 games after a month, (c) test spread (blowout) as the reason team form works.
+
+## 6. Joint pricing of "player over + team moneyline" legs (Nov 17, 2026)
+Script: `lab/sgp_joint.py [TRAIN_END]`. Team win chance from the closing spread (normal curve), then P(over) = w*a + (1-w)*b with a - b = the over-rate gap between team wins and losses (fitted before the cutoff: pts about +10 points, reb +6.5, ast +7 to +12, pra +12). Scored against the independent product (P(over) x P(win)) on games after the cutoff, log loss on the two events "over and team wins", "over and team loses".
+| cutoff | independent | joint |
+| 2026-01-01 | 0.5236 | 0.5221 |
+| 2026-02-15 | 0.5125 | 0.5110 |
+| 2026-03-15 | 0.4995 | 0.4981 |
+- Joint beats independent by about 0.0015 on all three splits. Small in log loss, but the point is the direction: same-team legs are worth more than independence says, opposing-team legs (e.g. Miller over + Lakers ML) are worth less.
+- Warning: the best spread-to-win-chance curve needs a very wide spread (sd 14 to 20 points, a real NBA spread is about 12). The stored closing spreads may include stale snapshots; check `games.csv` line capture before trusting the win chances in live use.
+- Not live. If approved, the slip tool would show a "joint chance" next to the independent one for same-game legs.
