@@ -49,3 +49,17 @@ Same script, same method, current data (through Nov 6). No model change, `EARLY_
 
 - Week 1 is now -6.3 with a bigger sample (it was -10.5 on the first 4 days), in line with 2024 (-6.3) and 2025 (-4.3). Weeks 2 to 3 are -2.3, versus -1.6 in 2024 and -0.3 in 2025.
 - Does it fade like prior years? Yes, mostly: the gap shrinks by about 4 points, but it stays a bit wider than in 2024 and 2025 (points still -5.9, threes and rebounds back near zero), so the proposed -1 point for days 8 to 21 looks about right, maybe slightly light for points.
+
+## 5. Model B: story signals as numbers, plus team-result correlation (Nov 17, 2026)
+Script: `lab/second_model.py [TRAIN_END]`. 31,839 regular-season player-games (22+ min) at proxy lines (last-10 average rounded to x.5) for pts, reb, ast, pra, priced by the live model from earlier games only. Model B = logistic recalibration of the live model's probability plus pregame features: usage trend (last-5 vs prior-35 average of fga + 0.44 fta + tov), minutes trend, team form (team win rate over last 10).
+- Part 1, correlation with the team result: players go over far more when their team wins. Points 55.1% vs 47.0% (gap +8.1), rebounds +6.2, assists +10.2, pts+reb+ast 58.5% vs 47.3% (+11.2), all stats +8.9. So "player over + own team ML" is positively correlated and "player over + opposing team ML" is negatively correlated. The slip's joint chance in the dashboard assumes independence and is wrong for same-game legs.
+- Part 2, Model B vs live model, test log loss (lower is better), three train/test cutoffs:
+  | cutoff | live raw | recalibrated | + usage | + minutes | + team form | all three |
+  | 2026-01-01 | 0.6823 | 0.6807 | 0.6815 | 0.6795 | 0.6795 | 0.6808 |
+  | 2026-02-15 | 0.6822 | 0.6799 | 0.6779 | 0.6788 | 0.6784 | 0.6776 |
+  | 2026-03-15 | 0.6850 | 0.6832 | 0.6814 | 0.6827 | 0.6817 | 0.6810 |
+- Reading: recalibration alone gains about 0.002 (the live model's overs run a bit hot on proxy lines). Usage trend is not stable (negative weight on the smallest training set). Minutes trend (+0.45 to +0.77) and team form (-0.4, good teams' players go over a bit less than the model says) help on every cutoff, but only by about 0.001 to 0.0015 beyond recalibration. That is at the edge of noise, and one season of data.
+- Tonight's slip (Nov 17) through Model B (minutes trend + team form, pts and pra only): Henderson U12.5 pts 58.8% -> 59.1%, Brandon Miller O25.5 pra 49.1% -> 52.2%. Other legs are not stats B was fitted on.
+### Decision (pending AD approval)
+- No live change. Does not meet the lab rule yet (needs a win on two time splits for a specific feature plus 30 settled paper bets for anything about picks). Candidates to keep testing: minutes trend and team form.
+- Next steps if AD wants them: (a) price same-game legs jointly using the player-over given team-win/loss rates above, (b) re-run with 2026-27 games after a month, (c) test spread (blowout) as the reason team form works.
