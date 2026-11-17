@@ -37,7 +37,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 21 | 2026-11-13 | Karl-Anthony Towns pts UNDER (proxy) | 21.5 | -110 | 70% | loss (23 pts) | 1.00 (restart #7 died immediately; restart #8 at day 22) |
 | 22 | 2026-11-14 | Donovan Mitchell pts OVER (proxy) | 21.5 | -110 | 69% | void (did not play, no plays in the game) | 1.00 (stake returned, restart #8 holds) |
 | 23 | 2026-11-15 | Landry Shamet 3pm UNDER (proxy) | 2.5 | -110 | 69% | loss (4 3pm) | 1.00 (restart #8 died immediately; restart #9 at day 24) |
-| 24 | 2026-11-16 | Tristan da Silva 3pm UNDER (proxy) | 3.5 | -110 | 70% | pending | 1.00 (staked, restart #9) |
+| 24 | 2026-11-16 | Tristan da Silva 3pm UNDER (proxy) | 3.5 | -110 | 70% | win (3 3pm) | 1.91 (1.00 x 1.909) |
+| 25 | 2026-11-17 | De'Aaron Fox ast OVER (proxy) | 4.5 | -110 | 67% | pending | 1.91 (staked, restart #9) |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -104,6 +105,10 @@ Running: picks won / picks made = 11 / 19 after day 21 (day 6 void, day 11 pass,
 Day 24 note: 8 game slate, all unstarted at the 3:15 PM ET check (first tip ORL-BOS 7 PM ET). Only ORL carries no flux flag. da Silva 3pm u3.5: BOS -8.5 (under the 10 point blowout line), total 212.5, Isaac, Penda, Banchero out (usage x1.051), last-10 3pm mean 3.4 (2 5 4 2 5 2 4 5 1 4, 30.5 min), model 69.9%, normal 72.5% and hit-rate 70.7% agree. Skipped: Black reb u5.5 (69.3%, normal 74.5% vs hit-rate 66.6%, lost this line on day 11), Bane 3pm u4.5 (67.3%), Richardson ast u2.5 (67.3%, normal 72.8% vs hit-rate 63.7%), every other game heavy flux.
 
 Running: picks won / picks made = 11 / 20 after day 23 (day 6 void, day 11 pass, day 22 void). Restart #8 died immediately on day 23 (Shamet hit 4 threes vs an under 2.5 line). Balance 1.00 (10 dollars), restart #9 begins with day 24 (pending). Best balance reached: 25.33.
+
+Day 24 result: da Silva made 3 threes vs an under 3.5 line, win. Restart #9 balance 1.91 (19.09 dollars at a 10 dollar start). Picks won / picks made = 12 / 21 after day 24 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
+
+Day 25 note: 5 game slate, all unstarted at the 3:15 PM ET check (first tip NY-TOR 7:30 PM ET). Fox ast o4.5: SA -9.5 vs DET (under the 10 point blowout line), total 222.5, no SA flux flag (Harris, Quaintance out, usage x0.991), DET missing Joe, Prince, Holland, Robinson, Duren, last-10 ast mean 5.5 (1 9 6 6 4 4 3 7 4 6, 28.0 min), model 67.1%, normal 67.0% and hit-rate 70.6% agree tightly. Skipped: Towns pts u21.5 (70.0%, normal 67.2% vs hit-rate 77.5% split, lost this line on day 21), Towns 3pm u2.5 (71.0%, over the cap, normal 77.3% vs hit-rate 67.3%), Wembanyama 3pm u2.5 (66.7%, same game with lower ranked agreement), other games heavy flux.
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
