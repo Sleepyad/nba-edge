@@ -112,5 +112,7 @@ Day 25 note: 5 game slate, all unstarted at the 3:15 PM ET check (first tip NY-T
 
 Day 25 result: Fox had 2 assists vs an over 4.5 line, loss. Restart #9 died at 1.91 after one win. Balance 1.00 (10 dollars), restart #10 begins with day 26. Picks won / picks made = 12 / 22 after day 25 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
 
+Day 26 note (proxy): 12 game slate, all unstarted at the 3:15 PM ET check (first tip MEM-CLE 7 PM ET). Only ORL carries no flux flag. Black reb u5.5 (LADDER-d26): ORL -1.5 at home vs PHI, total 222.5, Banchero, Isaac, Penda, Nelson out (usage x0.979), PHI missing Brown and Bona, last-10 reb mean 5.2 (2 2 7 7 8 7 8 6 2 3, 32.3 min), model 68.7%, normal 71.9% and hit-rate 68.5% agree. Black lost this line on days 11 and 19, noted as a risk. Skipped: da Silva pts u14.5 (65.9%, last-10 mean 14.7), Richardson ast u2.5 (66.3%, normal 70.9% vs hit-rate 63.7%), Wagner ast u8.5 (66.7%, last-10 mean 8.9), every other game heavy flux or over the 70% cap.
+
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
