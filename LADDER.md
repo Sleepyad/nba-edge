@@ -39,6 +39,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 23 | 2026-11-15 | Landry Shamet 3pm UNDER (proxy) | 2.5 | -110 | 69% | loss (4 3pm) | 1.00 (restart #8 died immediately; restart #9 at day 24) |
 | 24 | 2026-11-16 | Tristan da Silva 3pm UNDER (proxy) | 3.5 | -110 | 70% | win (3 3pm) | 1.91 (1.00 x 1.909) |
 | 25 | 2026-11-17 | De'Aaron Fox ast OVER (proxy) | 4.5 | -110 | 67% | loss (2 ast) | 1.00 (ladder dead from 1.91, restart #10 at day 26) |
+| 26 | 2026-11-18 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 69% | win (2 reb) | 1.91 (1.00 x 1.909) |
+| 27 | 2026-11-19 | Karl-Anthony Towns reb UNDER (proxy) | 14.5 | -110 | 68% | pending | pending |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -113,6 +115,10 @@ Day 25 note: 5 game slate, all unstarted at the 3:15 PM ET check (first tip NY-T
 Day 25 result: Fox had 2 assists vs an over 4.5 line, loss. Restart #9 died at 1.91 after one win. Balance 1.00 (10 dollars), restart #10 begins with day 26. Picks won / picks made = 12 / 22 after day 25 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
 
 Day 26 note (proxy): 12 game slate, all unstarted at the 3:15 PM ET check (first tip MEM-CLE 7 PM ET). Only ORL carries no flux flag. Black reb u5.5 (LADDER-d26): ORL -1.5 at home vs PHI, total 222.5, Banchero, Isaac, Penda, Nelson out (usage x0.979), PHI missing Brown and Bona, last-10 reb mean 5.2 (2 2 7 7 8 7 8 6 2 3, 32.3 min), model 68.7%, normal 71.9% and hit-rate 68.5% agree. Black lost this line on days 11 and 19, noted as a risk. Skipped: da Silva pts u14.5 (65.9%, last-10 mean 14.7), Richardson ast u2.5 (66.3%, normal 70.9% vs hit-rate 63.7%), Wagner ast u8.5 (66.7%, last-10 mean 8.9), every other game heavy flux or over the 70% cap.
+
+Day 26 result: Black had 2 reb vs an under 5.5 line, win. Restart #10 balance 1.91 (19.09 dollars at a 10 dollar start). Picks won / picks made = 13 / 23 after day 26 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
+
+Day 27 note (proxy): 4 game slate (GS-MEM, POR-MIL, NY-MIN, LAC-SA, first tip 8 PM ET), all unstarted at the 3:15 PM ET check. Towns reb u14.5 (LADDER-d27): NY vs MIN, NY +1.5 (pick'em), total 216.5, no NY flux flag, no NY injuries, last-10 reb mean 14.1 (16 17 15 11 16 13 12 16 12 13), model 68.0%, normal 70.9% and hit-rate 67.8% agree. Skipped: Brunson 3pm u3.5 (69.9%, at the cap), Towns 3pm u2.5 (73.0%, over the cap), Shamet 3pm u2.5 (67.3%, lost this line on day 23), Shamet pts u11.5 (69.1%, two 22+ games in the last 10), Melton 3pm u2.5 (62.1% once injuries applied), Wembanyama and Fox (SA, 65.6% and 65.9%, lower ranked), POR-MIL and MEM heavy flux.
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
