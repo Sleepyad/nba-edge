@@ -33520,3 +33520,125 @@ player_id,player,pnorm,team,game_id,game_date,season,season_type,matchup,home,op
 5106258,Gradey Dick,gradey dick,LAC,401910022,2026-11-19,2026-27,Regular Season,LAC @ SA,0,SA,L,13,2,2,1,0,1,1,3,0,0,0,0,1,2,-11,0
 5108024,Yanic Konan Niederhauser,yanic konan niederhauser,LAC,401910022,2026-11-19,2026-27,Regular Season,LAC @ SA,0,SA,L,11,2,3,0,0,1,1,4,0,0,1,0,2,5,-12,0
 5254165,Keaton Wagler,keaton wagler,LAC,401910022,2026-11-19,2026-27,Regular Season,LAC @ SA,0,SA,L,17,7,5,2,1,4,3,10,0,0,1,0,4,1,-19,0
+2578185,Dorian Finney-Smith,dorian finney smith,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,3,0,0,1,0,1,0,1,0,0,0,0,0,1,2,0
+2583632,Royce O'Neale,royce oneale,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,21,9,1,0,3,6,3,6,0,0,0,0,0,2,0,0
+4278039,Nickeil Alexander-Walker,nickeil alexander walker,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,32,17,4,3,2,8,7,20,1,1,0,0,1,4,6,1
+4280151,Corey Kispert,corey kispert,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,16,7,3,0,1,3,3,6,0,0,0,0,0,0,8,0
+4395651,Coby White,coby white,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,26,11,4,9,0,5,5,17,1,1,1,1,3,3,2,1
+4396971,Naz Reid,naz reid,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,39,12,10,3,2,10,4,19,2,4,0,0,3,5,-16,1
+4397020,Luguentz Dort,luguentz dort,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,23,2,1,0,0,2,1,5,0,0,0,1,0,4,2,0
+4397183,Aaron Wiggins,aaron wiggins,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,34,19,2,3,4,6,7,12,1,2,1,0,0,3,22,1
+4431680,Onyeka Okongwu,onyeka okongwu,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,34,16,7,1,2,6,6,10,2,2,1,0,2,1,7,1
+4431941,RayJ Dennis,rayj dennis,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,13,8,4,2,0,0,2,3,4,4,2,0,2,2,-7,0
+4433249,Moussa Diabate,moussa diabate,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,30,21,15,2,0,0,9,12,3,5,1,0,4,1,5,1
+4433287,Brandon Miller,brandon miller,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,33,19,8,3,5,13,7,18,0,0,1,0,3,2,-2,1
+4576060,Ryan Kalkbrenner,ryan kalkbrenner,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,17,6,6,0,0,0,2,2,2,2,0,0,1,1,-17,0
+4602025,Sion James,sion james,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,32,9,1,2,1,4,4,8,0,2,1,0,2,2,-15,1
+4701230,Jalen Johnson,jalen johnson,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,36,26,6,6,3,4,10,15,3,4,4,1,4,3,2,1
+4869342,Dyson Daniels,dyson daniels,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,35,11,8,10,1,3,5,10,0,0,4,0,2,0,21,1
+5060701,Christian Anderson,christian anderson,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,21,4,1,2,0,2,1,3,2,2,0,0,1,3,-19,0
+5106262,Zuby Ejiofor,zuby ejiofor,ATL,401909305,2026-11-20,2026-27,Regular Season,ATL vs. CHA,1,CHA,W,14,5,2,2,0,0,2,2,1,2,0,1,0,1,7,0
+5211176,Tidjane Salaun,tidjane salaun,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,13,4,2,1,0,3,2,6,0,0,0,0,0,0,1,0
+5239590,Liam McNeeley,liam mcneeley,CHA,401909305,2026-11-20,2026-27,Regular Season,CHA @ ATL,0,ATL,L,7,2,1,0,0,2,1,3,0,0,0,0,0,1,-9,0
+6478,Nikola Vucevic,nikola vucevic,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,23,15,8,1,3,3,5,5,2,2,0,0,2,3,-1,0
+3064514,Julius Randle,julius randle,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,39,27,9,6,1,7,9,20,8,11,3,0,3,5,8,1
+3133635,Jevon Carter,jevon carter,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,10,3,0,0,1,1,1,1,0,0,1,0,0,3,2,0
+3150844,Moritz Wagner,moritz wagner,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,22,3,5,2,1,2,1,3,0,0,2,0,4,3,3,0
+4066320,Desmond Bane,desmond bane,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,31,21,2,3,7,13,7,17,0,0,5,1,1,4,14,1
+4277847,Wendell Carter Jr.,wendell carter jr,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,35,8,8,2,0,2,2,4,4,4,0,2,1,4,7,1
+4278104,Michael Porter Jr.,michael porter jr,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,34,16,4,5,3,6,6,14,1,2,2,0,3,2,-5,1
+4348700,Goga Bitadze,goga bitadze,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,15,4,4,1,0,0,2,2,0,0,0,0,1,4,-5,0
+4432165,Jalen Suggs,jalen suggs,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,30,8,6,2,2,7,3,10,0,0,1,0,4,4,-1,1
+4432194,Day'Ron Sharpe,dayron sharpe,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,26,17,11,2,0,1,7,9,3,3,1,1,1,1,-5,1
+4566434,Franz Wagner,franz wagner,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,36,35,5,7,2,5,13,25,7,9,0,1,2,2,9,1
+4702177,Keon Ellis,keon ellis,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,8,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0
+4702382,Tristan da Silva,tristan da silva,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,24,6,1,2,2,6,2,6,0,0,0,0,0,1,-5,0
+4712849,Anthony Black,anthony black,ORL,401909306,2026-11-20,2026-27,Regular Season,ORL @ BKN,0,BKN,W,37,13,7,6,2,6,4,11,3,8,3,2,5,1,-10,1
+4712896,Noah Clowney,noah clowney,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,22,0,2,2,0,3,0,4,0,0,1,1,0,3,-12,0
+5101761,Mikel Brown Jr.,mikel brown jr,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,24,18,1,0,3,8,6,14,3,3,0,0,1,3,3,0
+5107173,Danny Wolf,danny wolf,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,26,20,5,2,4,6,6,10,4,4,1,0,3,4,15,1
+5175643,Egor Demin,egor demin,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,21,6,3,2,0,3,1,6,4,4,0,0,2,3,-9,0
+5279130,Nolan Traore,nolan traore,BKN,401909306,2026-11-20,2026-27,Regular Season,BKN vs. ORL,1,ORL,L,18,4,0,2,0,2,2,6,0,0,0,0,0,0,-8,1
+3992,James Harden,james harden,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,40,51,6,6,7,11,15,26,14,14,1,0,2,3,22,1
+2530530,T.J. McConnell,tj mcconnell,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,11,2,1,2,0,0,1,4,0,0,0,0,0,0,-16,0
+2580365,Larry Nance Jr.,larry nance jr,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,11,7,2,0,1,3,3,6,0,0,0,2,0,1,-15,0
+2995706,Mario Hezonja,mario hezonja,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,20,10,10,3,2,4,4,8,0,0,0,0,1,4,24,0
+3133603,Kelly Oubre Jr.,kelly oubre jr,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,23,17,6,0,3,5,6,10,2,2,0,2,1,5,6,1
+3149673,Pascal Siakam,pascal siakam,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,30,21,7,2,2,6,8,17,3,6,0,0,2,1,0,1
+3908809,Donovan Mitchell,donovan mitchell,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,29,20,3,3,2,7,8,17,2,4,0,0,2,4,-15,1
+3934723,Thomas Bryant,thomas bryant,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,16,9,6,0,2,2,3,4,1,2,1,0,0,1,23,0
+4017837,Ivica Zubac,ivica zubac,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,27,21,10,2,0,0,8,11,5,6,0,3,2,2,-6,1
+4065731,Jay Huff,jay huff,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,1,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,0
+4066328,Jarrett Allen,jarrett allen,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,31,6,8,4,0,0,3,7,0,0,0,2,1,0,-18,1
+4066757,Sam Merrill,sam merrill,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,25,6,1,1,2,7,2,7,0,0,0,0,0,1,-9,0
+4278355,Obi Toppin,obi toppin,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,26,17,3,2,2,5,6,11,3,4,0,0,2,2,5,0
+4395712,Andrew Nembhard,andrew nembhard,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,26,12,3,8,3,6,3,10,3,4,1,0,2,2,-3,1
+4396909,Aaron Nesmith,aaron nesmith,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,29,2,10,7,0,2,1,6,0,1,0,2,0,1,-8,1
+4398207,Jalen Slawson,jalen slawson,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,14,4,2,2,0,0,2,3,0,0,2,1,1,0,2,0
+4576087,Peyton Watson,peyton watson,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,29,15,4,3,3,6,6,9,0,0,2,1,4,5,10,1
+4592829,Quenton Jackson,quenton jackson,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,18,3,2,2,1,5,1,5,0,0,2,0,2,1,-27,0
+4702134,Norchad Omier,norchad omier,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,6,2,1,0,0,0,1,3,0,0,1,0,0,0,-8,0
+5023693,Tyrese Proctor,tyrese proctor,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,24,5,1,2,1,3,2,6,0,0,0,0,0,3,8,1
+5041951,Meleek Thomas,meleek thomas,CLE,401909307,2026-11-20,2026-27,Regular Season,CLE vs. IND,1,IND,W,20,4,1,4,0,4,2,8,0,0,4,0,2,2,8,0
+5105854,Braden Smith,braden smith,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,11,5,3,5,1,1,2,4,0,0,1,0,1,2,10,0
+5106060,Jarace Walker,jarace walker,IND,401909307,2026-11-20,2026-27,Regular Season,IND @ CLE,0,CLE,L,11,8,1,3,1,1,2,2,3,4,0,0,1,2,9,0
+2596112,Javonte Green,javonte green,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,23,12,1,0,3,4,3,4,3,3,0,0,0,1,-11,0
+3134908,Jakob Poeltl,jakob poeltl,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,32,10,9,3,0,0,5,7,0,0,0,2,0,2,9,1
+3908845,John Collins,john collins,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,20,3,6,1,0,2,1,4,1,1,0,0,1,2,-10,1
+4066372,Kevin Huerter,kevin huerter,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,36,20,3,3,4,8,7,15,2,3,1,0,2,3,16,1
+4278562,Paul Reed,paul reed,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,28,8,7,3,0,0,3,5,2,2,3,1,1,0,7,0
+4395702,Isaiah Joe,isaiah joe,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,18,9,1,0,1,6,2,7,4,4,0,0,2,1,3,0
+4395724,Immanuel Quickley,immanuel quickley,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,33,18,3,10,3,7,6,10,3,4,0,0,3,2,8,1
+4397784,Malachi Smith,malachi smith,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,5,2,0,1,0,0,1,1,0,0,0,0,1,0,1,0
+4431684,Trayce Jackson-Davis,trayce jackson davis,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,16,8,2,1,0,0,4,4,0,0,1,1,0,2,-6,0
+4431893,Jamison Battle,jamison battle,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,20,10,5,0,2,4,4,6,0,0,0,0,1,1,-6,0
+4432166,Cade Cunningham,cade cunningham,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,36,23,5,9,2,7,10,22,1,4,1,0,3,1,-11,1
+4432241,Jamal Shead,jamal shead,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,15,0,1,4,0,2,0,4,0,0,0,0,2,2,-5,0
+4433134,Scottie Barnes,scottie barnes,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,37,29,5,5,0,0,14,21,1,2,1,0,3,5,2,1
+4684272,Ja'Kobe Walter,jakobe walter,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,33,8,3,3,2,8,2,11,2,2,1,0,1,3,9,1
+4684742,Ausar Thompson,ausar thompson,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,33,13,6,3,0,1,6,9,1,2,2,0,1,3,-16,1
+4700852,Chaz Lanier,chaz lanier,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,6,0,0,0,0,1,0,1,0,0,0,0,0,0,4,0
+4702656,Alijah Martin,alijah martin,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,16,0,2,1,0,3,0,4,0,0,0,0,1,1,-9,0
+5107199,Daniss Jenkins,daniss jenkins,DET,401909308,2026-11-20,2026-27,Regular Season,DET vs. TOR,1,TOR,L,39,14,4,1,2,4,5,14,2,2,2,0,1,4,3,1
+5149115,Allen Graves,allen graves,TOR,401909308,2026-11-20,2026-27,Regular Season,TOR @ DET,0,DET,W,33,20,10,1,2,4,6,9,6,6,3,1,0,3,12,1
+6583,Anthony Davis,anthony davis,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,34,36,11,3,0,0,16,26,4,9,0,0,3,2,10,1
+6609,Khris Middleton,khris middleton,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,28,5,2,3,0,1,2,5,1,2,0,0,0,3,-6,0
+2595516,Norman Powell,norman powell,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,33,16,3,2,1,5,7,18,1,2,1,0,1,2,-7,1
+2990984,Buddy Hield,buddy hield,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,23,15,4,0,4,9,5,10,1,1,0,0,2,1,8,0
+4066650,Zach Collins,zach collins,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,15,6,2,4,0,3,3,7,0,0,1,2,0,2,13,0
+4277905,Trae Young,trae young,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,35,16,2,5,4,8,4,13,4,4,3,0,1,4,23,1
+4278067,Nic Claxton,nic claxton,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,29,11,7,1,0,0,4,8,3,3,0,2,3,4,-20,1
+4278129,Deandre Ayton,deandre ayton,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,11,0,4,1,0,0,0,1,0,0,0,0,0,1,-2,0
+4395626,Tre Jones,tre jones,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,25,12,1,7,0,1,5,14,2,2,1,0,0,3,11,0
+4431687,Patrick Williams,patrick williams,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,23,6,3,1,0,4,2,8,2,2,1,1,1,0,2,0
+4432822,Isaac Okoro,isaac okoro,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,29,9,7,1,1,3,2,4,4,4,1,0,1,1,-16,1
+4711294,Matas Buzelis,matas buzelis,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,25,9,5,1,1,5,4,10,0,0,1,0,3,4,-14,1
+4845374,Bub Carrington,bub carrington,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,6,3,0,0,1,2,1,2,0,0,0,0,0,0,-4,0
+4871145,Josh Giddey,josh giddey,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,23,2,6,7,0,1,1,6,0,0,0,0,2,0,-15,1
+5104155,Bilal Coulibaly,bilal coulibaly,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,24,2,5,0,0,0,1,3,0,0,2,2,0,2,-13,0
+5142718,AJ Dybantsa,aj dybantsa,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,37,20,10,6,2,4,9,18,0,0,2,1,3,3,20,1
+5144126,Will Riley,will riley,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,6,0,1,1,0,0,0,0,0,2,0,0,0,0,-14,0
+5160992,Alex Sarr,alex sarr,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,20,3,3,0,1,2,1,3,0,0,1,1,2,2,10,1
+5174563,Kyshawn George,kyshawn george,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,35,11,7,5,1,8,5,17,0,0,1,2,3,5,2,1
+5238230,Tre Johnson,tre johnson,WSH,401909309,2026-11-20,2026-27,Regular Season,WSH @ CHI,0,CHI,W,4,2,1,0,0,1,1,2,0,0,0,0,0,0,-6,0
+5242496,Noa Essengue,noa essengue,CHI,401909309,2026-11-20,2026-27,Regular Season,CHI vs. WSH,1,WSH,L,15,8,4,0,2,2,3,3,0,2,1,0,1,3,18,0
+3133626,Kenrich Williams,kenrich williams,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,28,6,2,4,1,5,2,6,1,2,3,1,0,1,23,0
+4222252,Isaiah Hartenstein,isaiah hartenstein,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,28,5,8,4,0,0,2,3,1,1,1,2,4,4,-9,1
+4277813,Herbert Jones,herbert jones,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,33,14,2,3,4,7,4,9,2,2,1,0,2,5,13,1
+4277956,Jordan Poole,jordan poole,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,13,6,0,1,2,2,2,3,0,0,0,0,1,4,-16,0
+4278073,Shai Gilgeous-Alexander,shai gilgeous alexander,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,37,40,3,8,4,7,14,24,8,11,0,1,3,2,-3,1
+4395628,Zion Williamson,zion williamson,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,37,22,6,7,0,0,9,19,4,6,2,0,1,4,12,1
+4397136,Saddiq Bey,saddiq bey,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,37,21,6,3,4,9,8,17,1,1,0,1,0,2,-15,1
+4397688,Trey Murphy III,trey murphy iii,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,29,17,4,1,3,8,5,10,4,5,2,1,0,0,-11,0
+4432185,Micah Peavy,micah peavy,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,9,2,2,0,0,1,1,2,0,0,0,0,0,1,0,0
+4432823,Jaylin Williams,jaylin williams,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,9,3,1,1,1,4,1,4,0,0,0,0,0,2,-7,0
+4683778,Jared McCain,jared mccain,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,30,18,3,0,3,9,7,14,1,2,1,1,2,3,0,1
+4702384,Nique Clifford,nique clifford,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,15,4,5,1,0,1,1,2,2,2,1,0,0,1,3,0
+4703115,Jaron Pierre Jr.,jaron pierre jr,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,4,3,2,0,1,2,1,3,0,0,0,0,0,0,1,0
+4869780,Derik Queen,derik queen,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,18,11,7,3,0,2,3,8,5,6,0,1,1,0,-13,0
+4900671,Ajay Mitchell,ajay mitchell,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,31,8,2,4,1,3,3,12,1,2,0,0,0,4,4,1
+4997538,Karlo Matkovic,karlo matkovic,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,8,0,2,0,0,2,0,2,0,0,0,0,3,0,-11,0
+5061589,Yves Missi,yves missi,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,23,4,7,0,0,0,1,2,2,2,0,0,2,2,11,1
+5144091,Jeremiah Fears,jeremiah fears,NO,401909310,2026-11-20,2026-27,Regular Season,NO @ OKC,0,OKC,L,38,22,7,5,3,7,9,20,1,2,0,1,4,4,-1,1
+5174983,Aday Mara,aday mara,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,29,22,16,2,0,0,11,15,0,0,0,2,1,3,15,1
+5241364,Bennett Stirtz,bennett stirtz,OKC,401909310,2026-11-20,2026-27,Regular Season,OKC vs. NO,1,NO,W,25,18,2,2,4,6,7,10,0,0,1,0,0,0,4,0
