@@ -42,7 +42,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 26 | 2026-11-18 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 69% | win (2 reb) | 1.91 (1.00 x 1.909) |
 | 27 | 2026-11-19 | Karl-Anthony Towns reb UNDER (proxy) | 14.5 | -110 | 68% | win (12 reb) | 3.64 (1.91 x 1.909) |
 | 28 | 2026-11-20 | Tristan da Silva pts UNDER (proxy) | 15.5 | -110 | 69% | win (6 pts) | 6.95 (3.64 x 1.909) |
-| 29 | 2026-11-21 | Donovan Clingan ast UNDER (proxy) | 2.5 | -110 | 69% | pending | pending |
+| 29 | 2026-11-21 | Donovan Clingan ast UNDER (proxy) | 2.5 | -110 | 69% | loss (4 ast) | 1.00 (ladder dead from 6.95, restart #11 at day 30) |
+| 30 | 2026-11-22 | Karl-Anthony Towns reb UNDER (proxy) | 14.5 | -110 | 69% | pending | pending |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -129,6 +130,10 @@ Day 28 note (proxy): 9 game slate, all unstarted at the 3:15 PM ET check (first 
 Day 28 result: da Silva scored 6 pts vs an under 15.5 line, win. Restart #10 is 3 for 3 (days 26 to 28), balance 6.95 (69.5 dollars at a 10 dollar start). Picks won / picks made = 15 / 25 after day 28 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
 
 Day 29 note (proxy): 5 unstarted games at the 3:15 PM ET check (MIL-PHI already in progress, excluded). Clingan ast u2.5 (LADDER-d29): POR at NY, NY -3.5, total 215.5, no flux flag on either side, Morant, Sharpe, Krejci, Youngblood out (usage x1.001, Avdija day-to-day), last-10 ast mean 2.0 (2 5 1 2 2 3 0 1 1 3, 27.4 min), model 68.8%, normal 67.7% and hit-rate 73.8% agree. Skipped: Towns reb u14.5 (70.5%, over the cap, day-to-day void risk), Clingan reb u11.5 (68.7%, normal 66.3% vs hit-rate 75.4% split), Bridges reb u4.5 (normal 75.2% vs hit-rate 62.8%), SA-NO (SA -18.5) and BOS-SAC (BOS -13.5) for blowout risk, DAL and SAC unders heavy flux.
+
+Day 29 result: Clingan had 4 assists vs an under 2.5 line, loss. Restart #10 died at 6.95 after three wins. Balance back to 1.00 (10 dollars), restart #11 begins with day 30. Picks won / picks made = 15 / 26 after day 29 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
+
+Day 30 note (proxy): 7 game slate, all unstarted at the check time (first tip DET-ATL 3:30 PM ET). Towns reb u14.5 (LADDER-d30): NY -7.5 vs IND (under the 10 point blowout line), total 213.5, no NY flux flag, Anunoby and Clarkson out (usage x0.986), last-10 reb mean 14.0 (12 16 17 15 11 16 13 12 16 12, 33.6 min), model 69.1%, normal 71.6% and hit-rate 69.6% agree tightly. Towns is day-to-day (a DNP would void). He won this line on day 27. Skipped: Hart reb o5.5 (69.4%, normal 74.1% vs hit-rate 67.2%), Lendeborg 3pm u2.5 (69.1%, normal 64.1% vs hit-rate 83.1% split), da Silva pts u14.5 (68.2%, normal 67.3% vs hit-rate 72.8%), DEN-CHI and BOS-GS spreads near blowout, other games heavy flux.
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
