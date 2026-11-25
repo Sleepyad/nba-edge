@@ -45,7 +45,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 29 | 2026-11-21 | Donovan Clingan ast UNDER (proxy) | 2.5 | -110 | 69% | loss (4 ast) | 1.00 (ladder dead from 6.95, restart #11 at day 30) |
 | 30 | 2026-11-22 | Karl-Anthony Towns reb UNDER (proxy) | 14.5 | -110 | 69% | win (13 reb) | 1.91 (1.00 x 1.909) |
 | 31 | 2026-11-23 | Toumani Camara 3pm OVER (proxy) | 1.5 | -110 | 69% | loss (1 3pm) | 1.00 (ladder dead from 1.91, restart #12 at day 32) |
-| 32 | 2026-11-24 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 68% | pending | pending |
+| 32 | 2026-11-24 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 68% | win (4 reb) | 1.91 (1.00 x 1.909) |
+| 33 | 2026-11-25 | Ajay Mitchell 3pm UNDER (proxy) | 1.5 | -110 | 69% | pending | pending |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -144,6 +145,10 @@ Day 31 note (proxy): 10 game slate, all unstarted at the 3:15 PM ET check (first
 Day 31 result: Camara made 1 three vs an over 1.5 line, loss. Restart #11 died at 1.91 after one win. Balance back to 1.00 (10 dollars), restart #12 begins with day 32. Picks won / picks made = 16 / 28 after day 31 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
 
 Day 32 note (proxy): 3 game slate (DET-ORL 7 PM, BOS-WSH 8 PM, DAL-DEN 10 PM ET), all unstarted at the 3:15 PM ET check. Only ORL carries no flux flag. Black reb u5.5 (LADDER-d32): ORL home vs DET, DET -2.5, total 212.5, Isaac, Nelson, Penda, Banchero out (usage x0.998), last-10 reb mean 4.2 (35.3 min), model 68.1%, normal 70.8% and hit-rate 68.2% agree. Black lost this line on days 11 and 19, won it on day 26. Skipped: Black ast u5.5 (70.3%, over the cap, normal 76.7% vs hit-rate 66.3% split), Richardson ast u2.5 (70.4%, normal 77.3% vs hit-rate 65.8% split), Black pts u16.5 (67.6%, normal 71.3% vs hit-rate 66.5%), da Silva reb u4.5 (68.4%, normal 67.7% vs hit-rate 72.9%), BOS-WSH (BOS -11.5 blowout line) and DAL-DEN heavy flux.
+
+Day 32 result: Black had 4 reb vs an under 5.5 line, win. Restart #12 balance 1.91 (19.09 dollars at a 10 dollar start). Picks won / picks made = 17 / 29 after day 32 (day 6 void, day 11 pass, day 22 void). Best balance reached: 25.33.
+
+Day 33 note (proxy): 9 game slate, all unstarted at the 3:15 PM ET check (first tip MIA-PHI 5 PM ET). Ajay Mitchell 3pm u1.5 (LADDER-d33): OKC -1.5 at home vs MIN, total 221.5, no flux flag, Topic, Jaylin Williams, Mara, Jalen Williams, Sorber, Wallace, Holmgren out (usage x1.012), last-10 3pm mean 1.0 (2 2 1 0 1 0 0 4 1 0, 29.6 min), model 69.0%, normal 69.2% and hit-rate 72.5% agree tightly. Skipped: Grant Williams reb u4.5 (70.4%, over the cap), Keldon Johnson ast u3.5 (70.1%, Fox and Wembanyama day-to-day swing usage), Stirtz ast u2.5 (70.0%, only 16 games), Towns reb u14.5 (69.4%, Towns, Hart and Brunson day-to-day, void risk), Sion James 3pm u1.5 (69.6%, day-to-day, normal 68.2% vs hit-rate 75.2%), Hartenstein ast u4.5 (68.1%, last-10 trending up), every flux-flagged game.
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
