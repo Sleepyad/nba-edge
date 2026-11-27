@@ -8285,3 +8285,439 @@ captured,game_date,player_id,player,team,opp,stat,line,p_over,flux
 2026-11-25,2026-11-25,4395723,Keldon Johnson,SA,POR,pts,9.5,0.4699,
 2026-11-25,2026-11-25,4395723,Keldon Johnson,SA,POR,reb,5.5,0.3584,
 2026-11-25,2026-11-25,4395723,Keldon Johnson,SA,POR,ast,3.5,0.2992,
+2026-11-27,2026-11-27,3934672,Jalen Brunson,NY,MIA,pts,26.5,0.5225,
+2026-11-27,2026-11-27,3934672,Jalen Brunson,NY,MIA,reb,3.5,0.3976,
+2026-11-27,2026-11-27,3934672,Jalen Brunson,NY,MIA,ast,6.5,0.4432,
+2026-11-27,2026-11-27,3934672,Jalen Brunson,NY,MIA,3pm,3.5,0.3845,
+2026-11-27,2026-11-27,3136195,Karl-Anthony Towns,NY,MIA,pts,21.5,0.4711,
+2026-11-27,2026-11-27,3136195,Karl-Anthony Towns,NY,MIA,reb,13.5,0.3489,
+2026-11-27,2026-11-27,3136195,Karl-Anthony Towns,NY,MIA,ast,4.5,0.519,
+2026-11-27,2026-11-27,3136195,Karl-Anthony Towns,NY,MIA,3pm,2.5,0.336,
+2026-11-27,2026-11-27,3062679,Josh Hart,NY,MIA,reb,6.5,0.5898,
+2026-11-27,2026-11-27,3062679,Josh Hart,NY,MIA,ast,4.5,0.5733,
+2026-11-27,2026-11-27,3914044,Landry Shamet,NY,MIA,pts,12.5,0.4261,
+2026-11-27,2026-11-27,3914044,Landry Shamet,NY,MIA,3pm,2.5,0.4796,
+2026-11-27,2026-11-27,3147657,Mikal Bridges,NY,MIA,pts,10.5,0.5086,
+2026-11-27,2026-11-27,3147657,Mikal Bridges,NY,MIA,reb,4.5,0.3707,
+2026-11-27,2026-11-27,3147657,Mikal Bridges,NY,MIA,ast,2.5,0.4717,
+2026-11-27,2026-11-27,3147657,Mikal Bridges,NY,MIA,3pm,1.5,0.4426,
+2026-11-27,2026-11-27,4278053,Davion Mitchell,MIA,NY,pts,18.5,0.2656,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4278053,Davion Mitchell,MIA,NY,reb,3.5,0.359,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4278053,Davion Mitchell,MIA,NY,ast,9.5,0.2383,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4278053,Davion Mitchell,MIA,NY,3pm,2.5,0.4428,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4066261,Bam Adebayo,MIA,NY,pts,20.5,0.4412,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4066261,Bam Adebayo,MIA,NY,reb,8.5,0.5616,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4066261,Bam Adebayo,MIA,NY,ast,3.5,0.5021,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,3032977,Giannis Antetokounmpo,MIA,NY,pts,28.5,0.3549,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,3032977,Giannis Antetokounmpo,MIA,NY,reb,12.5,0.4583,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,3032977,Giannis Antetokounmpo,MIA,NY,ast,5.5,0.4304,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4601025,Pelle Larsson,MIA,NY,pts,12.5,0.4357,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4601025,Pelle Larsson,MIA,NY,reb,3.5,0.4446,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4601025,Pelle Larsson,MIA,NY,ast,3.5,0.4354,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,4601025,Pelle Larsson,MIA,NY,3pm,1.5,0.3831,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,6475,Klay Thompson,MIA,NY,pts,16.5,0.3023,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,6475,Klay Thompson,MIA,NY,ast,2.5,0.2995,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,6475,Klay Thompson,MIA,NY,3pm,4.5,0.3073,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,3059319,Andrew Wiggins,MIA,NY,3pm,1.5,0.4765,"Ryan Conwell,Nick Richards"
+2026-11-27,2026-11-27,5107199,Daniss Jenkins,DET,MIL,pts,17.5,0.4491,Elijah Harkless
+2026-11-27,2026-11-27,5107199,Daniss Jenkins,DET,MIL,reb,4.5,0.4819,Elijah Harkless
+2026-11-27,2026-11-27,5107199,Daniss Jenkins,DET,MIL,ast,4.5,0.6038,Elijah Harkless
+2026-11-27,2026-11-27,5107199,Daniss Jenkins,DET,MIL,3pm,2.5,0.3453,Elijah Harkless
+2026-11-27,2026-11-27,4066372,Kevin Huerter,DET,MIL,pts,12.5,0.4632,Elijah Harkless
+2026-11-27,2026-11-27,4066372,Kevin Huerter,DET,MIL,reb,3.5,0.3959,Elijah Harkless
+2026-11-27,2026-11-27,4066372,Kevin Huerter,DET,MIL,ast,3.5,0.4011,Elijah Harkless
+2026-11-27,2026-11-27,4066372,Kevin Huerter,DET,MIL,3pm,1.5,0.4488,Elijah Harkless
+2026-11-27,2026-11-27,4684742,Ausar Thompson,DET,MIL,pts,11.5,0.3451,Elijah Harkless
+2026-11-27,2026-11-27,4684742,Ausar Thompson,DET,MIL,reb,9.5,0.3456,Elijah Harkless
+2026-11-27,2026-11-27,4684742,Ausar Thompson,DET,MIL,ast,5.5,0.389,Elijah Harkless
+2026-11-27,2026-11-27,3908845,John Collins,DET,MIL,pts,12.5,0.5081,Elijah Harkless
+2026-11-27,2026-11-27,3908845,John Collins,DET,MIL,reb,4.5,0.627,Elijah Harkless
+2026-11-27,2026-11-27,3908845,John Collins,DET,MIL,3pm,1.5,0.467,Elijah Harkless
+2026-11-27,2026-11-27,4278562,Paul Reed,DET,MIL,pts,10.5,0.5862,Elijah Harkless
+2026-11-27,2026-11-27,4278562,Paul Reed,DET,MIL,reb,7.5,0.32,Elijah Harkless
+2026-11-27,2026-11-27,4278562,Paul Reed,DET,MIL,ast,2.5,0.3982,Elijah Harkless
+2026-11-27,2026-11-27,4395725,Tyler Herro,MIL,DET,pts,22.5,0.3897,Cormac Ryan
+2026-11-27,2026-11-27,4395725,Tyler Herro,MIL,DET,reb,3.5,0.5178,Cormac Ryan
+2026-11-27,2026-11-27,4395725,Tyler Herro,MIL,DET,ast,5.5,0.29,Cormac Ryan
+2026-11-27,2026-11-27,4395725,Tyler Herro,MIL,DET,3pm,2.5,0.5374,Cormac Ryan
+2026-11-27,2026-11-27,3134907,Kyle Kuzma,MIL,DET,pts,15.5,0.3009,Cormac Ryan
+2026-11-27,2026-11-27,3134907,Kyle Kuzma,MIL,DET,reb,4.5,0.4578,Cormac Ryan
+2026-11-27,2026-11-27,3134907,Kyle Kuzma,MIL,DET,3pm,2.5,0.1725,Cormac Ryan
+2026-11-27,2026-11-27,4397233,Pete Nance,MIL,DET,reb,4.5,0.2536,Cormac Ryan
+2026-11-27,2026-11-27,4397233,Pete Nance,MIL,DET,ast,2.5,0.1784,Cormac Ryan
+2026-11-27,2026-11-27,4397233,Pete Nance,MIL,DET,3pm,1.5,0.3541,Cormac Ryan
+2026-11-27,2026-11-27,4432848,Jaime Jaquez Jr.,MIL,DET,pts,12.5,0.5781,Cormac Ryan
+2026-11-27,2026-11-27,4432848,Jaime Jaquez Jr.,MIL,DET,reb,3.5,0.5956,Cormac Ryan
+2026-11-27,2026-11-27,4432848,Jaime Jaquez Jr.,MIL,DET,ast,2.5,0.6419,Cormac Ryan
+2026-11-27,2026-11-27,4432848,Jaime Jaquez Jr.,MIL,DET,3pm,1.5,0.5128,Cormac Ryan
+2026-11-27,2026-11-27,3133628,Myles Turner,MIL,DET,reb,6.5,0.2746,Cormac Ryan
+2026-11-27,2026-11-27,3133628,Myles Turner,MIL,DET,ast,3.5,0.1078,Cormac Ryan
+2026-11-27,2026-11-27,3133628,Myles Turner,MIL,DET,3pm,1.5,0.4511,Cormac Ryan
+2026-11-27,2026-11-27,5082206,Brayden Burries,MIL,DET,pts,11.5,0.4737,Cormac Ryan
+2026-11-27,2026-11-27,5082206,Brayden Burries,MIL,DET,reb,5.5,0.4765,Cormac Ryan
+2026-11-27,2026-11-27,5082206,Brayden Burries,MIL,DET,ast,2.5,0.548,Cormac Ryan
+2026-11-27,2026-11-27,5082206,Brayden Burries,MIL,DET,3pm,1.5,0.345,Cormac Ryan
+2026-11-27,2026-11-27,4591725,Ryan Rollins,MIL,DET,pts,9.5,0.6204,Cormac Ryan
+2026-11-27,2026-11-27,4591725,Ryan Rollins,MIL,DET,reb,4.5,0.4802,Cormac Ryan
+2026-11-27,2026-11-27,4591725,Ryan Rollins,MIL,DET,ast,3.5,0.5833,Cormac Ryan
+2026-11-27,2026-11-27,4591725,Ryan Rollins,MIL,DET,3pm,1.5,0.5081,Cormac Ryan
+2026-11-27,2026-11-27,4395712,Andrew Nembhard,IND,PHI,pts,16.5,0.4456,
+2026-11-27,2026-11-27,4395712,Andrew Nembhard,IND,PHI,ast,7.5,0.4094,
+2026-11-27,2026-11-27,4395712,Andrew Nembhard,IND,PHI,3pm,2.5,0.3494,
+2026-11-27,2026-11-27,3149673,Pascal Siakam,IND,PHI,pts,24.5,0.4199,
+2026-11-27,2026-11-27,3149673,Pascal Siakam,IND,PHI,reb,5.5,0.5572,
+2026-11-27,2026-11-27,3149673,Pascal Siakam,IND,PHI,ast,3.5,0.4547,
+2026-11-27,2026-11-27,3149673,Pascal Siakam,IND,PHI,3pm,2.5,0.1272,
+2026-11-27,2026-11-27,4396909,Aaron Nesmith,IND,PHI,pts,9.5,0.5977,
+2026-11-27,2026-11-27,4396909,Aaron Nesmith,IND,PHI,reb,3.5,0.3896,
+2026-11-27,2026-11-27,4396909,Aaron Nesmith,IND,PHI,ast,2.5,0.3433,
+2026-11-27,2026-11-27,4017837,Ivica Zubac,IND,PHI,pts,11.5,0.4785,
+2026-11-27,2026-11-27,4017837,Ivica Zubac,IND,PHI,reb,9.5,0.5145,
+2026-11-27,2026-11-27,3133603,Kelly Oubre Jr.,IND,PHI,pts,14.5,0.4383,
+2026-11-27,2026-11-27,3133603,Kelly Oubre Jr.,IND,PHI,reb,3.5,0.6883,
+2026-11-27,2026-11-27,3133603,Kelly Oubre Jr.,IND,PHI,3pm,1.5,0.3905,
+2026-11-27,2026-11-27,4431752,Kobe Brown,IND,PHI,reb,4.5,0.4433,
+2026-11-27,2026-11-27,4431752,Kobe Brown,IND,PHI,ast,2.5,0.3157,
+2026-11-27,2026-11-27,4431752,Kobe Brown,IND,PHI,3pm,1.5,0.3621,
+2026-11-27,2026-11-27,5157066,Johnny Furphy,IND,PHI,reb,5.5,0.3956,
+2026-11-27,2026-11-27,5157066,Johnny Furphy,IND,PHI,ast,2.5,0.2521,
+2026-11-27,2026-11-27,5124612,VJ Edgecombe,PHI,IND,pts,14.5,0.4697,Rayan Rupert
+2026-11-27,2026-11-27,5124612,VJ Edgecombe,PHI,IND,reb,5.5,0.6057,Rayan Rupert
+2026-11-27,2026-11-27,5124612,VJ Edgecombe,PHI,IND,ast,5.5,0.3547,Rayan Rupert
+2026-11-27,2026-11-27,5124612,VJ Edgecombe,PHI,IND,3pm,1.5,0.5071,Rayan Rupert
+2026-11-27,2026-11-27,4431678,Tyrese Maxey,PHI,IND,pts,23.5,0.6127,Rayan Rupert
+2026-11-27,2026-11-27,4431678,Tyrese Maxey,PHI,IND,ast,6.5,0.3675,Rayan Rupert
+2026-11-27,2026-11-27,4431678,Tyrese Maxey,PHI,IND,3pm,2.5,0.5054,Rayan Rupert
+2026-11-27,2026-11-27,1966,LeBron James,PHI,IND,pts,17.5,0.6179,Rayan Rupert
+2026-11-27,2026-11-27,1966,LeBron James,PHI,IND,reb,6.5,0.5487,Rayan Rupert
+2026-11-27,2026-11-27,1966,LeBron James,PHI,IND,ast,6.5,0.5339,Rayan Rupert
+2026-11-27,2026-11-27,1966,LeBron James,PHI,IND,3pm,1.5,0.4416,Rayan Rupert
+2026-11-27,2026-11-27,3059318,Joel Embiid,PHI,IND,pts,20.5,0.6214,Rayan Rupert
+2026-11-27,2026-11-27,3059318,Joel Embiid,PHI,IND,reb,8.5,0.4852,Rayan Rupert
+2026-11-27,2026-11-27,3059318,Joel Embiid,PHI,IND,ast,3.5,0.5908,Rayan Rupert
+2026-11-27,2026-11-27,3912848,Dean Wade,PHI,IND,reb,5.5,0.2995,Rayan Rupert
+2026-11-27,2026-11-27,3912848,Dean Wade,PHI,IND,3pm,1.5,0.3189,Rayan Rupert
+2026-11-27,2026-11-27,2581018,Kentavious Caldwell-Pope,PHI,IND,reb,3.5,0.3436,Rayan Rupert
+2026-11-27,2026-11-27,2581018,Kentavious Caldwell-Pope,PHI,IND,ast,2.5,0.3214,Rayan Rupert
+2026-11-27,2026-11-27,2581018,Kentavious Caldwell-Pope,PHI,IND,3pm,1.5,0.3855,Rayan Rupert
+2026-11-27,2026-11-27,4351851,Anfernee Simons,PHI,IND,pts,10.5,0.5733,Rayan Rupert
+2026-11-27,2026-11-27,4351851,Anfernee Simons,PHI,IND,3pm,2.5,0.4815,Rayan Rupert
+2026-11-27,2026-11-27,4433134,Scottie Barnes,TOR,BKN,pts,24.5,0.4569,Malachi Smith
+2026-11-27,2026-11-27,4433134,Scottie Barnes,TOR,BKN,reb,6.5,0.4215,Malachi Smith
+2026-11-27,2026-11-27,4433134,Scottie Barnes,TOR,BKN,ast,4.5,0.7051,Malachi Smith
+2026-11-27,2026-11-27,4684272,Ja'Kobe Walter,TOR,BKN,pts,12.5,0.4207,Malachi Smith
+2026-11-27,2026-11-27,4684272,Ja'Kobe Walter,TOR,BKN,reb,4.5,0.3569,Malachi Smith
+2026-11-27,2026-11-27,4684272,Ja'Kobe Walter,TOR,BKN,3pm,2.5,0.455,Malachi Smith
+2026-11-27,2026-11-27,4395724,Immanuel Quickley,TOR,BKN,pts,17.5,0.3983,Malachi Smith
+2026-11-27,2026-11-27,4395724,Immanuel Quickley,TOR,BKN,reb,3.5,0.4201,Malachi Smith
+2026-11-27,2026-11-27,4395724,Immanuel Quickley,TOR,BKN,ast,6.5,0.4297,Malachi Smith
+2026-11-27,2026-11-27,4395724,Immanuel Quickley,TOR,BKN,3pm,2.5,0.4959,Malachi Smith
+2026-11-27,2026-11-27,3134908,Jakob Poeltl,TOR,BKN,pts,10.5,0.3554,Malachi Smith
+2026-11-27,2026-11-27,3134908,Jakob Poeltl,TOR,BKN,reb,7.5,0.4103,Malachi Smith
+2026-11-27,2026-11-27,3134908,Jakob Poeltl,TOR,BKN,ast,2.5,0.3742,Malachi Smith
+2026-11-27,2026-11-27,5093267,Collin Murray-Boyles,TOR,BKN,pts,9.5,0.4476,Malachi Smith
+2026-11-27,2026-11-27,5093267,Collin Murray-Boyles,TOR,BKN,reb,4.5,0.5371,Malachi Smith
+2026-11-27,2026-11-27,4432241,Jamal Shead,TOR,BKN,pts,9.5,0.4002,Malachi Smith
+2026-11-27,2026-11-27,4432241,Jamal Shead,TOR,BKN,ast,6.5,0.3539,Malachi Smith
+2026-11-27,2026-11-27,4432241,Jamal Shead,TOR,BKN,3pm,1.5,0.3821,Malachi Smith
+2026-11-27,2026-11-27,4431893,Jamison Battle,TOR,BKN,pts,10.5,0.3476,Malachi Smith
+2026-11-27,2026-11-27,4431893,Jamison Battle,TOR,BKN,3pm,2.5,0.3167,Malachi Smith
+2026-11-27,2026-11-27,4278104,Michael Porter Jr.,BKN,TOR,pts,17.5,0.6274,Mikel Brown Jr.
+2026-11-27,2026-11-27,4278104,Michael Porter Jr.,BKN,TOR,reb,6.5,0.4404,Mikel Brown Jr.
+2026-11-27,2026-11-27,4278104,Michael Porter Jr.,BKN,TOR,ast,2.5,0.4524,Mikel Brown Jr.
+2026-11-27,2026-11-27,4278104,Michael Porter Jr.,BKN,TOR,3pm,2.5,0.5416,Mikel Brown Jr.
+2026-11-27,2026-11-27,3064514,Julius Randle,BKN,TOR,pts,22.5,0.4046,Mikel Brown Jr.
+2026-11-27,2026-11-27,3064514,Julius Randle,BKN,TOR,reb,4.5,0.6782,Mikel Brown Jr.
+2026-11-27,2026-11-27,3064514,Julius Randle,BKN,TOR,ast,4.5,0.3859,Mikel Brown Jr.
+2026-11-27,2026-11-27,3064514,Julius Randle,BKN,TOR,3pm,1.5,0.5021,Mikel Brown Jr.
+2026-11-27,2026-11-27,5242502,Ben Saraf,BKN,TOR,pts,11.5,0.1692,Mikel Brown Jr.
+2026-11-27,2026-11-27,5242502,Ben Saraf,BKN,TOR,reb,3.5,0.1106,Mikel Brown Jr.
+2026-11-27,2026-11-27,5242502,Ben Saraf,BKN,TOR,ast,3.5,0.3343,Mikel Brown Jr.
+2026-11-27,2026-11-27,4432194,Day'Ron Sharpe,BKN,TOR,pts,10.5,0.4311,Mikel Brown Jr.
+2026-11-27,2026-11-27,4432194,Day'Ron Sharpe,BKN,TOR,reb,7.5,0.3796,Mikel Brown Jr.
+2026-11-27,2026-11-27,4432194,Day'Ron Sharpe,BKN,TOR,ast,5.5,0.1202,Mikel Brown Jr.
+2026-11-27,2026-11-27,5107173,Danny Wolf,BKN,TOR,pts,10.5,0.4541,Mikel Brown Jr.
+2026-11-27,2026-11-27,5107173,Danny Wolf,BKN,TOR,reb,5.5,0.4568,Mikel Brown Jr.
+2026-11-27,2026-11-27,5107173,Danny Wolf,BKN,TOR,ast,2.5,0.3833,Mikel Brown Jr.
+2026-11-27,2026-11-27,5107173,Danny Wolf,BKN,TOR,3pm,2.5,0.2286,Mikel Brown Jr.
+2026-11-27,2026-11-27,5175643,Egor Demin,BKN,TOR,pts,12.5,0.4027,Mikel Brown Jr.
+2026-11-27,2026-11-27,5175643,Egor Demin,BKN,TOR,ast,2.5,0.582,Mikel Brown Jr.
+2026-11-27,2026-11-27,5175643,Egor Demin,BKN,TOR,3pm,2.5,0.3958,Mikel Brown Jr.
+2026-11-27,2026-11-27,4712896,Noah Clowney,BKN,TOR,reb,3.5,0.5091,Mikel Brown Jr.
+2026-11-27,2026-11-27,4712896,Noah Clowney,BKN,TOR,3pm,1.5,0.4513,Mikel Brown Jr.
+2026-11-27,2026-11-27,4065648,Jayson Tatum,BOS,ATL,pts,26.5,0.4611,Devin Carter
+2026-11-27,2026-11-27,4065648,Jayson Tatum,BOS,ATL,reb,7.5,0.539,Devin Carter
+2026-11-27,2026-11-27,4065648,Jayson Tatum,BOS,ATL,ast,6.5,0.5371,Devin Carter
+2026-11-27,2026-11-27,4065648,Jayson Tatum,BOS,ATL,3pm,3.5,0.4093,Devin Carter
+2026-11-27,2026-11-27,4251,Paul George,BOS,ATL,pts,19.5,0.4596,Devin Carter
+2026-11-27,2026-11-27,4251,Paul George,BOS,ATL,reb,5.5,0.4365,Devin Carter
+2026-11-27,2026-11-27,4251,Paul George,BOS,ATL,ast,4.5,0.4228,Devin Carter
+2026-11-27,2026-11-27,4251,Paul George,BOS,ATL,3pm,3.5,0.4549,Devin Carter
+2026-11-27,2026-11-27,3078576,Derrick White,BOS,ATL,pts,13.5,0.4033,Devin Carter
+2026-11-27,2026-11-27,3078576,Derrick White,BOS,ATL,reb,3.5,0.485,Devin Carter
+2026-11-27,2026-11-27,3078576,Derrick White,BOS,ATL,ast,5.5,0.3608,Devin Carter
+2026-11-27,2026-11-27,3078576,Derrick White,BOS,ATL,3pm,1.5,0.5678,Devin Carter
+2026-11-27,2026-11-27,4066354,Payton Pritchard,BOS,ATL,pts,12.5,0.553,Devin Carter
+2026-11-27,2026-11-27,4066354,Payton Pritchard,BOS,ATL,reb,3.5,0.4739,Devin Carter
+2026-11-27,2026-11-27,4066354,Payton Pritchard,BOS,ATL,ast,4.5,0.4863,Devin Carter
+2026-11-27,2026-11-27,4066354,Payton Pritchard,BOS,ATL,3pm,2.5,0.484,Devin Carter
+2026-11-27,2026-11-27,4397424,Neemias Queta,BOS,ATL,pts,10.5,0.5115,Devin Carter
+2026-11-27,2026-11-27,4397424,Neemias Queta,BOS,ATL,reb,8.5,0.4236,Devin Carter
+2026-11-27,2026-11-27,4397424,Neemias Queta,BOS,ATL,ast,2.5,0.3821,Devin Carter
+2026-11-27,2026-11-27,4065804,Sam Hauser,BOS,ATL,reb,3.5,0.4488,Devin Carter
+2026-11-27,2026-11-27,4065804,Sam Hauser,BOS,ATL,3pm,2.5,0.4507,Devin Carter
+2026-11-27,2026-11-27,4701230,Jalen Johnson,ATL,BOS,pts,18.5,0.4783,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4701230,Jalen Johnson,ATL,BOS,reb,8.5,0.5595,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4701230,Jalen Johnson,ATL,BOS,ast,6.5,0.4349,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4869342,Dyson Daniels,ATL,BOS,reb,10.5,0.2554,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4869342,Dyson Daniels,ATL,BOS,ast,6.5,0.3876,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4431680,Onyeka Okongwu,ATL,BOS,pts,16.5,0.2812,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4431680,Onyeka Okongwu,ATL,BOS,reb,8.5,0.441,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4431680,Onyeka Okongwu,ATL,BOS,ast,2.5,0.3988,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4431680,Onyeka Okongwu,ATL,BOS,3pm,2.5,0.2816,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4278039,Nickeil Alexander-Walker,ATL,BOS,pts,22.5,0.3455,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4278039,Nickeil Alexander-Walker,ATL,BOS,reb,3.5,0.4853,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4278039,Nickeil Alexander-Walker,ATL,BOS,ast,3.5,0.3593,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4278039,Nickeil Alexander-Walker,ATL,BOS,3pm,3.5,0.498,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397183,Aaron Wiggins,ATL,BOS,pts,13.5,0.3444,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397183,Aaron Wiggins,ATL,BOS,reb,3.5,0.3963,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397183,Aaron Wiggins,ATL,BOS,ast,2.5,0.3946,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397183,Aaron Wiggins,ATL,BOS,3pm,2.5,0.4127,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397020,Luguentz Dort,ATL,BOS,pts,9.5,0.3809,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397020,Luguentz Dort,ATL,BOS,reb,3.5,0.3588,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4397020,Luguentz Dort,ATL,BOS,3pm,1.5,0.463,"Kingston Flemings,Jalen Wilson"
+2026-11-27,2026-11-27,4431671,Jaden McDaniels,MIN,MEM,pts,21.5,0.363,Cody Williams
+2026-11-27,2026-11-27,4431671,Jaden McDaniels,MIN,MEM,reb,6.5,0.389,Cody Williams
+2026-11-27,2026-11-27,4431671,Jaden McDaniels,MIN,MEM,ast,4.5,0.2811,Cody Williams
+2026-11-27,2026-11-27,4431671,Jaden McDaniels,MIN,MEM,3pm,2.5,0.2877,Cody Williams
+2026-11-27,2026-11-27,4397002,Ayo Dosunmu,MIN,MEM,pts,19.5,0.4551,Cody Williams
+2026-11-27,2026-11-27,4397002,Ayo Dosunmu,MIN,MEM,reb,3.5,0.5671,Cody Williams
+2026-11-27,2026-11-27,4397002,Ayo Dosunmu,MIN,MEM,ast,2.5,0.64,Cody Williams
+2026-11-27,2026-11-27,4397002,Ayo Dosunmu,MIN,MEM,3pm,2.5,0.4433,Cody Williams
+2026-11-27,2026-11-27,4433247,Jonathan Kuminga,MIN,MEM,pts,13.5,0.4624,Cody Williams
+2026-11-27,2026-11-27,4433247,Jonathan Kuminga,MIN,MEM,reb,5.5,0.3965,Cody Williams
+2026-11-27,2026-11-27,4433247,Jonathan Kuminga,MIN,MEM,ast,2.5,0.477,Cody Williams
+2026-11-27,2026-11-27,4433247,Jonathan Kuminga,MIN,MEM,3pm,1.5,0.4065,Cody Williams
+2026-11-27,2026-11-27,4432816,LaMelo Ball,MIN,MEM,pts,17.5,0.5719,Cody Williams
+2026-11-27,2026-11-27,4432816,LaMelo Ball,MIN,MEM,reb,5.5,0.3817,Cody Williams
+2026-11-27,2026-11-27,4432816,LaMelo Ball,MIN,MEM,ast,5.5,0.5861,Cody Williams
+2026-11-27,2026-11-27,4432816,LaMelo Ball,MIN,MEM,3pm,3.5,0.5191,Cody Williams
+2026-11-27,2026-11-27,3032976,Rudy Gobert,MIN,MEM,reb,9.5,0.5371,Cody Williams
+2026-11-27,2026-11-27,4432847,Terrence Shannon Jr.,MIN,MEM,pts,12.5,0.5091,Cody Williams
+2026-11-27,2026-11-27,4432847,Terrence Shannon Jr.,MIN,MEM,ast,3.5,0.3539,Cody Williams
+2026-11-27,2026-11-27,3136196,Trey Lyles,MIN,MEM,reb,5.5,0.3874,Cody Williams
+2026-11-27,2026-11-27,3136196,Trey Lyles,MIN,MEM,3pm,1.5,0.3699,Cody Williams
+2026-11-27,2026-11-27,4065733,Ty Jerome,MEM,MIN,pts,22.5,0.3578,
+2026-11-27,2026-11-27,4065733,Ty Jerome,MEM,MIN,reb,3.5,0.4435,
+2026-11-27,2026-11-27,4065733,Ty Jerome,MEM,MIN,ast,4.5,0.6265,
+2026-11-27,2026-11-27,4065733,Ty Jerome,MEM,MIN,3pm,2.5,0.5361,
+2026-11-27,2026-11-27,4903027,Cedric Coward,MEM,MIN,pts,16.5,0.3553,
+2026-11-27,2026-11-27,4903027,Cedric Coward,MEM,MIN,reb,7.5,0.1203,
+2026-11-27,2026-11-27,4903027,Cedric Coward,MEM,MIN,ast,3.5,0.2182,
+2026-11-27,2026-11-27,4903027,Cedric Coward,MEM,MIN,3pm,2.5,0.2188,
+2026-11-27,2026-11-27,4683934,Jahmai Mashack,MEM,MIN,reb,3.5,0.2943,
+2026-11-27,2026-11-27,4683934,Jahmai Mashack,MEM,MIN,ast,4.5,0.2004,
+2026-11-27,2026-11-27,5112087,Jaylen Wells,MEM,MIN,pts,12.5,0.4159,
+2026-11-27,2026-11-27,5112087,Jaylen Wells,MEM,MIN,reb,3.5,0.2267,
+2026-11-27,2026-11-27,5112087,Jaylen Wells,MEM,MIN,3pm,2.5,0.3252,
+2026-11-27,2026-11-27,4433083,Cam Spencer,MEM,MIN,pts,14.5,0.338,
+2026-11-27,2026-11-27,4433083,Cam Spencer,MEM,MIN,ast,6.5,0.248,
+2026-11-27,2026-11-27,4433083,Cam Spencer,MEM,MIN,3pm,2.5,0.3144,
+2026-11-27,2026-11-27,4781746,Javon Small,MEM,MIN,reb,3.5,0.4301,
+2026-11-27,2026-11-27,4781746,Javon Small,MEM,MIN,ast,5.5,0.2219,
+2026-11-27,2026-11-27,4781746,Javon Small,MEM,MIN,3pm,1.5,0.5092,
+2026-11-27,2026-11-27,4684806,Taylor Hendricks,MEM,MIN,pts,9.5,0.4063,
+2026-11-27,2026-11-27,4684806,Taylor Hendricks,MEM,MIN,reb,4.5,0.4166,
+2026-11-27,2026-11-27,3136193,Devin Booker,PHX,DAL,pts,23.5,0.5634,Pat Spencer
+2026-11-27,2026-11-27,3136193,Devin Booker,PHX,DAL,ast,5.5,0.527,Pat Spencer
+2026-11-27,2026-11-27,3136193,Devin Booker,PHX,DAL,3pm,1.5,0.6417,Pat Spencer
+2026-11-27,2026-11-27,3155526,Dillon Brooks,PHX,DAL,pts,13.5,0.6346,Pat Spencer
+2026-11-27,2026-11-27,3155526,Dillon Brooks,PHX,DAL,reb,3.5,0.6127,Pat Spencer
+2026-11-27,2026-11-27,3155526,Dillon Brooks,PHX,DAL,ast,2.5,0.5029,Pat Spencer
+2026-11-27,2026-11-27,3155526,Dillon Brooks,PHX,DAL,3pm,1.5,0.6101,Pat Spencer
+2026-11-27,2026-11-27,4437244,Jalen Green,PHX,DAL,pts,14.5,0.5844,Pat Spencer
+2026-11-27,2026-11-27,4437244,Jalen Green,PHX,DAL,reb,4.5,0.4,Pat Spencer
+2026-11-27,2026-11-27,4437244,Jalen Green,PHX,DAL,ast,2.5,0.616,Pat Spencer
+2026-11-27,2026-11-27,4437244,Jalen Green,PHX,DAL,3pm,1.5,0.4946,Pat Spencer
+2026-11-27,2026-11-27,4066383,Miles Bridges,PHX,DAL,pts,11.5,0.651,Pat Spencer
+2026-11-27,2026-11-27,4066383,Miles Bridges,PHX,DAL,reb,6.5,0.5344,Pat Spencer
+2026-11-27,2026-11-27,4066383,Miles Bridges,PHX,DAL,ast,3.5,0.4478,Pat Spencer
+2026-11-27,2026-11-27,4066383,Miles Bridges,PHX,DAL,3pm,1.5,0.4858,Pat Spencer
+2026-11-27,2026-11-27,4278585,Collin Gillespie,PHX,DAL,pts,12.5,0.3467,Pat Spencer
+2026-11-27,2026-11-27,4278585,Collin Gillespie,PHX,DAL,ast,3.5,0.4448,Pat Spencer
+2026-11-27,2026-11-27,4278585,Collin Gillespie,PHX,DAL,3pm,2.5,0.4203,Pat Spencer
+2026-11-27,2026-11-27,4601023,Oso Ighodaro,PHX,DAL,reb,5.5,0.4917,Pat Spencer
+2026-11-27,2026-11-27,4601023,Oso Ighodaro,PHX,DAL,ast,2.5,0.5654,Pat Spencer
+2026-11-27,2026-11-27,4278402,Jordan Goodwin,PHX,DAL,reb,4.5,0.5268,Pat Spencer
+2026-11-27,2026-11-27,4278402,Jordan Goodwin,PHX,DAL,ast,2.5,0.3849,Pat Spencer
+2026-11-27,2026-11-27,4278402,Jordan Goodwin,PHX,DAL,3pm,1.5,0.5511,Pat Spencer
+2026-11-27,2026-11-27,5041939,Cooper Flagg,DAL,PHX,pts,24.5,0.4589,
+2026-11-27,2026-11-27,5041939,Cooper Flagg,DAL,PHX,reb,6.5,0.45,
+2026-11-27,2026-11-27,5041939,Cooper Flagg,DAL,PHX,ast,6.5,0.4521,
+2026-11-27,2026-11-27,5041939,Cooper Flagg,DAL,PHX,3pm,2.5,0.2702,
+2026-11-27,2026-11-27,6442,Kyrie Irving,DAL,PHX,pts,21.5,0.4514,
+2026-11-27,2026-11-27,6442,Kyrie Irving,DAL,PHX,reb,3.5,0.5483,
+2026-11-27,2026-11-27,6442,Kyrie Irving,DAL,PHX,ast,4.5,0.5503,
+2026-11-27,2026-11-27,6442,Kyrie Irving,DAL,PHX,3pm,3.5,0.429,
+2026-11-27,2026-11-27,4278078,P.J. Washington,DAL,PHX,pts,14.5,0.4409,
+2026-11-27,2026-11-27,4278078,P.J. Washington,DAL,PHX,reb,5.5,0.5846,
+2026-11-27,2026-11-27,4278078,P.J. Washington,DAL,PHX,3pm,2.5,0.3392,
+2026-11-27,2026-11-27,3138160,Caleb Martin,DAL,PHX,reb,3.5,0.5034,
+2026-11-27,2026-11-27,3138160,Caleb Martin,DAL,PHX,ast,3.5,0.2774,
+2026-11-27,2026-11-27,3138160,Caleb Martin,DAL,PHX,3pm,1.5,0.3737,
+2026-11-27,2026-11-27,4278594,Naji Marshall,DAL,PHX,pts,9.5,0.6014,
+2026-11-27,2026-11-27,4278594,Naji Marshall,DAL,PHX,ast,2.5,0.6434,
+2026-11-27,2026-11-27,4278049,Daniel Gafford,DAL,PHX,reb,4.5,0.6253,
+2026-11-27,2026-11-27,4278049,Daniel Gafford,DAL,PHX,ast,2.5,0.3363,
+2026-11-27,2026-11-27,5211175,Zaccharie Risacher,DAL,PHX,pts,10.5,0.454,
+2026-11-27,2026-11-27,5211175,Zaccharie Risacher,DAL,PHX,reb,4.5,0.5646,
+2026-11-27,2026-11-27,4845367,Stephon Castle,SA,LAL,pts,17.5,0.4887,
+2026-11-27,2026-11-27,4845367,Stephon Castle,SA,LAL,reb,4.5,0.6323,
+2026-11-27,2026-11-27,4845367,Stephon Castle,SA,LAL,ast,7.5,0.3821,
+2026-11-27,2026-11-27,4845367,Stephon Castle,SA,LAL,3pm,2.5,0.366,
+2026-11-27,2026-11-27,4395630,Devin Vassell,SA,LAL,pts,12.5,0.4711,
+2026-11-27,2026-11-27,4395630,Devin Vassell,SA,LAL,reb,4.5,0.442,
+2026-11-27,2026-11-27,4395630,Devin Vassell,SA,LAL,ast,2.5,0.4798,
+2026-11-27,2026-11-27,4395630,Devin Vassell,SA,LAL,3pm,1.5,0.6047,
+2026-11-27,2026-11-27,5104157,Victor Wembanyama,SA,LAL,pts,32.5,0.3763,
+2026-11-27,2026-11-27,5104157,Victor Wembanyama,SA,LAL,reb,12.5,0.4718,
+2026-11-27,2026-11-27,5104157,Victor Wembanyama,SA,LAL,ast,3.5,0.3875,
+2026-11-27,2026-11-27,5104157,Victor Wembanyama,SA,LAL,3pm,2.5,0.4233,
+2026-11-27,2026-11-27,4592479,Julian Champagnie,SA,LAL,pts,12.5,0.3914,
+2026-11-27,2026-11-27,4592479,Julian Champagnie,SA,LAL,reb,4.5,0.4964,
+2026-11-27,2026-11-27,4592479,Julian Champagnie,SA,LAL,3pm,2.5,0.5626,
+2026-11-27,2026-11-27,4066259,De'Aaron Fox,SA,LAL,pts,9.5,0.682,
+2026-11-27,2026-11-27,4066259,De'Aaron Fox,SA,LAL,reb,3.5,0.4906,
+2026-11-27,2026-11-27,4066259,De'Aaron Fox,SA,LAL,ast,4.5,0.6817,
+2026-11-27,2026-11-27,4395723,Keldon Johnson,SA,LAL,pts,9.5,0.4467,
+2026-11-27,2026-11-27,4395723,Keldon Johnson,SA,LAL,reb,5.5,0.4291,
+2026-11-27,2026-11-27,4395723,Keldon Johnson,SA,LAL,ast,3.5,0.3017,
+2026-11-27,2026-11-27,3945274,Luka Doncic,LAL,SA,pts,36.5,0.4093,
+2026-11-27,2026-11-27,3945274,Luka Doncic,LAL,SA,reb,5.5,0.5797,
+2026-11-27,2026-11-27,3945274,Luka Doncic,LAL,SA,ast,7.5,0.4831,
+2026-11-27,2026-11-27,3945274,Luka Doncic,LAL,SA,3pm,4.5,0.5005,
+2026-11-27,2026-11-27,4433136,Walker Kessler,LAL,SA,pts,13.5,0.5079,
+2026-11-27,2026-11-27,4433136,Walker Kessler,LAL,SA,reb,11.5,0.4155,
+2026-11-27,2026-11-27,4433136,Walker Kessler,LAL,SA,ast,2.5,0.3567,
+2026-11-27,2026-11-27,4397014,Quentin Grimes,LAL,SA,pts,14.5,0.3726,
+2026-11-27,2026-11-27,4397014,Quentin Grimes,LAL,SA,reb,3.5,0.4708,
+2026-11-27,2026-11-27,4397014,Quentin Grimes,LAL,SA,ast,3.5,0.4503,
+2026-11-27,2026-11-27,4397014,Quentin Grimes,LAL,SA,3pm,2.5,0.3592,
+2026-11-27,2026-11-27,4592691,Jake LaRavia,LAL,SA,reb,4.5,0.4462,
+2026-11-27,2026-11-27,4592691,Jake LaRavia,LAL,SA,ast,2.5,0.3172,
+2026-11-27,2026-11-27,3907498,Matisse Thybulle,LAL,SA,3pm,1.5,0.5235,
+2026-11-27,2026-11-27,4433137,Ziaire Williams,LAL,SA,3pm,1.5,0.4401,
+2026-11-27,2026-11-27,4278580,Sandro Mamukelashvili,LAL,SA,reb,4.5,0.4492,
+2026-11-27,2026-11-27,4278580,Sandro Mamukelashvili,LAL,SA,3pm,1.5,0.3686,
+2026-11-27,2026-11-27,4433627,Keyonte George,UTAH,DEN,pts,19.5,0.4968,
+2026-11-27,2026-11-27,4433627,Keyonte George,UTAH,DEN,reb,4.5,0.1943,
+2026-11-27,2026-11-27,4433627,Keyonte George,UTAH,DEN,ast,7.5,0.1879,
+2026-11-27,2026-11-27,4433627,Keyonte George,UTAH,DEN,3pm,2.5,0.4047,
+2026-11-27,2026-11-27,5041955,Darryn Peterson,UTAH,DEN,pts,18.5,0.37,
+2026-11-27,2026-11-27,5041955,Darryn Peterson,UTAH,DEN,reb,5.5,0.3552,
+2026-11-27,2026-11-27,5041955,Darryn Peterson,UTAH,DEN,ast,4.5,0.4527,
+2026-11-27,2026-11-27,5041955,Darryn Peterson,UTAH,DEN,3pm,2.5,0.3744,
+2026-11-27,2026-11-27,4873138,Ace Bailey,UTAH,DEN,pts,14.5,0.6234,
+2026-11-27,2026-11-27,4873138,Ace Bailey,UTAH,DEN,reb,5.5,0.4147,
+2026-11-27,2026-11-27,4873138,Ace Bailey,UTAH,DEN,ast,2.5,0.3851,
+2026-11-27,2026-11-27,4873138,Ace Bailey,UTAH,DEN,3pm,1.5,0.5745,
+2026-11-27,2026-11-27,4277919,Mo Bamba,UTAH,DEN,reb,6.5,0.606,
+2026-11-27,2026-11-27,3133602,Svi Mykhailiuk,UTAH,DEN,pts,9.5,0.4415,
+2026-11-27,2026-11-27,3133602,Svi Mykhailiuk,UTAH,DEN,ast,2.5,0.3785,
+2026-11-27,2026-11-27,3133602,Svi Mykhailiuk,UTAH,DEN,3pm,2.5,0.4061,
+2026-11-27,2026-11-27,4432811,Josh Green,UTAH,DEN,3pm,1.5,0.3057,
+2026-11-27,2026-11-27,4397077,Jaxson Hayes,UTAH,DEN,pts,9.5,0.4294,
+2026-11-27,2026-11-27,4397077,Jaxson Hayes,UTAH,DEN,reb,6.5,0.3674,
+2026-11-27,2026-11-27,3112335,Nikola Jokic,DEN,UTAH,pts,26.5,0.4051,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3112335,Nikola Jokic,DEN,UTAH,reb,11.5,0.5495,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3112335,Nikola Jokic,DEN,UTAH,ast,8.5,0.6096,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3112335,Nikola Jokic,DEN,UTAH,3pm,1.5,0.386,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3936299,Jamal Murray,DEN,UTAH,pts,24.5,0.4997,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3936299,Jamal Murray,DEN,UTAH,reb,4.5,0.5206,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3936299,Jamal Murray,DEN,UTAH,ast,5.5,0.5653,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3936299,Jamal Murray,DEN,UTAH,3pm,2.5,0.5306,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,4431767,Christian Braun,DEN,UTAH,pts,12.5,0.5232,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,4431767,Christian Braun,DEN,UTAH,reb,4.5,0.5078,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,4431767,Christian Braun,DEN,UTAH,ast,2.5,0.531,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,4431767,Christian Braun,DEN,UTAH,3pm,1.5,0.4486,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3138196,Cameron Johnson,DEN,UTAH,pts,14.5,0.4274,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3138196,Cameron Johnson,DEN,UTAH,reb,3.5,0.4983,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3138196,Cameron Johnson,DEN,UTAH,ast,2.5,0.4653,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3138196,Cameron Johnson,DEN,UTAH,3pm,2.5,0.362,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3064290,Aaron Gordon,DEN,UTAH,pts,11.5,0.5513,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3064290,Aaron Gordon,DEN,UTAH,reb,4.5,0.5813,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,4592427,Spencer Jones,DEN,UTAH,3pm,1.5,0.223,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3978,DeMar DeRozan,DEN,UTAH,pts,9.5,0.5585,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,3978,DeMar DeRozan,DEN,UTAH,ast,2.5,0.5038,"Bryce Hopkins,Ryan Nembhard"
+2026-11-27,2026-11-27,4396907,Darius Garland,LAC,NO,pts,21.5,0.4858,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4396907,Darius Garland,LAC,NO,ast,6.5,0.5064,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4396907,Darius Garland,LAC,NO,3pm,2.5,0.5391,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4066648,Rui Hachimura,LAC,NO,pts,14.5,0.5913,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4066648,Rui Hachimura,LAC,NO,reb,6.5,0.3792,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4066648,Rui Hachimura,LAC,NO,ast,2.5,0.3262,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4066648,Rui Hachimura,LAC,NO,3pm,2.5,0.437,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,3936099,Derrick Jones Jr.,LAC,NO,reb,4.5,0.4336,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,3936099,Derrick Jones Jr.,LAC,NO,3pm,1.5,0.4302,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,3448,Brook Lopez,LAC,NO,pts,15.5,0.4566,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,3448,Brook Lopez,LAC,NO,reb,5.5,0.4761,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,3448,Brook Lopez,LAC,NO,ast,2.5,0.3525,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,3448,Brook Lopez,LAC,NO,3pm,2.5,0.3191,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,2991139,Kris Dunn,LAC,NO,reb,4.5,0.4073,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,2991139,Kris Dunn,LAC,NO,ast,3.5,0.5915,"Brandon Ingram,Max Strus"
+2026-11-27,2026-11-27,4397136,Saddiq Bey,NO,LAC,pts,16.5,0.5601,Julian Reese
+2026-11-27,2026-11-27,4397136,Saddiq Bey,NO,LAC,reb,4.5,0.5821,Julian Reese
+2026-11-27,2026-11-27,4397136,Saddiq Bey,NO,LAC,ast,2.5,0.5659,Julian Reese
+2026-11-27,2026-11-27,4397136,Saddiq Bey,NO,LAC,3pm,2.5,0.4178,Julian Reese
+2026-11-27,2026-11-27,4395628,Zion Williamson,NO,LAC,pts,22.5,0.4425,Julian Reese
+2026-11-27,2026-11-27,4395628,Zion Williamson,NO,LAC,reb,5.5,0.4839,Julian Reese
+2026-11-27,2026-11-27,4395628,Zion Williamson,NO,LAC,ast,2.5,0.4974,Julian Reese
+2026-11-27,2026-11-27,4397688,Trey Murphy III,NO,LAC,pts,15.5,0.6188,Julian Reese
+2026-11-27,2026-11-27,4397688,Trey Murphy III,NO,LAC,reb,5.5,0.4834,Julian Reese
+2026-11-27,2026-11-27,4397688,Trey Murphy III,NO,LAC,ast,3.5,0.4977,Julian Reese
+2026-11-27,2026-11-27,4397688,Trey Murphy III,NO,LAC,3pm,2.5,0.541,Julian Reese
+2026-11-27,2026-11-27,5144091,Jeremiah Fears,NO,LAC,pts,17.5,0.4616,Julian Reese
+2026-11-27,2026-11-27,5144091,Jeremiah Fears,NO,LAC,reb,5.5,0.4168,Julian Reese
+2026-11-27,2026-11-27,5144091,Jeremiah Fears,NO,LAC,ast,6.5,0.4466,Julian Reese
+2026-11-27,2026-11-27,5144091,Jeremiah Fears,NO,LAC,3pm,1.5,0.4292,Julian Reese
+2026-11-27,2026-11-27,4277813,Herbert Jones,NO,LAC,ast,2.5,0.4766,Julian Reese
+2026-11-27,2026-11-27,4277813,Herbert Jones,NO,LAC,3pm,1.5,0.433,Julian Reese
+2026-11-27,2026-11-27,5061589,Yves Missi,NO,LAC,reb,8.5,0.3552,Julian Reese
+2026-11-27,2026-11-27,4277956,Jordan Poole,NO,LAC,pts,14.5,0.44,Julian Reese
+2026-11-27,2026-11-27,4277956,Jordan Poole,NO,LAC,ast,2.5,0.5889,Julian Reese
+2026-11-27,2026-11-27,4277956,Jordan Poole,NO,LAC,3pm,2.5,0.4234,Julian Reese
+2026-11-27,2026-11-27,4683021,Deni Avdija,POR,GS,pts,25.5,0.4506,
+2026-11-27,2026-11-27,4683021,Deni Avdija,POR,GS,reb,6.5,0.4692,
+2026-11-27,2026-11-27,4683021,Deni Avdija,POR,GS,ast,6.5,0.4645,
+2026-11-27,2026-11-27,4683021,Deni Avdija,POR,GS,3pm,2.5,0.3931,
+2026-11-27,2026-11-27,4431736,Toumani Camara,POR,GS,pts,9.5,0.5939,
+2026-11-27,2026-11-27,4431736,Toumani Camara,POR,GS,reb,4.5,0.4504,
+2026-11-27,2026-11-27,4431736,Toumani Camara,POR,GS,3pm,1.5,0.645,
+2026-11-27,2026-11-27,6606,Damian Lillard,POR,GS,pts,21.5,0.4898,
+2026-11-27,2026-11-27,6606,Damian Lillard,POR,GS,ast,4.5,0.4732,
+2026-11-27,2026-11-27,6606,Damian Lillard,POR,GS,3pm,3.5,0.449,
+2026-11-27,2026-11-27,3995,Jrue Holiday,POR,GS,pts,14.5,0.4673,
+2026-11-27,2026-11-27,3995,Jrue Holiday,POR,GS,reb,3.5,0.624,
+2026-11-27,2026-11-27,3995,Jrue Holiday,POR,GS,ast,4.5,0.5962,
+2026-11-27,2026-11-27,3995,Jrue Holiday,POR,GS,3pm,2.5,0.5029,
+2026-11-27,2026-11-27,5081727,Sidy Cissoko,POR,GS,pts,9.5,0.3379,
+2026-11-27,2026-11-27,5081727,Sidy Cissoko,POR,GS,reb,3.5,0.4494,
+2026-11-27,2026-11-27,5081727,Sidy Cissoko,POR,GS,3pm,2.5,0.226,
+2026-11-27,2026-11-27,5105565,Donovan Clingan,POR,GS,pts,10.5,0.5167,
+2026-11-27,2026-11-27,5105565,Donovan Clingan,POR,GS,reb,11.5,0.4432,
+2026-11-27,2026-11-27,5105565,Donovan Clingan,POR,GS,ast,2.5,0.4058,
+2026-11-27,2026-11-27,4683678,Scoot Henderson,POR,GS,pts,11.5,0.4501,
+2026-11-27,2026-11-27,4683678,Scoot Henderson,POR,GS,3pm,1.5,0.4655,
+2026-11-27,2026-11-27,4709138,Brandin Podziemski,GS,POR,pts,14.5,0.621,
+2026-11-27,2026-11-27,4709138,Brandin Podziemski,GS,POR,reb,4.5,0.5328,
+2026-11-27,2026-11-27,4709138,Brandin Podziemski,GS,POR,ast,2.5,0.6476,
+2026-11-27,2026-11-27,4709138,Brandin Podziemski,GS,POR,3pm,2.5,0.4899,
+2026-11-27,2026-11-27,5175737,Yaxel Lendeborg,GS,POR,pts,16.5,0.5094,
+2026-11-27,2026-11-27,5175737,Yaxel Lendeborg,GS,POR,reb,7.5,0.515,
+2026-11-27,2026-11-27,5175737,Yaxel Lendeborg,GS,POR,ast,3.5,0.4603,
+2026-11-27,2026-11-27,5175737,Yaxel Lendeborg,GS,POR,3pm,1.5,0.4802,
+2026-11-27,2026-11-27,6589,Draymond Green,GS,POR,reb,4.5,0.5284,
+2026-11-27,2026-11-27,6589,Draymond Green,GS,POR,ast,6.5,0.3867,
+2026-11-27,2026-11-27,4066436,De'Anthony Melton,GS,POR,reb,3.5,0.53,
+2026-11-27,2026-11-27,4066436,De'Anthony Melton,GS,POR,ast,3.5,0.3998,
+2026-11-27,2026-11-27,4066436,De'Anthony Melton,GS,POR,3pm,2.5,0.3943,
+2026-11-27,2026-11-27,4897262,Will Richard,GS,POR,3pm,1.5,0.2951,
