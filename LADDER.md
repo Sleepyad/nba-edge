@@ -48,7 +48,8 @@ Goal: measure the real hit rate of ONE best pick per day on a real bet365 line, 
 | 32 | 2026-11-24 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 68% | win (4 reb) | 1.91 (1.00 x 1.909) |
 | 33 | 2026-11-25 | Ajay Mitchell 3pm UNDER (proxy) | 1.5 | -110 | 69% | loss (2 3pm) | 1.00 (ladder dead from 1.91, restart #13 at next pick) |
 | 34 | 2026-11-26 | no pick (no NBA games today) | - | - | - | pass | 1.00 |
-| 35 | 2026-11-27 | Karl-Anthony Towns 3pm UNDER (proxy) | 2.5 | -110 | 69% | pending | 1.00 (restart #13) |
+| 35 | 2026-11-27 | Karl-Anthony Towns 3pm UNDER (proxy) | 2.5 | -110 | 69% | win (1 3pm) | 1.91 (1.00 x 1.909) |
+| 36 | 2026-11-28 | Anthony Black reb UNDER (proxy) | 5.5 | -110 | 68% | pending | 1.91 (restart #13) |
 
 Running: picks won / picks made = 6 / 9 after day 10 (day 6 void, day 11 pass, neither counts). Restart #2 (day 4) climbed to 25.33 (253 dollars at a 10 dollar start) then died on day 10 (Barnes grabbed 15 reb vs a 7.5 line). Balance is back to 1.00 (10 dollars), restart #3 begins at the next pick. Best balance reached: 25.33.
 
@@ -157,6 +158,10 @@ Day 33 result: Ajay Mitchell made 2 threes vs an under 1.5 line, loss. Restart #
 Day 34 note: ESPN scoreboard for 2026-11-26 has no games (Thanksgiving, python3 paper.py auto also found nothing), so there was nothing to pick. Pass day, ladder holds at 1.00. Day 33 had a pick, so the two-in-a-row stop rule is not triggered; if 2026-11-27 also has no good pick the ladder stops for good. Picks won / picks made stays 17 / 30 (pass does not count).
 
 Day 35 note (proxy): 11 game slate, all unstarted at the 3:15 PM ET check (first tip MIA-NY 7 PM ET). Towns 3pm u2.5 (LADDER-d35): NY -2.5 at home vs MIA, total 222.5, Anunoby, McBride, Clarkson, Drummond out (usage x0.928), last-10 3pm mean 1.8 (1 4 2 1 3 3 2 2 2 2, 32.8 min), model 69.2%, normal 73.1% and hit-rate 68.1% agree. Towns is day-to-day (a DNP would void). Skipped: Spencer pts u14.5 (69.2%, MEM heavy flux, Edwards-less MIN), Wells 3pm u2.5 (67.5%, normal 72.8% vs hit-rate 64.3% split, MEM flux), Gafford ast u2.5 (66.5%, lower), blowout lines in DET, TOR, BOS, DEN. Picks won / picks made stays 17 / 30 until graded.
+
+Day 35 result: Towns made 1 three vs an under 2.5 line, win. Restart #13 balance 1.91 (19.09 dollars at a 10 dollar start). Picks won / picks made = 18 / 31 after day 35 (day 6 void, day 11 pass, day 22 void, day 34 pass). Best balance reached: 25.33.
+
+Day 36 note (proxy): 5 game slate (ORL-WSH 5 PM, BKN-CHA 6 PM, IND-CHI 8 PM, OKC-MIL 8 PM, PHI-HOU 8:30 PM ET), all unstarted at the 3:15 PM ET check. Black reb u5.5 (LADDER-d36): ORL -3.5 at WSH, total 218.5, no flux flag, Porter Jr., Isaac, Nelson, Penda, Banchero out (usage x0.998), last-10 reb mean 4.9 (4 5 7 2 2 2 7 7 8 7), model 68.3%, normal 69.8% and hit-rate 69.9% agree tightly. Risk: Black is day-to-day (a DNP would void), lost this line on days 11 and 19, won it on days 26 and 32. Skipped: da Silva reb u4.5 (67.7%, normal 65.1% vs hit-rate 74.4%), George pts u17.5 (68.8%, usage x0.839 looks like an artifact), Sion James 3pm u1.5 (68.3%, normal 64.4% vs hit-rate 76.6%), Nembhard 3pm u2.5 (67.6%, IND flux), Nesmith ast u2.5 (63.3%), PHI-HOU and OKC-MIL heavy flux. Picks won / picks made stays 18 / 31 until graded.
 
 ## Extension (instruction from AD, 2026-11-02)
 The ladder keeps going past day 10 under these rules: Claude decides when to cash out (stop once enough is made) or runs it up to a 10k dollar paper balance (balance 1000.00 on a 1.00 unit scale at a 10 dollar start, i.e. 1000x). Stop only for one day if a day has no good pick, and stop for good only if the following day also has none. Everything else in the rules above still applies. Tickets continue as LADDER-d11, d12 and so on.
